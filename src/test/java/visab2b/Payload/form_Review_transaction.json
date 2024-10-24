@@ -1,0 +1,53 @@
+{
+  "id": "1",
+  "method": "VisaService.ReviewTransfer",
+  "params": {
+    "Api": {
+      "Credential": "",
+      "channel": "UI",
+      "signature": "",
+      "deviceId": ""
+    },
+    "Payload": {
+      "InstructedAmount": {
+        "Currency": "",
+        "Amount": "254"
+      },
+      "CreditorAccount": {
+        "Name": "John deo",
+        "Iban": "",
+        "AccountNumber": "",
+        "Address": "2365 Tetrick Road",
+        "PhoneNumber": "",
+        "ContactName": "",
+        "TaxId": ""
+      },
+      "DebtorAccount": {
+      "Accountnumber":"910091000226"
+      },
+      "CreditorAgent": {
+        "Bic": "",
+        "ClearingMemberId": ""
+      },
+      "DebtorAgent": {},
+      "CompanyId": "65e6f58239e442be0638dd5d",
+      "EndToEndIdentification": "#('AUTOFORM'+country+ Accno)",
+      "structuredRemittance": [
+                {
+                    "invoiceNumber": null,
+                    "poNumber": null,
+                    "invoiceNotes": null,
+                    "partialPayment": false
+                }
+            ],
+      "chargeBearer": "DEBT",
+       "InstructingReimbursementAgent": "BCRICRSJXXX",
+       "Description": "Recall",
+      "intermediaryAgentBic": "CHASUSU3XXX",
+      "PaymentPurpose": "",
+      "CreationDateTime": "2024-03-26T14:04:19.364Z",
+      "userEmail": "e.arivalagan+7033@netxd.com",
+      "paymentMode": "API"
+    }
+  }
+}

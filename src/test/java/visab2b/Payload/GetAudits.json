@@ -1,0 +1,24 @@
+{
+    "id": "1",
+    "method": "VisaService.GetAudits",
+    "params": {
+        "Api": {
+            "Credential": "",
+            "channel": "UI",
+            "signature": "",
+            "deviceId": ""
+        },
+        "Payload": {
+            "pageNo": 1,
+            "pageSize": 10,
+            "searchQuery": "",
+            "searchType": "",
+            "fromDate": "",
+            "toDate": "",
+            "bankId": "",
+            "transactionId": "",
+            "paymentId": "",
+            "reference": ""
+        }
+    }
+}

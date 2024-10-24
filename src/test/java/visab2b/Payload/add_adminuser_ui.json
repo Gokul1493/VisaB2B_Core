@@ -1,0 +1,22 @@
+{
+  "id": "1",
+  "method": "VisaService.AddUser",
+  "params": {
+    "Api": {
+      "Credential": "",
+      "channel": "UI",
+      "signature": "",
+      "deviceId": ""
+    },
+    "Payload": {
+      "user": {
+        "enabled": true,
+        "approved": false,
+        "role": "ADMIN",
+        "firstName": "John",
+        "lastName": "Josep",
+        "emailId": "#('e.arivalagan+'+email+'@netxd.com')"
+      }
+    }
+  }
+}

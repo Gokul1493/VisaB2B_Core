@@ -1,0 +1,44 @@
+{
+  "id": "1",
+  "method": "VisaService.AddCompany",
+  "params": {
+    "Api": {
+      "Credential": "",
+      "channel": "UI",
+      "signature": "",
+      "deviceId": ""
+    },
+    "Payload": {
+      "id": "am",
+      "Age": 23,
+      "company": {
+        "dailyVolume": "1210000",
+        "singleTransaction": "9999",
+        "ownershipDetails": [
+          {
+            "isIndividual": true,
+            "action": "add",
+            "firstName": "SALEEM ",
+            "lastName": "ISSA",
+            "countryOfResidenceISO": 840,
+            "nationalityCountryCodeISO": 840,
+            "entityName": null,
+            "address": null,
+            "countryOfBusinessRegistrationISO": null
+          }
+        ],
+        "orgName": "#('Exxon Mobil' +orgName)",
+        "emailId": "#('e.arivalagan'+email+'@netxd.com')",
+        "accountNumber": "#('25465'+Accno)",
+        "defaultCurrencyIsoCode": "840",
+        "businessRegistrationNumber": "840",
+        "taxId": "123",
+        "corporateLegalName": "GOKI",
+        "industryCode": "01",
+        "address1": "ABC ",
+        "countryIsoCode": "840",
+        "bankId": "648c4460b82a394ff7b8237d"
+      }
+    }
+  }
+}
