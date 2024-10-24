@@ -1,0 +1,10 @@
+{
+    "id": "1",
+    "jsonrpc": "2.0",
+    "method": "VisaService.Transfer",
+    "params": {
+        "Api": {
+            "Credential": "Basic ZS5hcml2YWxhZ2FuKzcwNUBuZXR4ZC5jb206MjMxM2MyOTkxNzBkNDYyOGFlM2MyYzNlMzM1MzAwMzc=",
+            "Signature": ""
+        },
+        "Payload": {"CreationDateTime":"2020-05-11T15:15:13+00:00","EndToEndIdentification":"","PaymentPurpose":"CSTRDR","UnstructuredRemittance":"test payments","PaymentPurposeCode":"CSTRDR","PaymentPurposeCode2":"","InstructingReimbursementAgent":"","InstructedAmount":{"Amount":"15","Currency":"CNH","FxTradeRefNumber":"BD9ISCA5KT0XXIQSRLQXF7S5L9JBG4KQY6P"},"CreditorAgent":{"Bic":"FNROCNBQXXX","ClearingMemberId":"","BranchId":"GG123457","BranchName":""},"CreditorAccount":{"Name":"Adam","AccountNumber":"62323242787","Iban":"232243546575638476867869","Address":"Pairote  Yoovidhya","Country":"BHD","PhoneNumber":"+1-234567892","TaxId":"12345657890123","TaxIndicator":"","ContactName":"Contactname"},"DebtorAccount":{"EnterpriseId":"V-USA-EUR-10080373-100000001-001"},"StructuredRemittance":[{"invoiceNumber":"123","poNumber":"321","invoiceNotes":"","partialPayment":false}]}}}

@@ -1,0 +1,21 @@
+{
+  "id": "1",
+  "method": "VisaService.SwiftFileTransfer",
+  "params": {
+    "Api": {
+      "Credential": "",
+      "channel": "UI",
+      "signature": "",
+      "deviceId": "65eed3c889f8ffd247d3fa00"
+    },
+    "Payload": {
+      "swiftFiles": [
+        {
+          "fileName": "",
+          "file": ""
+        }
+      ],
+      "DebtorAccount": {}
+    }
+  }
+}

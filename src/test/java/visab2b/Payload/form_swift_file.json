@@ -1,0 +1,20 @@
+{
+  "id": "1",
+  "method": "VisaService.SwiftFileTransfer",
+  "params": {
+    "Api": {
+      "Credential": "",
+      "channel": "UI",
+      "signature": "",
+      "deviceId": ""
+    },
+    "Payload": {
+      "swiftFiles": [
+        {
+          "fileName": "#('mt103out_FORM56' +orgName+ '.txt')",
+          "file": ""
+        }
+      ]
+    }
+  }
+}

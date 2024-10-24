@@ -1,0 +1,21 @@
+{
+  "id": "1",
+  "method": "VisaService.ReviewTransfer",
+  "params": {
+    "Api": {
+      "Credential": "",
+      "channel": "UI",
+      "signature": "",
+      "deviceId": ""
+    },
+    "Payload": {
+      "swiftFiles": [
+        {
+          "fileName": "",
+          "file": ""
+        }
+      ],
+      "paymentMode": "SWIFT"
+    }
+  }
+}

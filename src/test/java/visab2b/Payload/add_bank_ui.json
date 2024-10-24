@@ -1,0 +1,22 @@
+{
+  "id": "1",
+  "method": "VisaService.AddBank",
+  "params": {
+    "Api": {
+      "Credential": "",
+      "channel": "UI",
+      "signature": "",
+      "deviceId": ""
+    },
+    "Payload": {
+      "bank": {
+        "ceIntegration": true,
+        "bankProfile": {
+          "bankName":"#('Goldman'+orgName)"
+        },
+        "bankId": "#('BANKID2322'+email)",
+        "bankBic": "BIC9099XX"
+      }
+    }
+  }
+}

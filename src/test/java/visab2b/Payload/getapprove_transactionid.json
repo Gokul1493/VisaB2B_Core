@@ -1,0 +1,23 @@
+{
+  "id": "1",
+  "method": "VisaService.GetApproveTransactions",
+  "params": {
+    "Api": {
+      "Credential": "",
+      "channel": "UI",
+      "signature": "",
+      "deviceId": ""
+    },
+    "Payload": {
+      "pageNo": 1,
+      "pageSize": 10,
+      "paymentId": "",
+      "EndToEndIdentification": "",
+      "companyId": "",
+      "paymentMode": "",
+      "transactionCredit": "",
+      "userEmail": "e.arivalagan+7033@netxd.com",
+      "bankId": "648c4460b82a394ff7b8237d"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+	"Visa":{
+		"_URL":"http://localhost:9030/",
+		"URL":"https://qavisab2b.netxd.com/visab2b/",
+		"userName":"e.arivalagan+701@netxd.com",
+		"passWord":"Test@1234",
+		"keyId":"6603fdbdd00e21e012149e7a",
+		"Credential":"Basic ZS5hcml2YWxhZ2FuKzcwMUBuZXR4ZC5jb206VGVzdEAxMjM0",
+		"publicKey":"-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEtjiomzjj33lZUCuiV1VvFbyuTCAc\nZPN+jM2+op3ixxyv7MBdoQlB26c5Jjb6368DlMCRveaQweh9wgUBaMxUKQ==\n-----END PUBLIC KEY-----",
+	    "pk":"-----BEGIN PRIVATE KEY-----\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgG7IQfAuWLCyfkPz2\nTWnVJUzXWYNRU/hjzqgnKU1JizKhRANCAAS2OKibOOPfeVlQK6JXVW8VvK5MIBxk\n836Mzb6ineLHHK/swF2hCUHbpzkmNvrfrwOUwJG95pDB6H3CBQFozFQp\n-----END PRIVATE KEY-----"
+	},
+	"Visa_Mk":{
+		"userName":"e.arivalagan+702@netxd.com",
+		"passWord":"Test@1234",
+		"keyId":"6603eb59d00e21e012149ca0",
+		"gAuth":"OAQPC2RNTAO63JJSBA3EFAOTSUZOZ6UA",
+		"Credential":"Basic ZS5hcml2YWxhZ2FuKzcwMkBuZXR4ZC5jb206VGVzdEAxMjM0",
+		"publicKey":"-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEtjiomzjj33lZUCuiV1VvFbyuTCAc\nZPN+jM2+op3ixxyv7MBdoQlB26c5Jjb6368DlMCRveaQweh9wgUBaMxUKQ==\n-----END PUBLIC KEY-----",
+		"pk":"-----BEGIN PRIVATE KEY-----\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgG7IQfAuWLCyfkPz2\nTWnVJUzXWYNRU/hjzqgnKU1JizKhRANCAAS2OKibOOPfeVlQK6JXVW8VvK5MIBxk\n836Mzb6ineLHHK/swF2hCUHbpzkmNvrfrwOUwJG95pDB6H3CBQFozFQp\n-----END PRIVATE KEY-----"
+	},
+		"Visa_CK":{
+		"userName":"e.arivalagan+7033@netxd.com",
+		"passWord":"Test@1234",
+		"keyId":"6603f1f7d00e21e012149d04",
+		"gAuth":"R3JRCEPCNJQIMRPWMVCWHW7QB32V2JEH",
+		"Credential":"Basic ZS5hcml2YWxhZ2FuKzcwMzNAbmV0eGQuY29tOlRlc3RAMTIzNA==",
+		"publicKey":"-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEjG/o3LD0PJEoTNtYidLKnTPNyOCB\nGKrmLa/389WOudXhXsDsDmXwdagZC2kWemNNB5X6g+dQnPUgwqPVwBw5VQ==\n-----END PUBLIC KEY-----\n",
+		"pk":"-----BEGIN PRIVATE KEY-----\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQg4RSmkCa6oRINQG46\nkmb6T75oGhBXar+gIrAS/AjrMVChRANCAASMb+jcsPQ8kShM21iJ0sqdM83I4IEY\nquYtr/fz1Y651eFewOwOZfB1qBkLaRZ6Y00HlfqD51Cc9SDCo9XAHDlV\n-----END PRIVATE KEY-----\n"
+	},
+	
+	   "Visa_API_MK_Prod":{
+        "Credential":"Basic ZS5hcml2YWxhZ2FuKzcwNUBuZXR4ZC5jb206MjMxM2MyOTkxNzBkNDYyOGFlM2MyYzNlMzM1MzAwMzc=",
+        "pk":"-----BEGIN PRIVATE KEY----- MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgGAhy/V/Haak2tLVN rjPmYMVKKANHWCYjch+sVasLfHihRANCAASQfLNkPSLkcFwzRqDMMeYwR+VJWWnt Zhi+20Vvb4ppLUH7W465LznWX6XLXbnVpZQhF/2KSOSVtEh1VdOLwxh+ -----END PRIVATE KEY-----"
+        },
+        
+        "Visa_API_CK_Prod":{
+        "Credential":"Basic cmFtYWNoYW5kcmFuKzJAbmV0eGQuY29tOjljNmE2MDc1ZGU2YTQwNTJiOTcyNGMzNTg2ZTBkNTk1",
+        "pk":"-----BEGIN PRIVATE KEY-----\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgiWTN1njhZuU6bRRx\n+jGUCazqBn2KotqI3qD/iWHIDZuhRANCAATLw/a7k8kZ1ktQ/JFHgHDF0xnE0wmf\nUE4g3jLx5HJcEpwT4GOgoLByVMTOjihZ6L/eSL2F0+At8rojB+kMprUG\n-----END PRIVATE KEY-----"
+        },
+        
+        "Visa_API_MK":{
+        "Credential":"Basic YXV0b2thcmF0ZW1ha2VyQG5ldHhkLmNvbTo2MTUxYTg4YjY2ODQ0ZTdhOTAzZDljNzUwYmI0OWQ2MA==",
+        "pk":"-----BEGIN PRIVATE KEY-----\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgVBSGgoaR2Iy1WlCK\npTeSmWA4Q3JOEXUSt3r9SkUXAZ+hRANCAAS1DsWLgVvR+UNT9aySRj+S0MX/1cam\ns2K1vkYp5cTXkOqfdJT7nFX3hxfC2ySykOKYHA0LrGCLA7rD69FVQ5mU\n-----END PRIVATE KEY-----"
+        },
+        
+        "Visa_API_CK":{
+        "Credential":"Basic YXV0b2thcmF0ZWNoZWNrZXJAbmV0eGQuY29tOjdiNDQzZmVhNTFkZTQ4OWQ4MDg1NmNmYzQ1MjNkNDYw",
+        "pk":"-----BEGIN PRIVATE KEY-----\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgXrQ9xYudLzZufq0q\n14wbuDmNiOSDldu+GMbRwj2l7HyhRANCAARlW1meEDGMy2eLvO/OnMhI/DgOCV4Q\npR5u4d4Vv0W90s7ge5qkJoCY6YbC00qNvuV8Q+BeAczk2kfYZQj8MVQf\n-----END PRIVATE KEY-----"
+        }
+        
+}

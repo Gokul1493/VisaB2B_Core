@@ -1,0 +1,388 @@
+{
+  "Vietnam": {
+    "creditorAccountNumber": "852741963741852",
+    "creditorAgentBic": "VTCBVNVX",
+    "creditorName": "Auto Vietnam",
+    "creditorAgentBranchName": "Vietnam Branch",
+    "creditorAddress": "345 County Road 12 Fayette, AU 75777",
+    "instructedCurrency": "VND"
+  },
+  "Zambia": {
+    "creditorAccountNumber": "85621548",
+    "creditorAgentBic": "SCBLZMLX",
+    "creditorName": "Auto Zambia",
+    "creditorAgentBranchName": "Lusaka Branch",
+    "creditorAddress": "345 County Road 12 Fayette, AU 75777",
+    "instructedCurrency": "ZMW"
+  },
+  "Uzbekistan": {
+    "creditorAccountNumber": "852741963741856",
+    "creditorAgentBic": "TCZBUZ22XXX",
+    "creditorName": "Auto Uzbekistan",
+    "creditorAgentBranchName": "Uzbekistan Branch",
+    "creditorAddress": "345 County Road 12 Fayette, AU 75777",
+    "instructedCurrency": "UZS"
+  },
+  "Uruguay": {
+    "creditorAccountNumber": "84562315487452",
+    "creditorAgentBic": "BUROUYMMXXX",
+    "creditorName": "Auto Uruguay",
+    "creditorAgentBranchName": "Uruguay Branch",
+    "creditorTaxID": "576846876466",
+    "creditorAddress": "345 County Road 12 Fayette, AU 75777",
+    "instructedCurrency": "UYU"
+  },
+  "UnitedStates": {
+    "creditorAccountNumber": "955851255555548",
+    "creditorAgentBic": "NYBKUS33XXX",
+    "creditorName": "Auto UnitedStates",
+    "creditorAgentClearingMemberID": "US258369124",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "USD"
+  },
+  "UnitedKingdom": {
+    "creditorAccountNumber": "8451487451457884",
+    "creditorAgentBic": "LOBKGB2LXXX",
+    "creditorName": "Auto UnitedKingdom",
+    "creditorAgentClearingMemberID": "SC321654",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "GBP"
+  },
+  "UAE_AED": {
+    "creditorIBAN": "AE070331234567890123456",
+    "creditorAgentBic": "DBBKAEADXXX",
+    "creditorName": "Auto UAE",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "AED"
+  },
+  "UAE_ANY": {
+    "creditorAccountNumber": "8451487451457884",
+    "creditorAgentBic": "DBBKAEADXXX",
+    "creditorName": "Auto UAE",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "USD"
+  },
+  "Uganda": {
+    "creditorAccountNumber": "84561248612315487",
+    "creditorAgentBic": "UGBAUGKAXXX",
+    "creditorName": "Auto Uganda",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "UGX"
+  },
+  "TurksAndCaicos": {
+    "creditorAccountNumber": "84561248612315487",
+    "creditorAgentBic": "TCBCTCGP",
+    "creditorName": "Auto TurksAndCaicos",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "USD"
+  },
+  "Turkey": {
+    "creditorIBAN": "TR330006100519786457841326",
+    "creditorAgentBic": "TUBATRISXXX",
+    "creditorName": "Aut Turkey",
+    "creditorAddress": "345 County Road 12 Fayette, AU 75777",
+    "instructedCurrency": "TRY"
+  },
+  "Tunisia": {
+    "creditorIBAN": "TN5910006035183598478831",
+    "creditorAgentBic": "BTEXTNTTXXX",
+    "creditorName": "Aut Switzerland",
+    "creditorAddress": "345 County Road 12 Fayette, AU 75777",
+    "instructedCurrency": "TND"
+  },
+  "TT": {
+    "creditorAccountNumber": "85462158574621",
+    "creditorAgentBic": "CBTTTTPS",
+    "creditorName": "Auto TT",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "TTD"
+  },
+  "Thailand": {
+    "creditorAccountNumber": "85462158574621",
+    "creditorAgentBic": "BOTHTHBKXXX",
+    "creditorName": "Auto Thailand",
+	"CreditorAgentBranchName": "Main Branch",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "THB"
+  },
+  "Tanzania": {
+    "creditorAccountNumber": "85462158574621",
+    "creditorAgentBic": "TAPBTZTZXXX",
+    "creditorName": "Auto Tanzania",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "TZS"
+  },
+  "Switzerland": {
+    "creditorIBAN": "CH5604835012345678009",
+    "creditorAgentBic": "BQBHCHGGXXX",
+    "creditorName": "Aut Switzerland",
+    "creditorAddress": "345 County Road 12 Fayette, AU 75777",
+    "instructedCurrency": "CHF"
+  },
+  "SriLanka": {
+    "creditorAccountNumber": "8476124586214512",
+    "creditorAgentBic": "ABCBLKLX",
+    "creditorName": "Auto SriLanka",
+    "creditorAddress": "345 County Road 12 Fayette, AU 75777",
+    "instructedCurrency": "LKR"
+  },
+  "Sweden": {
+    "creditorAccountNumber": "8476124586214512",
+    "creditorIBAN": "SE3550000000054910000003",
+    "creditorAgentBic": "SWEDSESSXXX",
+    "creditorName": "Auto Sweden",
+    "creditorAddress": "345 County Road 12 Fayette, AU 75777",
+    "instructedCurrency": "SEK"
+  },
+  "Spain": {
+    "creditorAccountNumber": "8476124586214512",
+    "creditorIBAN": "ES9121000418450200051332",
+    "creditorAgentBic": "BSCHESMMXXX",
+    "creditorName": "Auto Spain",
+    "creditorAddress": "345 County Road 12 Fayette, AU 75777",
+    "instructedCurrency": "EUR"
+  },
+  "SouthKorea": {
+    "creditorAccountNumber": "84561248612315487",
+    "creditorAgentBic": "KOEXKRSE",
+    "creditorName": "Auto SouthKorea",
+    "creditorAgentClearingMemberID": "KR124",
+    "creditorContactPhoneNumber": "+1-9632587412",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "KRW"
+  },
+  "SouthAfrica": {
+    "creditorAccountNumber": "84561248612315487",
+    "creditorAgentBic": "SBZAZAJJXXX",
+    "creditorName": "Auto SouthAfrica",
+    "creditorContactPhoneNumber": "+1-9632587412",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "ZAR"
+  },
+  "Slovenia": {
+    "creditorIBAN": "SI56191000000123438",
+    "creditorAgentBic": "TATRSKBX",
+    "creditorName": "Auto Slovenia",
+    "creditorContactPhoneNumber": "+1-9632587412",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "EUR"
+  },
+  "Slovakia": {
+    "creditorIBAN": "SK3112000000002626109376",
+    "creditorAgentBic": "GIBASKBX",
+    "creditorName": "Auto Slovakia",
+    "creditorContactPhoneNumber": "+1-9632587412",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "EUR"
+  },
+  "Singapore": {
+    "creditorAccountNumber": "84561248612315487",
+    "creditorAgentBic": "XYZBSGSGXXX",
+    "creditorName": "Auto Singapore",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "SGD"
+  },
+  "Serbia": {
+    "creditorIBAN": "RS35123456000012345678",
+    "creditorAgentBic": "NBSRRSBGXXX",
+    "creditorName": "Auto Serbia",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "RSD"
+  },
+  "Senegal": {
+    "creditorAccountNumber": "845612486123154871254698",
+    "creditorAgentBic": "BICISNDXXXX",
+    "creditorName": "Auto Senegal",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "XOF"
+  },
+  "SaudiArabia": {
+    "creditorIBAN": "SA0380000000608010167519",
+    "creditorAgentBic": "ARNBSARIXXX",
+    "creditorName": "Auto SaudiArabia",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "SAR"
+  },
+  "Romania": {
+    "creditorIBAN": "RO49AAAA1B31007593840000",
+    "creditorAgentBic": "RNCBROBUXXX",
+    "creditorName": "Auto Romania",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "RON"
+  },
+  "Qatar": {
+    "creditorIBAN": "QA58DOHB00001234567890ABCDEFG",
+    "creditorAgentBic": "QNBAQAQAXXX",
+    "creditorName": "Auto Qatar",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "QAR"
+  },
+  "Portugal": {
+    "creditorIBAN": "PT50000201231234567890154",
+    "creditorAgentBic": "BGALPTTGPTP",
+    "creditorName": "Auto Portugal",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "EUR"
+  },
+  "Poland": {
+    "creditorIBAN": "PL61109010140000071219812874",
+    "creditorAgentBic": "NBPLPLPW",
+    "creditorName": "Auto Poland",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "PLN"
+  },
+  "Philippines": {
+    "creditorAccountNumber": "84561248612315487",
+    "creditorAgentBic": "PNBMPHMMXXX",
+    "creditorName": "Auto Philippines",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "PHP"
+  },
+  "Peru": {
+    "creditorAccountNumber": "965232178654321.",
+    "creditorAgentBic": "BCPLPEPLXXX",
+    "creditorName": "Auto Peru",
+    "creditorTaxID": "84561277451",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "PEN"
+  },
+  "Paraguay": {
+    "creditorAccountNumber": "965232178654321",
+    "creditorAgentBic": "BCPAPYPDXXX",
+    "creditorName": "Auto Paraguay",
+    "creditorTaxID": "8456125",
+    "CreditorAgentBranchName": "Main Branch",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "PYG"
+  },
+  "Panama": {
+    "creditorAccountNumber": "84561248612315487",
+    "creditorAgentBic": "NAPAPAPAXXX",
+    "creditorName": "Auto Panama",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "PAB"
+  },
+  "Pakistan": {
+    "creditorIBAN": "PK36SCBL0000001123456702",
+    "creditorAgentBic": "NBPAPKKACPB",
+    "creditorName": "Auto Pakistan",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "PKR"
+  },
+  "Oman": {
+    "creditorAccountNumber": "84561248612315487",
+    "creditorAgentBic": "BMUSOMRXXXX",
+    "creditorName": "Auto Oman",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "OMR"
+  },
+  "Norway": {
+    "creditorIBAN": "NO9386011117947",
+    "creditorAgentBic": "NORWNOK1XXX",
+    "creditorName": "Auto Norway",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "NOK"
+  },
+  "Nigeria": {
+    "creditorAccountNumber": "84561248612315487",
+    "creditorAgentBic": "ABNGNGLAXXX",
+    "creditorName": "Auto Nigeria",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "NGN"
+  },
+  "Nicaragua": {
+    "creditorAccountNumber": "84561248612315487",
+    "creditorAgentBic": "BCNINIMAXXX",
+    "creditorName": "Auto Nicaragua",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "NIO"
+  },
+  "NewZealand": {
+    "creditorAccountNumber": "84561248612315487",
+    "creditorAgentBic": "BCNINIMAXXX",
+    "creditorName": "Auto NewZealand",
+    "creditorAgentClearingMemberID": "NZ258369",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "NZD"
+  },
+  "Netherlands": {
+    "creditorIBAN": "NL91ABNA0417164300",
+    "creditorAgentBic": "FLORNL2AAMD",
+    "creditorName": "Auto Netherlands",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "EUR"
+  },
+  "Namibia": {
+    "creditorAccountNumber": "84561248612315487",
+    "creditorAgentBic": "CBKNNANXXXX",
+    "creditorName": "Auto Namibia",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "NAD"
+  },
+  "Mozambique": {
+    "creditorAccountNumber": "9652321786543215869547815",
+    "creditorAgentBic": "BMOCMZMAXXX",
+    "creditorName": "Auto Mozambique",
+    "CreditorAgentBranchName": "Main Branch",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "MZN"
+  },
+  "Morocco": {
+    "creditorAccountNumber": "965232178654321586954781",
+    "creditorAgentBic": "CDMAMAMCXXX",
+    "creditorName": "Auto Morocco",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "MAD"
+  },
+  "Mongolia": {
+    "creditorAccountNumber": "9652321786543215869547815",
+    "creditorAgentBic": "BOMUMNUBXXX",
+    "creditorName": "Auto Mongolia",
+    "CreditorAgentBranchName": "Main Branch",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "MNT"
+  },
+  "Mexico": {
+    "creditorAccountNumber": "965232178654321556",
+    "creditorAgentBic": "BDEMMXMMXXX",
+    "creditorName": "Auto Mexico",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "MXN"
+  },
+  "Mauritius": {
+    "creditorIBAN": "MU43BOMM0101123456789101000MUR",
+    "creditorAgentBic": "STCBMUMUXXX",
+    "creditorName": "Auto Mauritius",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "MUR"
+  },
+  "Malta": {
+    "creditorIBAN": "MT31MALT01100000000000000000123",
+    "creditorAgentBic": "VALLMTMT",
+    "creditorName": "Auto Malta",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "EUR"
+  },
+  "Maldives": {
+    "creditorAccountNumber": "9652321786543215869547815",
+    "creditorAgentBic": "MALBMVMVXXX",
+    "creditorName": "Auto Maldives",
+    "CreditorAgentBranchName": "Main Branch",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "MVR"
+  },
+  "Malaysia": {
+    "creditorAccountNumber": "965232178654321556",
+    "creditorAgentBic": "BNMAMYKLXXX",
+    "creditorName": "Auto Malaysia",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "MYR"
+  },
+  "Luxembourg": {
+    "creditorIBAN": "LU983414420027839700",
+    "creditorAgentBic": "ABLVLULL",
+    "creditorName": "Auto Luxembourg",
+    "creditorAddress": "345 County Road 12 Fayette",
+    "instructedCurrency": "EUR"
+  }
+}

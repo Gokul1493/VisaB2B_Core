@@ -1,0 +1,23 @@
+{
+  "id": "1",
+  "method": "VisaService.AddUser",
+  "params": {
+    "Api": {
+      "Credential": "",
+      "channel": "UI",
+      "signature": "",
+      "deviceId": ""
+    },
+    "Payload": {
+      "user": {
+        "enabled": true,
+        "approved": true,
+        "role": "IT_ADMIN",
+        "bankId": "65c33543012900aead406448",
+        "firstName": "Elango",
+        "lastName": "Ariavalagan",
+        "emailId": "#('e.arivalagan+'+Accno+'@netxd.com')"
+      }
+    }
+  }
+}

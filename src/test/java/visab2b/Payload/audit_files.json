@@ -1,0 +1,25 @@
+{
+  "id": "1",
+  "method": "VisaService.AuditFiles",
+  "params": {
+    "Api": {
+      "Credential": "Basic ZS5hcml2YWxhZ2FuKzcwMkBuZXR4ZC5jb206VGVzdEAxMjM0",
+      "channel": "UI",
+      "signature": "MEUCIQC3kWr7at+aDQlLKR87Ea8SklPeL8kGrrwEMNV6xvcEwAIgB+cL+1yJ0/3ZA/nE3DEigmLOG3CgF4zenw/HSuAE0KQ=",
+      "deviceId": "6603eadbd00e21e012149c9d"
+    },
+    "Payload": {
+      "pageNo": 1,
+      "pageSize": 10,
+      "fromDate": "",
+      "toDate": "",
+      "bankId": "648c4460b82a394ff7b8237d",
+      "TransactionId": "",
+      "searchQuery": "",
+      "status": "",
+      "searchType": "",
+      "direction": "",
+      "reference": ""
+    }
+  }
+}

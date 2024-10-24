@@ -1,0 +1,17 @@
+{
+  "id": "1",
+  "method": "VisaService.ApprovePayment",
+  "params": {
+    "Api": {
+      "Credential": "",
+      "channel": "UI",
+      "signature": "",
+      "deviceId": ""
+    },
+    "Payload": {
+      "role": "OPS_CHECKER",
+      "userEmail": "e.arivalagan+7033@netxd.com",
+      "transactionId": ""
+    }
+  }
+}
