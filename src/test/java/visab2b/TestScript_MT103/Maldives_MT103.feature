@@ -11,6 +11,7 @@ Feature: maldives_MT103
     * def Accno = arg.slice(3,10)
     * print Accno
 
+@positive
   ## Maker user intiate the transaction
   Scenario: Positive flow of the transaction
     * def content = read('classpath:visab2b/MT103_files/MALDIVES.txt')
@@ -295,7 +296,7 @@ Feature: maldives_MT103
 
   Scenario: CreditorIBAN/AccountNumber as Empty
     * def content = read('classpath:visab2b/MT103_files/MALDIVES.txt')
-    * def finalMt103 = content.replaceAll("59:454796465477865", "59:"  )
+    * def finalMt103 = content.replaceAll("59:MZ45479646547786525896314", "59:"  )
     * print finalMt103
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'

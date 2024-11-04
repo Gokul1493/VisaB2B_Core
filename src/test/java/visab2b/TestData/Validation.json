@@ -76,6 +76,7 @@
 	 "MT103_Invalid_AccNum24":"Creditor AccountNumber must be 24-numeric.",
 	 "MT103_Invlaid_PPC":"Payment Purpose Code must be 4-numeric.",
 	 "MT103_NonExistingACC":"Contains invalid/non-existent account",
+	 "MT103_Mongolia_POP":"Payment purpose must be starts with VO and followed by characters.",
 
  }
 }

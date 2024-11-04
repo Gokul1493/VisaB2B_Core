@@ -203,7 +203,7 @@ Feature: PERU_MT103
     And request value
     When method POST
     Then status 200
-    * match response.error.message contains validations.MT103_Empty_AccNumber
+    * match response.error.message contains validations.TaxID_must11
 
   Scenario: To verify the Beneficiary Tax ID is below 11-digit
     * def content = read('classpath:visab2b/MT103_files/PERU.txt')
@@ -221,7 +221,7 @@ Feature: PERU_MT103
     And request value
     When method POST
     Then status 200
-    * match response.error.message contains validations.MT103_Empty_AccNumber
+    * match response.error.message contains validations.TaxID_must11
 
   Scenario: To verify the Beneficiary Tax ID without prefix
     * def content = read('classpath:visab2b/MT103_files/PERU.txt')
@@ -239,7 +239,7 @@ Feature: PERU_MT103
     And request value
     When method POST
     Then status 200
-    * match response.error.message contains validations.MT103_Empty_AccNumber
+    * match response.error.message contains validations.EmptyTaxID
 
   Scenario: To verify the without Beneficiary Tax ID
     * def content = read('classpath:visab2b/MT103_files/PERU.txt')
@@ -257,7 +257,7 @@ Feature: PERU_MT103
     And request value
     When method POST
     Then status 200
-    * match response.error.message contains validations.MT103_Empty_AccNumber
+    * match response.error.message contains validations.EmptyTaxID
 
   Scenario: CreditorIBAN/AccountNumber as Empty
     * def content = read('classpath:visab2b/MT103_files/PERU.txt')

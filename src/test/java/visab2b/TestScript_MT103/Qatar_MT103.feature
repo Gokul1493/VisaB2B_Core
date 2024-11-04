@@ -116,7 +116,7 @@ Feature: QATAR_MT103
 
   Scenario: Creditor Bic as Empty
     * def content = read('classpath:visab2b/MT103_files/QATAR.txt')
-    * def finalMt103 = content.replaceAll(":57A:QNBAQAQASLB", ":57A:"  )
+    * def finalMt103 = content.replaceAll(":57A:QNBAQAQAXXX", ":57A:"  )
     * print finalMt103
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
@@ -134,7 +134,7 @@ Feature: QATAR_MT103
 
   Scenario: Creditor Bic as Invaild
     * def content = read('classpath:visab2b/MT103_files/QATAR.txt')
-    * def finalMt103 = content.replaceAll(":57A:QNBAQAQASLB", ":57A:ABC"  )
+    * def finalMt103 = content.replaceAll(":57A:QNBAQAQAXXX", ":57A:ABC"  )
     * print finalMt103
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
@@ -269,7 +269,7 @@ Feature: QATAR_MT103
 
   Scenario: Creditor Bic Less than 8 digits
     * def content = read('classpath:visab2b/MT103_files/QATAR.txt')
-    * def finalMt103 = content.replaceAll(":57A:QNBAQAQASLB", ":57A:ABC"  )
+    * def finalMt103 = content.replaceAll(":57A:QNBAQAQAXXX", ":57A:ABC"  )
     * print finalMt103
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
@@ -287,7 +287,7 @@ Feature: QATAR_MT103
 
   Scenario: Creditor Bic more than 11 digits
     * def content = read('classpath:visab2b/MT103_files/QATAR.txt')
-    * def finalMt103 = content.replaceAll(":57A:QNBAQAQASLB", ":57A:QNBAQAQASLBXX"  )
+    * def finalMt103 = content.replaceAll(":57A:QNBAQAQAXXX", ":57A:QNBAQAQASLBXX"  )
     * print finalMt103
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'

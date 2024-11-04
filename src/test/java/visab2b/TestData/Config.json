@@ -1,7 +1,7 @@
 {
 	"Visa":{
-		"_URL":"http://localhost:9030/",
-		"URL":"https://qavisab2b.netxd.com/visab2b/",
+		"URL":"http://localhost:9030/",
+		"_URL":"https://qavisab2b.netxd.com/visab2b/",
 		"userName":"e.arivalagan+701@netxd.com",
 		"passWord":"Test@1234",
 		"keyId":"6603fdbdd00e21e012149e7a",
