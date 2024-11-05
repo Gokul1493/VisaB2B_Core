@@ -148,7 +148,7 @@ Feature: SLOVAKIA_MT103
     And request value
     When method POST
     Then status 200
-    * match response.error.message contains validations.MT103_Empty_CBic_CCMID
+    * match response.error.message contains validations.InvalidBic
 
   Scenario: DebtorAccountNumber as Empty
     * def content = read('classpath:visab2b/MT103_files/SLOVAKIA.txt')

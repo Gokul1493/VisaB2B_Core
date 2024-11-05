@@ -11,12 +11,11 @@ class FeatureRunner {
 				"Zambia_MT103",
 				"Vietnam_MT103",
 				"Jamaica_MT103",
-				"Peru_MT103",
-				"Poland_MT103",
-				"Qatar_MT103",
-				"Romania_MT103",
-				"Slovakia_MT103",
-				"Slovenia_MT103"
+				"Pakistan_MT103",
+				"Portugal_MT103",
+				"Spain_MT103",
+				"Sweden_MT103",
+				"Jordan_MT103"
 				).relativeTo(getClass());
 
 

@@ -9,6 +9,6 @@ JIAXING INDUSTRY
 :59:4564786431346
 zambia
 zambai street
-:70:POP/pop
-/BBB/Downtown Branch
+:70:/POP/pop
+:72:/BBB/Downtown Branch
 -}{5:{PDE:}{MAC:00000000}}

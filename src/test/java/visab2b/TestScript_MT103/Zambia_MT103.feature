@@ -13,7 +13,7 @@ Feature: Zambia_MT103
 
   ## Maker user intiate the transaction
   Scenario: Positive flow of the transaction
-    * def content = read('classpath:visab2b/MT103_files/Zambia.txt')
+    * def content = read('classpath:visab2b/MT103_files/ZAMBIA.txt')
     * def referencenumber = "AutoZambia001" + Accno
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:AutoZambia001", "20:" + referencenumber )
@@ -29,7 +29,7 @@ Feature: Zambia_MT103
     * reqadd.params.Api.Credential = testData.Visa_Mk.Credential
     * reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
     * reqadd.params.Payload.swiftFiles[0].file = finalMt103
-    * reqadd.params.Payload.swiftFiles[0].fileName = "Zambia.txt"
+    * reqadd.params.Payload.swiftFiles[0].fileName = "ZAMBIA.txt"
     * def value = signsreq(reqadd,user)
     And request value
     When method POST
@@ -42,7 +42,7 @@ Feature: Zambia_MT103
     * reqadd.params.Api.Credential = testData.Visa_Mk.Credential
     * reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
     * reqadd.params.Payload.swiftFiles[0].file = finalMt103
-    * reqadd.params.Payload.swiftFiles[0].fileName = "Zambia.txt"
+    * reqadd.params.Payload.swiftFiles[0].fileName = "ZAMBIA.txt"
     * def value = signsreq(reqadd,user)
     And request value
     When method POST
@@ -80,7 +80,7 @@ Feature: Zambia_MT103
     * match response.result.message == validations.successMessage
 
   Scenario: Transaction initated for Zambia country with different currency  (currency:- USD)
-    * def content = read('classpath:visab2b/MT103_files/Zambia.txt')
+    * def content = read('classpath:visab2b/MT103_files/ZAMBIA.txt')
     * def referencenumber = "AutoZambia001" + Accno
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:AutoZambia001", "20:" + referencenumber ).replaceAll("32A:200408EUR138", "32A:200408ALL138.28")
@@ -93,7 +93,7 @@ Feature: Zambia_MT103
     * reqadd.params.Api.Credential = testData.Visa_Mk.Credential
     * reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
     * reqadd.params.Payload.swiftFiles[0].file = finalMt103
-    * reqadd.params.Payload.swiftFiles[0].fileName = "Zambia.txt"
+    * reqadd.params.Payload.swiftFiles[0].fileName = "ZAMBIA.txt"
     * def value = signsreq(reqadd,user)
     And request value
     When method POST
@@ -106,7 +106,7 @@ Feature: Zambia_MT103
     * reqadd.params.Api.Credential = testData.Visa_Mk.Credential
     * reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
     * reqadd.params.Payload.swiftFiles[0].file = finalMt103
-    * reqadd.params.Payload.swiftFiles[0].fileName = "Zambia.txt"
+    * reqadd.params.Payload.swiftFiles[0].fileName = "ZAMBIA.txt"
     * def value = signsreq(reqadd,user)
     And request value
     When method POST
@@ -146,7 +146,7 @@ Feature: Zambia_MT103
 
   #@ignore
   Scenario: Transaction with end to end identification already exists
-    * def content = read('classpath:visab2b/MT103_files/Zambia.txt')
+    * def content = read('classpath:visab2b/MT103_files/ZAMBIA.txt')
     * def duplref = jutil.GetData('Duplicaterefnumber')
     * print duplref
     * def finalMt103 = content.replaceAll("20:AutoZambia001", "20:" + duplref )
@@ -158,7 +158,7 @@ Feature: Zambia_MT103
     * reqadd.params.Api.Credential = testData.Visa_Mk.Credential
     * reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
     * reqadd.params.Payload.swiftFiles[0].file = finalMt103
-    * reqadd.params.Payload.swiftFiles[0].fileName = "Zambia.txt"
+    * reqadd.params.Payload.swiftFiles[0].fileName = "ZAMBIA.txt"
     * def value = signsreq(reqadd,user)
     And request value
     When method POST
@@ -167,7 +167,7 @@ Feature: Zambia_MT103
 
   #@ignore
   Scenario: Transaction with end to end as Empty
-    * def content = read('classpath:visab2b/MT103_files/Zambia.txt')
+    * def content = read('classpath:visab2b/MT103_files/ZAMBIA.txt')
     * def finalMt103 = content.replaceAll("20:AutoZambia001", "20:"  )
     * print finalMt103
     * def user = testData.Visa_Mk
@@ -177,7 +177,7 @@ Feature: Zambia_MT103
     * reqadd.params.Api.Credential = testData.Visa_Mk.Credential
     * reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
     * reqadd.params.Payload.swiftFiles[0].file = finalMt103
-    * reqadd.params.Payload.swiftFiles[0].fileName = "Zambia.txt"
+    * reqadd.params.Payload.swiftFiles[0].fileName = "ZAMBIA.txt"
     * def value = signsreq(reqadd,user)
     And request value
     When method POST
@@ -186,7 +186,7 @@ Feature: Zambia_MT103
 
   #@ignore
   Scenario: DebtorAccountNumber as Empty
-    * def content = read('classpath:visab2b/MT103_files/Zambia.txt')
+    * def content = read('classpath:visab2b/MT103_files/ZAMBIA.txt')
     * def finalMt103 = content.replaceAll("50K:9100910001", "50K:"  )
     * print finalMt103
     * def user = testData.Visa_Mk
@@ -196,7 +196,7 @@ Feature: Zambia_MT103
     * reqadd.params.Api.Credential = testData.Visa_Mk.Credential
     * reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
     * reqadd.params.Payload.swiftFiles[0].file = finalMt103
-    * reqadd.params.Payload.swiftFiles[0].fileName = "Zambia.txt"
+    * reqadd.params.Payload.swiftFiles[0].fileName = "ZAMBIA.txt"
     * def value = signsreq(reqadd,user)
     And request value
     When method POST
@@ -205,7 +205,7 @@ Feature: Zambia_MT103
 
   #@ignore
   Scenario: DebtorName as Empty
-    * def content = read('classpath:visab2b/MT103_files/Zambia.txt')
+    * def content = read('classpath:visab2b/MT103_files/ZAMBIA.txt')
     * def finalMt103 = content.replaceAll("JIAXING INDUSTRY", "")
     * print finalMt103
     * def user = testData.Visa_Mk
@@ -215,16 +215,16 @@ Feature: Zambia_MT103
     * reqadd.params.Api.Credential = testData.Visa_Mk.Credential
     * reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
     * reqadd.params.Payload.swiftFiles[0].file = finalMt103
-    * reqadd.params.Payload.swiftFiles[0].fileName = "Zambia.txt"
+    * reqadd.params.Payload.swiftFiles[0].fileName = "ZAMBIA.txt"
     * def value = signsreq(reqadd,user)
     And request value
     When method POST
     Then status 200
-    * match response.error.message contains validations.MT103_unmatch_CompName
+    * match response.error.message contains validations.MT103_Empty_DebtorNameORAddress
 
   #@ignore
   Scenario: Creditor Bic as Empty
-    * def content = read('classpath:visab2b/MT103_files/Zambia.txt')
+    * def content = read('classpath:visab2b/MT103_files/ZAMBIA.txt')
     * def finalMt103 = content.replaceAll(":57A:BAZAZMLUASA", ":57A:")
     * print finalMt103
     * def user = testData.Visa_Mk
@@ -234,7 +234,7 @@ Feature: Zambia_MT103
     * reqadd.params.Api.Credential = testData.Visa_Mk.Credential
     * reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
     * reqadd.params.Payload.swiftFiles[0].file = finalMt103
-    * reqadd.params.Payload.swiftFiles[0].fileName = "Zambia.txt"
+    * reqadd.params.Payload.swiftFiles[0].fileName = "ZAMBIA.txt"
     * def value = signsreq(reqadd,user)
     And request value
     When method POST
@@ -243,7 +243,7 @@ Feature: Zambia_MT103
 
   #@ignore
   Scenario: Creditor Bic as Invaild
-    * def content = read('classpath:visab2b/MT103_files/Zambia.txt')
+    * def content = read('classpath:visab2b/MT103_files/ZAMBIA.txt')
     * def finalMt103 = content.replaceAll(":57A:BAZAZMLUASA", ":57A:ABCD")
     * print finalMt103
     * def user = testData.Visa_Mk
@@ -253,7 +253,7 @@ Feature: Zambia_MT103
     * reqadd.params.Api.Credential = testData.Visa_Mk.Credential
     * reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
     * reqadd.params.Payload.swiftFiles[0].file = finalMt103
-    * reqadd.params.Payload.swiftFiles[0].fileName = "Zambia.txt"
+    * reqadd.params.Payload.swiftFiles[0].fileName = "ZAMBIA.txt"
     * def value = signsreq(reqadd,user)
     And request value
     When method POST
@@ -262,7 +262,7 @@ Feature: Zambia_MT103
 
   #@ignore
   Scenario: Creditor Bic Less than 8 character
-    * def content = read('classpath:visab2b/MT103_files/Zambia.txt')
+    * def content = read('classpath:visab2b/MT103_files/ZAMBIA.txt')
     * def finalMt103 = content.replaceAll(":57A:BAZAZMLUASA", ":57A:BBHOBDD")
     * print finalMt103
     * def user = testData.Visa_Mk
@@ -272,7 +272,7 @@ Feature: Zambia_MT103
     * reqadd.params.Api.Credential = testData.Visa_Mk.Credential
     * reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
     * reqadd.params.Payload.swiftFiles[0].file = finalMt103
-    * reqadd.params.Payload.swiftFiles[0].fileName = "Zambia.txt"
+    * reqadd.params.Payload.swiftFiles[0].fileName = "ZAMBIA.txt"
     * def value = signsreq(reqadd,user)
     And request value
     When method POST
@@ -281,7 +281,7 @@ Feature: Zambia_MT103
 
   #@ignore
   Scenario: Creditor Bic MORE THAN 11 CHARACTER
-    * def content = read('classpath:visab2b/MT103_files/Zambia.txt')
+    * def content = read('classpath:visab2b/MT103_files/ZAMBIA.txt')
     * def finalMt103 = content.replaceAll(":57A:BAZAZMLUASA", ":57A:BAZAZMLUASAX")
     * print finalMt103
     * def user = testData.Visa_Mk
@@ -291,7 +291,7 @@ Feature: Zambia_MT103
     * reqadd.params.Api.Credential = testData.Visa_Mk.Credential
     * reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
     * reqadd.params.Payload.swiftFiles[0].file = finalMt103
-    * reqadd.params.Payload.swiftFiles[0].fileName = "Zambia.txt"
+    * reqadd.params.Payload.swiftFiles[0].fileName = "ZAMBIA.txt"
     * def value = signsreq(reqadd,user)
     And request value
     When method POST
@@ -300,7 +300,7 @@ Feature: Zambia_MT103
 
   #@ignore
   Scenario: CreditorIBAN/AccountNumber as Empty
-    * def content = read('classpath:visab2b/MT103_files/Zambia.txt')
+    * def content = read('classpath:visab2b/MT103_files/ZAMBIA.txt')
     * def finalMt103 = content.replaceAll("59:4564786431346", "59:"  )
     * print finalMt103
     * def user = testData.Visa_Mk
@@ -310,7 +310,7 @@ Feature: Zambia_MT103
     * reqadd.params.Api.Credential = testData.Visa_Mk.Credential
     * reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
     * reqadd.params.Payload.swiftFiles[0].file = finalMt103
-    * reqadd.params.Payload.swiftFiles[0].fileName = "Zambia.txt"
+    * reqadd.params.Payload.swiftFiles[0].fileName = "ZAMBIA.txt"
     * def value = signsreq(reqadd,user)
     And request value
     When method POST
