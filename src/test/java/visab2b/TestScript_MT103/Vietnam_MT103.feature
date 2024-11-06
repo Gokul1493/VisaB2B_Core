@@ -220,7 +220,7 @@ Feature: VIETNAM_MT103
     And request value
     When method POST
     Then status 200
-    * match response.error.message contains validations.MT103_Empty_DebtorName_Address
+    * match response.error.message contains validations.BranchName
 
   Scenario: To verify the Beneficiary Bank Branch Name as empty
     * def content = read('classpath:visab2b/MT103_files/VIETNAM.txt')

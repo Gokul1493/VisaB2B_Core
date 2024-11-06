@@ -8,14 +8,13 @@ class FeatureRunner {
 	@Karate.Test
 	Karate testUsers() {
 		return Karate.run(
-				"Zambia_MT103",
-				"Vietnam_MT103",
-				"Jamaica_MT103",
-				"Pakistan_MT103",
-				"Portugal_MT103",
-				"Spain_MT103",
-				"Sweden_MT103",
-				"Jordan_MT103"
+				"Senegal_MT103",
+				"Thailand_MT103",
+				"Uruguay_MT103",
+				"PuertoRico_MT103",
+				"Ukraine_MT103",
+				"Kazakhstan_MT103",
+				"Taiwan_MT103"
 				).relativeTo(getClass());
 
 

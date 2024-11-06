@@ -1,8 +1,8 @@
 Feature: PuertoRico_MT103
 
   Background: 
-* def validation_Messages = read('classpath:visab2b/TestData/Validation.json')
-* def validations = validation_Messages.Validations
+    * def validation_Messages = read('classpath:visab2b/TestData/Validation.json')
+    * def validations = validation_Messages.Validations
     * def testData = read('classpath:visab2b/TestData/Config.json')
     * def jutil = Java.type('visab2b.Drivers.Addons')
     * def arg = jutil.PLtoken()
@@ -13,13 +13,13 @@ Feature: PuertoRico_MT103
 
   ## Maker user intiate the transaction
   Scenario: Positive flow of the transaction
-    * def content = read('classpath:visab2b/MT103_files/PuertoRico.txt')
+    * def content = read('classpath:visab2b/MT103_files/PUERTORICO.txt')
     * def referencenumber = "Autopuerto001" + Accno
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:Autopuerto001", "20:" + referencenumber )
     * print finalMt103
     * jutil.SetData("GetAuditsPuertoRicomt103rspostive",referencenumber)
-        * def user = testData.Visa_Mk
+    * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
     * print reqadd
@@ -184,9 +184,7 @@ Feature: PuertoRico_MT103
     And request value
     When method POST
     Then status 200
-    * match response.error.message contains validations.MT103_unmatch_CompName
-
-  
+    * match response.error.message contains validations.MT103_Empty_DebtorNameORAddress
 
   Scenario: CreditorIBAN/AccountNumber as Empty
     * def content = read('classpath:visab2b/MT103_files/PUERTORICO.txt')
@@ -206,7 +204,6 @@ Feature: PuertoRico_MT103
     Then status 200
     * match response.error.message contains validations.MT103_Empty_CAccNumber_IBAN
 
-  
   Scenario: Transaction initated for albania country with different currency  (currency:- USD)
     * def content = read('classpath:visab2b/MT103_files/PUERTORICO.txt')
     * def referencenumber = "Autopuerto001" + Accno
@@ -214,7 +211,7 @@ Feature: PuertoRico_MT103
     * def finalMt103 = content.replaceAll("20:Autopuerto001", "20:" + referencenumber ).replaceAll(":32A:200408TZS138,28", ":32A:200408USD138.28")
     * print finalMt103
     * jutil.SetData("GetAuditsPuertoRicomt103rsothercurrency",referencenumber)
-        * def user = testData.Visa_Mk
+    * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
     * print reqadd
@@ -269,8 +266,8 @@ Feature: PuertoRico_MT103
     And request value
     When method POST
     Then status 200
-    
-     Scenario: Creditor Bic as Less than 8 digits
+
+  Scenario: Creditor Bic as Less than 8 digits
     * def content = read('classpath:visab2b/MT103_files/PUERTORICO.txt')
     * def finalMt103 = content.replaceAll(":57A:FBPRPRSJXXX", ":57A:ABC"  )
     * print finalMt103
@@ -287,8 +284,8 @@ Feature: PuertoRico_MT103
     When method POST
     Then status 200
     * match response.error.message contains validations.InvalidBic
-    
-     Scenario: Creditor Bic more than 8 digits
+
+  Scenario: Creditor Bic more than 8 digits
     * def content = read('classpath:visab2b/MT103_files/PUERTORICO.txt')
     * def finalMt103 = content.replaceAll(":57A:FBPRPRSJXXX", ":57A:TANZTZTXXXXX"  )
     * print finalMt103
@@ -305,8 +302,8 @@ Feature: PuertoRico_MT103
     When method POST
     Then status 200
     * match response.error.message contains validations.InvalidBic
-    
-     Scenario: Currency as empty
+
+  Scenario: Currency as empty
     * def content = read('classpath:visab2b/MT103_files/PUERTORICO.txt')
     * def finalMt103 = content.replaceAll(":32A:240529USD10", ":32A:24052910"  )
     * print finalMt103

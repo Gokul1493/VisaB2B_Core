@@ -16,7 +16,7 @@ Feature: Zambia_MT103
     * def content = read('classpath:visab2b/MT103_files/ZAMBIA.txt')
     * def referencenumber = "AutoZambia001" + Accno
     * print referencenumber
-    * def finalMt103 = content.replaceAll("20:AutoZambia001", "20:" + referencenumber )
+    * def finalMt103 = content.replaceAll("20:AUTOZAMBIA0001", "20:" + referencenumber )
     * print finalMt103
     * jutil.SetData("GetAuditszambiamt103rspostive",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
@@ -83,7 +83,7 @@ Feature: Zambia_MT103
     * def content = read('classpath:visab2b/MT103_files/ZAMBIA.txt')
     * def referencenumber = "AutoZambia001" + Accno
     * print referencenumber
-    * def finalMt103 = content.replaceAll("20:AutoZambia001", "20:" + referencenumber ).replaceAll("32A:200408EUR138", "32A:200408ALL138.28")
+    * def finalMt103 = content.replaceAll("20:AUTOZAMBIA0001", "20:" + referencenumber ).replaceAll("32A:200408EUR138", "32A:200408ALL138.28")
     * print finalMt103
     * jutil.SetData("GetAuditszambiamt103rsothercurrency",referencenumber)
     * def user = testData.Visa_Mk
@@ -168,7 +168,7 @@ Feature: Zambia_MT103
   #@ignore
   Scenario: Transaction with end to end as Empty
     * def content = read('classpath:visab2b/MT103_files/ZAMBIA.txt')
-    * def finalMt103 = content.replaceAll("20:AutoZambia001", "20:"  )
+    * def finalMt103 = content.replaceAll("20:AUTOZAMBIA0001", "20:"  )
     * print finalMt103
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
