@@ -1,9 +1,11 @@
 package visab2b;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+
 import com.intuit.karate.Results;
 import com.intuit.karate.Runner;
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
 
 class GlobalRunner {
 

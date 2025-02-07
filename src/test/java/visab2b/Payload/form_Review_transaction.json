@@ -23,14 +23,14 @@
         "TaxId": ""
       },
       "DebtorAccount": {
-      "Accountnumber":"910091000226"
+      "Accountnumber":"9100910001"
       },
       "CreditorAgent": {
         "Bic": "",
         "ClearingMemberId": ""
       },
       "DebtorAgent": {},
-      "CompanyId": "65e6f58239e442be0638dd5d",
+      "CompanyId": "64e8d5236e69a8d7ee1d5b5c",
       "EndToEndIdentification": "#('AUTOFORM'+country+ Accno)",
       "structuredRemittance": [
                 {

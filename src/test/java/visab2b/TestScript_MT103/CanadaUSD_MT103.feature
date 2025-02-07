@@ -85,7 +85,7 @@ Background:
   * def content = read('classpath:visab2b/MT103_files/CANADAUSD.txt')
   * def referencenumber = "AUTOMT103SFTPCANADAUSD" + Accno
   * print referencenumber
-  * def finalMt103 = content.replaceAll("20:MT103CANADAUSD202431030001", "20:" + referencenumber ).replaceAll("57A:ACFXCAW1XXX", "57A:")
+  * def finalMt103 = content.replaceAll("20:MT103CANADAUSD202431030001", "20:" + referencenumber )
   * print finalMt103
   * def user = testData.Visa_Mk 
   Given url QaUrl + 'api'
