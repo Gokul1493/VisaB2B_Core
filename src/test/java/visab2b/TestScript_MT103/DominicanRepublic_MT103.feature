@@ -85,7 +85,7 @@ Background:
   * def content = read('classpath:visab2b/MT103_files/DOMINICANREPUBLIC.txt')
   * def referencenumber = "AUTOMT103SFTPDOMINICANREPUBLIC" + Accno
   * print referencenumber
-  * def finalMt103 = content.replaceAll("20:MT103DOMICANREPUBLIC2024010001", "20:" + referencenumber ).replaceAll("32A:200408DOP134,78", "32A:200408USD138.28").replaceAll(":59:/DO22ACAU00000000000123456789", ":59:/6508000000192000145").replaceAll("72:/INN/112233444", "72:").replaceAll("70:/POP/Payment as agreed DOMINICANREPUBLIC", "70:")
+  * def finalMt103 = content.replaceAll("20:MT103DOMICANREPUBLIC2024010001", "20:" + referencenumber ).replaceAll("32A:200408DOP134,78", "32A:200408USD138.28").replaceAll(":59:/DO22ACAU00000000000123456789", ":59:/6508000000192000145").replaceAll("72:/INN/112233444", "72:").replaceAll("70:/POP/Payment as agreed", "70:")
   * print finalMt103
   * jutil.SetData("GetAuditsDominicanrepublicmt103rsmothercurrency",referencenumber)
   * def user = testData.Visa_Mk
@@ -318,7 +318,7 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	#@ignore
 Scenario: Purpose of payment(POP)- as Empty
 	* def content = read('classpath:visab2b/MT103_files/DOMINICANREPUBLIC.txt')
-	* def finalMt103 = content.replaceAll("70:/POP/Purpose of payment	DOMINICANREPUBLIC", "70:"  ).replaceAll("20:MT103DOMICANREPUBLIC2024010001", "20:AUTOMT103SFTPDOMINICANREPUBLIC" + Accno )
+	* def finalMt103 = content.replaceAll("70:/POP/Payment as agreed", "70:"  ).replaceAll("20:MT103DOMICANREPUBLIC2024010001", "20:AUTOMT103SFTPDOMINICANREPUBLIC" + Accno )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'

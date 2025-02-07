@@ -438,7 +438,7 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	#@ignore
 Scenario: Purpose of payment(POP)- as Empty
 	* def content = read('classpath:visab2b/MT103_files/CHILE.txt')
-	* def finalMt103 = content.replaceAll("70:/POP/Payment as agreed CHILE", "70:"  ).replaceAll("20:MT103CHILE20240104001", "20:AUTOMT103SFTPCHILE" + Accno )
+	* def finalMt103 = content.replaceAll("70:/POP/purpose of payment CHILE", "70:"  ).replaceAll("20:MT103CHILE20240104001", "20:AUTOMT103SFTPCHILE" + Accno )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'

@@ -119,7 +119,7 @@ Scenario: Transaction with end to end as Empty
 	
 Scenario: Creditor Bic as Empty
 	 * def content = read('classpath:visab2b/MT103_files/SOUTHKOREA.txt')
-	 * def finalMt103 = content.replaceAll(":57A:/ANZBKRSXXXX", "57A:"  )
+	 * def finalMt103 = content.replaceAll(":57A:/ANZBKRSXXXX", ":57A:"  )
    * print finalMt103
    * def user = testData.Visa_Mk
    Given url QaUrl + 'api'
@@ -137,7 +137,7 @@ Scenario: Creditor Bic as Empty
 	 
 	 Scenario: Creditor Bic as Invaild
 	 * def content = read('classpath:visab2b/MT103_files/SOUTHKOREA.txt')
-	 * def finalMt103 = content.replaceAll(":57A:/ANZBKRSXXXX", "57A:ABC"  )
+	 * def finalMt103 = content.replaceAll(":57A:/ANZBKRSXXXX", ":57A:ABC"  )
    * print finalMt103
    * def user = testData.Visa_Mk
    Given url QaUrl + 'api'
@@ -174,7 +174,7 @@ Scenario: DebtorAccountNumber as Empty
 	
 Scenario: DebtorName as Empty
 	* def content = read('classpath:visab2b/MT103_files/SOUTHKOREA.txt')
-	* def finalMt103 = content.replaceAll("JIAXING INDUSTRY", "").replaceAll("840 MASSACHUSETTS ST", "").replaceAll("LAWRENCE, KS 66044, USA", "")
+	* def finalMt103 = content.replaceAll("JIAXING INDUSTRY", "").replaceAll("BOLIVIA", "")
   * print finalMt103
   * def user = testData.Visa_Mk	
   Given url QaUrl + 'api'
@@ -194,6 +194,9 @@ Scenario: DebtorName as Empty
 	
 	Scenario: To verify the Clearing Member ID as above 3-digit
 	* def content = read('classpath:visab2b/MT103_files/SOUTHKOREA.txt')
+	* def referencenumber = "AUTOMT103SFTPSOUTHKOREA" + Accno
+  * print referencenumber
+  * def finalMt103 = content.replaceAll("20:2603001SFTPr000271254012", "20:" + referencenumber )
 	* def finalMt103 = content.replaceAll(":57D:/KR654", ":57D:/KR123").replaceAll(":57A:/ANZBKRSXXXX", ":57A:/ANZBKRSX")
   * print finalMt103
   * def user = testData.Visa_Mk	
@@ -208,7 +211,7 @@ Scenario: DebtorName as Empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.MT103_Empty_DebtorName_Address
+	* match response.error.message contains validations.CMIDLessmorethan3_SK
 	
 		Scenario: To verify the Clearing Member ID as below 3-digit
 	* def content = read('classpath:visab2b/MT103_files/SOUTHKOREA.txt')
@@ -226,7 +229,7 @@ Scenario: DebtorName as Empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.MT103_Empty_DebtorName_Address
+	* match response.error.message contains validations.CMIDLessmorethan3_SK
 	
 		Scenario: To verify the Clearing Member ID without prefix
 	* def content = read('classpath:visab2b/MT103_files/SOUTHKOREA.txt')
@@ -244,12 +247,12 @@ Scenario: DebtorName as Empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.MT103_Empty_DebtorName_Address
+	* match response.error.message contains validations.CMIDLessmorethan3_SK
 	
 	
 		Scenario: To verify the without Clearing Member ID 
 	* def content = read('classpath:visab2b/MT103_files/SOUTHKOREA.txt')
-	* def finalMt103 = content.replaceAll(":57A:/ANZBKRSXXXX", "").replaceAll(":57A:/ANZBKRSXXXX", ":57A:/ANZBKRSX")
+	* def finalMt103 = content.replaceAll(":57D:/KR654", ":57D:").replaceAll(":57A:/ANZBKRSXXXX", ":57A:/ANZBKRSX")
   * print finalMt103
   * def user = testData.Visa_Mk	
   Given url QaUrl + 'api'
@@ -263,7 +266,7 @@ Scenario: DebtorName as Empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.MT103_Empty_DebtorName_Address
+	* match response.error.message contains validations.EmptyCMID_Azerbaijan
 	
 	##Beneficiary Bank SWIFT BIC11
 	

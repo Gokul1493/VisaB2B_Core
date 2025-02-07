@@ -16,6 +16,7 @@
 	 "TaxID_must10":"Creditor TaxId must be 10-numeric.",
      "CMIDStartswithAlpha":"Creditor Agent Clearing MemberID must start with 2 Alpha.",
      "CMIDLessmorethanSIX_AUD":"Creditor Agent Clearing MemberID must be starts with AU and followed by 6 numeric digit",
+	 "CMIDLessmorethan3_SK":"Creditor Agent Clearing MemberID must be starts with KR and followed by 3 numeric digit.",
      "EmptyContactname":"Parameter \'CreditorContactName\' cannot be null.",
      "EmptyContactPHNO":"Parameter \'CreditorContactPhoneNumber\' cannot be null.",
      "Invalidphno":"Creditor Contact Phone Number must be starts with + and followed by dialing code,- and numeric digits.",
