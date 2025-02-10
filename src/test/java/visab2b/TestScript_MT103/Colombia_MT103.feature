@@ -363,7 +363,7 @@ Scenario: Creditor Bic as Invaild
 
 Scenario: CreditorIBAN/AccountNumber as Empty
 	* def content = read('classpath:visab2b/MT103_files/COLOMBIA.txt')
-	* def finalMt103 = content.replaceAll("59:/68539007547034666", "59:"  )
+	* def finalMt103 = content.replaceAll("59:/689007547034666", "59:"  )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -456,7 +456,7 @@ Scenario: Purpose of payment(POP)- as Empty
 	
 	Scenario: 14-digit Beneficiary Tax ID- as Empty
 	* def content = read('classpath:visab2b/MT103_files/COLOMBIA.txt')
-	* def finalMt103 = content.replaceAll("72:/INN/4343434343", "72:/INN/"  ).replaceAll("20:MT103COLOMBIA202401040001", "20:AUTOMT103SFTPCOLOMBIA" + Accno )
+	* def finalMt103 = content.replaceAll("72:/INN/1122334455", "72:/INN/"  ).replaceAll("20:MT103COLOMBIA202401040001", "20:AUTOMT103SFTPCOLOMBIA" + Accno )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -474,7 +474,7 @@ Scenario: Purpose of payment(POP)- as Empty
 	
 	Scenario: More than 10-digit Beneficiary Tax ID
 	* def content = read('classpath:visab2b/MT103_files/COLOMBIA.txt')
-	* def finalMt103 = content.replaceAll("72:/INN/4343434343", "72:/INN/11223344556"  ).replaceAll("20:MT103COLOMBIA202401040001", "20:AUTOMT103SFTPCOLOMBIA" + Accno )
+	* def finalMt103 = content.replaceAll("72:/INN/1122334455", "72:/INN/11223344556"  ).replaceAll("20:MT103COLOMBIA202401040001", "20:AUTOMT103SFTPCOLOMBIA" + Accno )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -488,11 +488,11 @@ Scenario: Purpose of payment(POP)- as Empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.EmptyPOP
+	* match response.error.message contains validations.MT103_Invalid_TaxID9_10Num
 	
 	Scenario: Less than 9-digit Beneficiary Tax ID
 	* def content = read('classpath:visab2b/MT103_files/COLOMBIA.txt')
-	* def finalMt103 = content.replaceAll("72:/INN/4343434343", "72:/INN/11223344"  ).replaceAll("20:MT103COLOMBIA202401040001", "20:AUTOMT103SFTPCOLOMBIA" + Accno )
+	* def finalMt103 = content.replaceAll("72:/INN/1122334455", "72:/INN/11223344"  ).replaceAll("20:MT103COLOMBIA202401040001", "20:AUTOMT103SFTPCOLOMBIA" + Accno )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -506,7 +506,7 @@ Scenario: Purpose of payment(POP)- as Empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.EmptyPOP
+	* match response.error.message contains validations.MT103_Invalid_TaxID9_10Num
 	
  
  Scenario: Audits for Success Transaction

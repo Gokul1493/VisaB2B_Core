@@ -83,7 +83,7 @@ Background:
   * def content = read('classpath:visab2b/MT103_files/BOSNIAANDHERZEGOVINA.txt')
   * def referencenumber = "AUTOMT103SFTPBOSNIAANDHERZEGOVINA" + Accno
   * print referencenumber
-  * def finalMt103 = content.replaceAll("20:MT103BOSINIAHERZEGO202430030001", "20:" + referencenumber ).replaceAll("32A:200408BAM108.28", "32A:200408USD138.28").replaceAll("70:/POP/payment of purpose BOSNIAANDHERZEGOVINA", "70:")
+  * def finalMt103 = content.replaceAll("20:MT103BOSINIAHERZEGO202430030001", "20:" + referencenumber ).replaceAll("32A:200408BAM108.28", "32A:200408USD138.28").replaceAll("70:/POP/payment as agreed", "70:")
   * print finalMt103
   * jutil.SetData("GetAuditsBAHmt103rsothercurrency",referencenumber)
   * def user = testData.Visa_Mk
@@ -187,7 +187,7 @@ Scenario: Transaction with end to end as Empty
 
 Scenario: DebtorAccountNumber as Empty
 	 * def content = read('classpath:visab2b/MT103_files/BOSNIAANDHERZEGOVINA.txt')
-	 * def finalMt103 = content.replaceAll("50K:/9876451344897755", "50K:"  )
+	 * def finalMt103 = content.replaceAll("50K:/9100910001", "50K:"  )
    * print finalMt103
    * def user = testData.Visa_Mk
    Given url QaUrl + 'api'
@@ -205,7 +205,7 @@ Scenario: DebtorAccountNumber as Empty
 	
 Scenario: DebtorName as Empty
 	* def content = read('classpath:visab2b/MT103_files/BOSNIAANDHERZEGOVINA.txt')
-	* def finalMt103 = content.replaceAll("GOAIR", "").replaceAll("840 MASSACHUSETTS ST", "").replaceAll("LAWRENCE, KS 66044, USA", "")
+	* def finalMt103 = content.replaceAll("JIAXING INDUSTRY", "").replaceAll("840 MASSACHUSETTS ST,", "").replaceAll("LAWRENCE, KS 66044, USA", "")
   * print finalMt103
   * def user = testData.Visa_Mk	
   Given url QaUrl + 'api'
@@ -314,7 +314,7 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	
 Scenario: Purpose of payment(POP)- as Empty
 	* def content = read('classpath:visab2b/MT103_files/BOSNIAANDHERZEGOVINA.txt')
-	* def finalMt103 = content.replaceAll("70:/POP/payment of purpose BOSNIAANDHERZEGOVINA", "70:"  ).replaceAll("20:MT103BOSINIAHERZEGO202430030001", "20:AUTOMT103SFTPBOSNIAANDHERZEGOVINA" + Accno )
+	* def finalMt103 = content.replaceAll("70:/POP/payment as agreed", "70:"  ).replaceAll("20:MT103BOSINIAHERZEGO202430030001", "20:AUTOMT103SFTPBOSNIAANDHERZEGOVINA" + Accno )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'

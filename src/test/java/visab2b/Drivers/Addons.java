@@ -39,8 +39,9 @@ public class Addons {
     }
 
     public static long seq() {
-        if (ctr == 0)
-            ctr = System.currentTimeMillis() / 1000L;
+        if (ctr == 0) {
+			ctr = System.currentTimeMillis() / 1000L;
+		}
         ctr++;
         return ctr;
     }
@@ -87,7 +88,7 @@ public class Addons {
     public void karateTest() {
         // Define your Karate tests here
     }
-    
+
     public static String PLtoken() {
         Random random = new Random();
 
@@ -118,6 +119,6 @@ public class Addons {
 
         return ssn;
     }
-    
-    
+
+
 }

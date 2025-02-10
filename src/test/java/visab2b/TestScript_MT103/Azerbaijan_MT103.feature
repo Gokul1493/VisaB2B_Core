@@ -154,7 +154,7 @@ Feature: AZERBAIJAN_MT103
 
   Scenario: DebtorAccountNumber as Empty
     * def content = read('classpath:visab2b/MT103_files/AZERBAIJAN.txt')
-    * def finalMt103 = content.replaceAll(":50K:/4548454", ":50K:"  )
+    * def finalMt103 = content.replaceAll(":50K:/9100910001", ":50K:"  )
     * print finalMt103
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'

@@ -216,7 +216,7 @@ Scenario: Creditor Bic as Empty
 	
 Scenario: DebtorAccountNumber as Empty
 	 * def content = read('classpath:visab2b/MT103_files/NEWZEALAND.txt')
-	 * def finalMt103 = content.replaceAll(":50K:/9876451344897755", "50K:"  )
+	 * def finalMt103 = content.replaceAll(":50K:/9100910001", ":50K:"  )
    * print finalMt103
    * def user = testData.Visa_Mk
    Given url QaUrl + 'api'
@@ -234,7 +234,7 @@ Scenario: DebtorAccountNumber as Empty
 	
 Scenario: DebtorName as Empty
 	* def content = read('classpath:visab2b/MT103_files/NEWZEALAND.txt')
-	* def finalMt103 = content.replaceAll("GOAIR", "").replaceAll("840 MASSACHUSETTS ST", "").replaceAll("LAWRENCE, KS 66044, USA", "")
+	* def finalMt103 = content.replaceAll("JIAXING INDUSTRY", "").replaceAll("840 MASSACHUSETTS ST", "").replaceAll("LAWRENCE, KS 66044, USA", "")
   * print finalMt103
   * def user = testData.Visa_Mk	
   Given url QaUrl + 'api'
@@ -253,7 +253,7 @@ Scenario: DebtorName as Empty
 	
 Scenario: CreditorIBAN/AccountNumber as Empty
 	* def content = read('classpath:visab2b/MT103_files/NEWZEALAND.txt')
-	* def finalMt103 = content.replaceAll(":59:/4567235422", "59:"  )
+	* def finalMt103 = content.replaceAll(":59:/4567235422", ":59:"  )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'

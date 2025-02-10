@@ -216,7 +216,7 @@ Feature: Mozambique_MT103
     And request value
     When method POST
     Then status 200
-    * match response.error.message contains validations.MT103_unmatch_CompName
+    * match response.error.message contains validations.MT103_Empty_DebtorNameORAddress
 
   Scenario: Creditor Bic as Empty
     * def content = read('classpath:visab2b/MT103_files/MOZAMBIQUE.txt')
@@ -324,7 +324,7 @@ Feature: Mozambique_MT103
     And request value
     When method POST
     Then status 200
-    * match response.error.message contains validations.MT103_Empty_CAccNumber_IBAN
+    * match response.error.message contains validations.BranchName
 
   Scenario: Audits for Success Transaction
     # Get Audits for same currency

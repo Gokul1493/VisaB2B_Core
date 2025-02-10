@@ -329,7 +329,7 @@ Scenario: DebtorName as Empty
 	
 Scenario: CreditorIBAN/AccountNumber as Empty
 	* def content = read('classpath:visab2b/MT103_files/PARAGUAY.txt')
-	* def finalMt103 = content.replaceAll(":59:/4354", "59:"  )
+	* def finalMt103 = content.replaceAll(":59:/4354", ":59:"  )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -368,7 +368,7 @@ Scenario: Transaction initated for Paragauy country with different currency  (cu
   * def content = read('classpath:visab2b/MT103_files/PARAGUAY.txt')
   * def referencenumber = "MT103SFTPMALTA" + Accno
   * print referencenumber
-  * def finalMt103 = content.replaceAll("20:2603001SFTPMT10PRAGUAY863565645858", "20:" + referencenumber ).replaceAll(":32A:200408PYG138,28", ":32A:200408USD138.28").replaceAll(":70:/POP/purpose of payment", "70:"  )
+  * def finalMt103 = content.replaceAll("20:2603001SFTPMT10PRAGUAY863565645858", "20:" + referencenumber ).replaceAll(":32A:200408PYG138,28", ":32A:200408USD138.28")
   * print finalMt103
   * jutil.SetData("GetAuditsparaguaymt103rsothercurrency",referencenumber)
     * def user = testData.Visa_Mk

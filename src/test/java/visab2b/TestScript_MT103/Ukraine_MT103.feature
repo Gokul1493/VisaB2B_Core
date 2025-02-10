@@ -13,7 +13,7 @@ Feature: Ukraine_MT103
 
   ## Maker user intiate the transaction
   Scenario: Positive flow of the transaction
-    * def content = read('classpath:visab2b/MT103_files/Ukraine.txt')
+    * def content = read('classpath:visab2b/MT103_files/UKRAINE.txt')
     * def referencenumber = "AutoUkraine001" + Accno
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:AutoUkraine001", "20:" + referencenumber )
@@ -184,7 +184,7 @@ Feature: Ukraine_MT103
     And request value
     When method POST
     Then status 200
-    * match response.error.message contains validations.MT103_unmatch_CompName
+    * match response.error.message contains validations.MT103_Empty_DebtorNameORAddress
 
   
 

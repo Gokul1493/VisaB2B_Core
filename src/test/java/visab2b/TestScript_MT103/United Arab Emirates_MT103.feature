@@ -193,7 +193,7 @@ Scenario: DebtorName as Empty
 
 Scenario: CreditorIBAN/AccountNumber as Empty
 	* def content = read('classpath:visab2b/MT103_files/UNITEDANDARABEMIRATES.txt')
-	* def finalMt103 = content.replaceAll(":59:/BR9700360305000010009795493P1", "59:"  )
+	* def finalMt103 = content.replaceAll(":59:/BR9700360305000010009795493P1", ":59:"  )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -227,7 +227,7 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.MT103_Empty_CAccNumber_IBAN
+	* match response.error.message contains validations.MT103_Invlaid_PPC3
 	
 	
 	Scenario: To verify the Remittance Code below 3-character
@@ -246,7 +246,7 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.MT103_Empty_CAccNumber_IBAN
+	* match response.error.message contains validations.MT103_Invlaid_PPC3
 	
 	
 	Scenario: To verify the without prefix Remittance Code 
@@ -265,7 +265,7 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.MT103_Empty_CAccNumber_IBAN
+	* match response.error.message contains validations.EmptyPaymentPurposeCode
 	
 	
 	Scenario: To verify the without Remittance Code  
@@ -284,7 +284,7 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.MT103_Empty_CAccNumber_IBAN
+	* match response.error.message contains validations.EmptyPaymentPurposeCode
 	
 	
 Scenario: Transaction initated for UnitedarabEmirates country with different currency  (currency:- USD)

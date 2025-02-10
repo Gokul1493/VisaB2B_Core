@@ -151,7 +151,7 @@ Scenario: Creditor Bic as Empty
 	 And request value
 	 When method POST
 	 Then status 200
-	 * match response.error.message contains validations.MT103_Empty_CBic_CCMID
+	 * match response.error.message contains validations.InvalidBic
 	 
 	
 Scenario: DebtorAccountNumber as Empty

@@ -272,7 +272,7 @@ Feature: JAMAICA_MT103
     When method POST
     Then status 200
     * print response
-    * match response.error.message contains validations.MT103_Empty_DebtorName_Address
+    * match response.error.message contains validations.MT103_Empty_DebtorNameORAddress
 
   Scenario: CreditorIBAN/AccountNumber as Empty
     * def content = read('classpath:visab2b/MT103_files/JAMAICA.txt')

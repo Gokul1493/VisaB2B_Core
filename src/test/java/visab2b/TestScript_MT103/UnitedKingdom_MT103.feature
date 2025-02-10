@@ -119,7 +119,7 @@ Scenario: Transaction with end to end as Empty
 	
 Scenario: Creditor Bic as Empty
 	 * def content = read('classpath:visab2b/MT103_files/UNITEDKINGDOM.txt')
-	 * def finalMt103 = content.replaceAll(":57A:HBUKGB4BXXX", ":57A:"  )
+	 * def finalMt103 = content.replaceAll(":57A:HBUKGB4BXXX", ":57A:"  ).replaceAll(":57D://SC123456", ":57D:"  )
    * print finalMt103
    * def user = testData.Visa_Mk
    Given url QaUrl + 'api'
@@ -137,7 +137,7 @@ Scenario: Creditor Bic as Empty
 	 
 	 Scenario: Creditor Bic as Invaild
 	 * def content = read('classpath:visab2b/MT103_files/UNITEDKINGDOM.txt')
-	 * def finalMt103 = content.replaceAll(":57A:HBUKGB4BXXX", ":57A:ABC"  )
+	 * def finalMt103 = content.replaceAll(":57A:HBUKGB4BXXX", ":57A:ABC"  ).replaceAll(":57D://SC123456", ":57D:" )
    * print finalMt103
    * def user = testData.Visa_Mk
    Given url QaUrl + 'api'
@@ -151,7 +151,7 @@ Scenario: Creditor Bic as Empty
 	 And request value
 	 When method POST
 	 Then status 200
-	 * match response.error.message contains validations.MT103_Empty_CBic_CCMID
+	 * match response.error.message contains validations.InvalidBic
 	 
 	
 Scenario: DebtorAccountNumber as Empty
@@ -213,7 +213,7 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	
 	Scenario: To verify the Creditor Agent Clearing Member ID above 6 digit
 	* def content = read('classpath:visab2b/MT103_files/UNITEDKINGDOM.txt')
-	* def finalMt103 = content.replaceAll(":57D:/SC123456", ":57D:/SC1234566"  ).replaceAll(":57A:HBUKGB4BXXX",":57A:" )
+	* def finalMt103 = content.replaceAll(":57D://SC123456", ":57D://SC1234566"  ).replaceAll(":57A:HBUKGB4BXXX",":57A:" )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -227,12 +227,12 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.MT103_Empty_CAccNumber_IBAN
+	* match response.error.message contains validations.InvalidCMID_UK
 	
 	
 	Scenario: To verify the Creditor Agent Clearing Member ID below 6 digit
 	* def content = read('classpath:visab2b/MT103_files/UNITEDKINGDOM.txt')
-	* def finalMt103 = content.replaceAll(":57D:/SC123456", ":57D:/SC12345"  ).replaceAll(":57A:HBUKGB4BXXX",":57A:" )
+	* def finalMt103 = content.replaceAll(":57D://SC123456", ":57D://SC12345"  ).replaceAll(":57A:HBUKGB4BXXX",":57A:" )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -246,12 +246,12 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.MT103_Empty_CAccNumber_IBAN
+	* match response.error.message contains validations.InvalidCMID_UK
 	
 	
 	Scenario: To verify the without prefix Creditor Agent Clearing Member ID 
 	* def content = read('classpath:visab2b/MT103_files/UNITEDKINGDOM.txt')
-	* def finalMt103 = content.replaceAll(":57D:/SC123456", ":57D:/123456"  ).replaceAll(":57A:HBUKGB4BXXX",":57A:" )
+	* def finalMt103 = content.replaceAll(":57D://SC123456", ":57D://123456"  ).replaceAll(":57A:HBUKGB4BXXX",":57A:" )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -265,12 +265,12 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.MT103_Empty_CAccNumber_IBAN
+	* match response.error.message contains validations.MT103_CMID_Start2Alpha
 	
 	
 	Scenario: To verify the without Creditor Agent Clearing Member ID  
 	* def content = read('classpath:visab2b/MT103_files/UNITEDKINGDOM.txt')
-	* def finalMt103 = content.replaceAll(":57D:/SC123456", ""  )
+	* def finalMt103 = content.replaceAll(":57D://SC123456", ":57D:"  ).replaceAll(":57A:HBUKGB4BXXX",":57A:" )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -284,7 +284,7 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.MT103_Empty_CAccNumber_IBAN
+	* match response.error.message contains validations.MT103_Empty_CBic_CCMID
 	
 	
 Scenario: Transaction initated for UNITED KINGDOM country with different currency  (currency:- USD)

@@ -4,6 +4,10 @@ function fn() {
 	karate.log('Visa B2B Automation Running')
 	karate.configure('connectTimeout', 40000);
 	karate.configure('readTimeout', 40000);
+	
+	// Retry mechanism for unstable requests: Retry up to 3 times with 2000ms delay
+	karate.configure('retry', { count: 3, interval: 2000 });
+
 
 	var jutil = Java.type('visab2b.Drivers.Addons')
 

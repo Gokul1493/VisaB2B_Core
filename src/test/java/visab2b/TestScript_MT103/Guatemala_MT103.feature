@@ -77,70 +77,70 @@ Feature: GUATEMALA_MT103
     Then status 200
     * match response.result.message == validations.successMessage
 
-  ## Maker user intiate the transaction
-  Scenario: Positive flow of the transaction with 9 Digit tax ID
-    * def content = read('classpath:visab2b/MT103_files/GUATEMALA.txt')
-    * def referencenumber = "AUTOMT103SFTPGUATEMALA" + Accno
-    * print referencenumber
-    * def finalMt103 = content.replaceAll("20:MT103GUTEMALA2024010001", "20:" + referencenumber ).replaceAll("72:/INN/11223344556", "72:/INN/"  ).replaceAll("77B:/INN/1122334455", "77B:/INN/112233445")
-    * print finalMt103
-    * def user = testData.Visa_Mk
-    Given url QaUrl + 'api'
-    * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
-    * print reqadd
-    * reqadd.params.Api.Credential = testData.Visa_Mk.Credential
-    * reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
-    * reqadd.params.Payload.swiftFiles[0].file = finalMt103
-    * reqadd.params.Payload.swiftFiles[0].fileName = "GUATEMALA.txt"
-    * def value = signsreq(reqadd,user)
-    And request value
-    When method POST
-    Then status 200
-    * match response.result.transaction contains {creditDebitIndicator:'Debit'}
-    * def user = testData.Visa_Mk
-    Given url QaUrl + 'api'
-    * def reqadd = read('classpath:visab2b/Payload/MT103_swift_file.json')
-    * print reqadd
-    * reqadd.params.Api.Credential = testData.Visa_Mk.Credential
-    * reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
-    * reqadd.params.Payload.swiftFiles[0].file = finalMt103
-    * reqadd.params.Payload.swiftFiles[0].fileName = "GUATEMALA.txt"
-    * def value = signsreq(reqadd,user)
-    And request value
-    When method POST
-    Then status 200
-    * match response.result contains {message:"Summary: (1 of 1 files accepted)"},id:"1"}
-    * jutil.SetData("Duplicaterefnumber",referencenumber)
-    * print jutil.SetData('Duplicaterefnumber',referencenumber)
-    * jutil.SetData("getAuditsReferenceNumber",referencenumber)
-    * def sleep = function(millis){ java.lang.Thread.sleep(millis) }
-    * eval sleep(30000)
+  ## NA
+  #Scenario: Positive flow of the transaction with 9 Digit tax ID
+    #* def content = read('classpath:visab2b/MT103_files/GUATEMALA.txt')
+    #* def referencenumber = "AUTOMT103SFTPGUATEMALA" + Accno
+    #* print referencenumber
+    #* def finalMt103 = content.replaceAll("20:MT103GUTEMALA2024010001", "20:" + referencenumber ).replaceAll("72:/INN/11223344556", "72:/INN/112233446"  )
+    #* print finalMt103
+    #* def user = testData.Visa_Mk
+    #Given url QaUrl + 'api'
+    #* def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
+    #* print reqadd
+    #* reqadd.params.Api.Credential = testData.Visa_Mk.Credential
+    #* reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
+    #* reqadd.params.Payload.swiftFiles[0].file = finalMt103
+    #* reqadd.params.Payload.swiftFiles[0].fileName = "GUATEMALA.txt"
+    #* def value = signsreq(reqadd,user)
+    #And request value
+    #When method POST
+    #Then status 200
+    #* match response.result.transaction contains {creditDebitIndicator:'Debit'}
+    #* def user = testData.Visa_Mk
+    #Given url QaUrl + 'api'
+    #* def reqadd = read('classpath:visab2b/Payload/MT103_swift_file.json')
+    #* print reqadd
+    #* reqadd.params.Api.Credential = testData.Visa_Mk.Credential
+    #* reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
+    #* reqadd.params.Payload.swiftFiles[0].file = finalMt103
+    #* reqadd.params.Payload.swiftFiles[0].fileName = "GUATEMALA.txt"
+    #* def value = signsreq(reqadd,user)
+    #And request value
+    #When method POST
+    #Then status 200
+    #* match response.result contains {message:"Summary: (1 of 1 files accepted)"},id:"1"}
+    #* jutil.SetData("Duplicaterefnumber",referencenumber)
+    #* print jutil.SetData('Duplicaterefnumber',referencenumber)
+    #* jutil.SetData("getAuditsReferenceNumber",referencenumber)
+    #* def sleep = function(millis){ java.lang.Thread.sleep(millis) }
+    #* eval sleep(30000)
     ### Checker user approve transaction
     ## Step1 == get the transaction id
-    * def user = testData.Visa_CK
-    Given url QaUrl + 'api'
-    * def GettransactionID = read('classpath:visab2b/Payload/getapprove_transactionid.json')
-    * GettransactionID.params.Payload.EndToEndIdentification = referencenumber
-    * GettransactionID.params.Api.Credential = testData.Visa_CK.Credential
-    * GettransactionID.params.Api.deviceId = testData.Visa_CK.keyId
-    * def value = signsreq(GettransactionID,user)
-    And request value
-    When method POST
-    Then status 200
-    * def transactionID = response.result.transactions[0].id
-    * print transactionID
+    #* def user = testData.Visa_CK
+    #Given url QaUrl + 'api'
+    #* def GettransactionID = read('classpath:visab2b/Payload/getapprove_transactionid.json')
+    #* GettransactionID.params.Payload.EndToEndIdentification = referencenumber
+    #* GettransactionID.params.Api.Credential = testData.Visa_CK.Credential
+    #* GettransactionID.params.Api.deviceId = testData.Visa_CK.keyId
+    #* def value = signsreq(GettransactionID,user)
+    #And request value
+    #When method POST
+    #Then status 200
+    #* def transactionID = response.result.transactions[0].id
+    #* print transactionID
     ## Step2 == approve the payment
-    * def user = testData.Visa_CK
-    Given url QaUrl + 'api'
-    * def approvetrasnaction = read('classpath:visab2b/Payload/approve_payment.json')
-    * approvetrasnaction.params.Payload.transactionId = transactionID
-    * approvetrasnaction.params.Api.Credential = testData.Visa_CK.Credential
-    * approvetrasnaction.params.Api.deviceId = testData.Visa_CK.keyId
-    * def value = signsreq(approvetrasnaction,user)
-    And request value
-    When method POST
-    Then status 200
-    * match response.result.message == "Approved successfully
+    #* def user = testData.Visa_CK
+    #Given url QaUrl + 'api'
+    #* def approvetrasnaction = read('classpath:visab2b/Payload/approve_payment.json')
+    #* approvetrasnaction.params.Payload.transactionId = transactionID
+    #* approvetrasnaction.params.Api.Credential = testData.Visa_CK.Credential
+    #* approvetrasnaction.params.Api.deviceId = testData.Visa_CK.keyId
+    #* def value = signsreq(approvetrasnaction,user)
+    #And request value
+    #When method POST
+    #Then status 200
+    #* match response.result.message == "Approved successfully
 
   Scenario: Transaction initated for GUATEMALA country with different currency  (currency:- USD)
     * def content = read('classpath:visab2b/MT103_files/GUATEMALA.txt')

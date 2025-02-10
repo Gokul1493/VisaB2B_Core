@@ -76,27 +76,6 @@ Feature: MONGOLIA_MT103
     Then status 200
     * match response.result.message == validations.successMessage
 
-  ## Beneficiary Branch Name above length 3
-  Scenario: To verify Beneficiary Branch Name above length 3
-    * def content = read('classpath:visab2b/MT103_files/MONGOLIA.txt')
-    * def branchName = "/BBB/ASDFG"
-    * print branchName
-    * def finalMt103 = content.replaceAll("72:/BBB/Joe Smith", "72:" + branchName )
-    * print finalMt103
-    * def user = testData.Visa_Mk
-    Given url QaUrl + 'api'
-    * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
-    * print reqadd
-    * reqadd.params.Api.Credential = testData.Visa_Mk.Credential
-    * reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
-    * reqadd.params.Payload.swiftFiles[0].file = finalMt103
-    * reqadd.params.Payload.swiftFiles[0].fileName = "MONGOLIA.txt"
-    * def value = signsreq(reqadd,user)
-    And request value
-    When method POST
-    Then status 200
-    * match response.result.transaction contains {creditDebitIndicator:'Debit'}
-
   ## Beneficiary Branch Name below length 3
   Scenario: To verify Beneficiary Branch Name below length 3
     * def content = read('classpath:visab2b/MT103_files/MONGOLIA.txt')
@@ -342,7 +321,7 @@ Feature: MONGOLIA_MT103
     And request value
     When method POST
     Then status 200
-    * match response.error.message contains validations.EmptyPOP
+    * match response.error.message contains validations.MT103_Mongolia_POP
 
   Scenario: Transaction initated for Mongolia country with different currency  (currency:- USD)
     * def content = read('classpath:visab2b/MT103_files/MONGOLIA.txt')

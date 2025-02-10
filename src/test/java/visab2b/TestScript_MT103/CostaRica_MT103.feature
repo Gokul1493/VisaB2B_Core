@@ -17,7 +17,7 @@ Background:
   * def content = read('classpath:visab2b/MT103_files/COSTARICA.txt')
   * def referencenumber = "AUTOMT103SFTPCOSTARICA" + Accno
   * print referencenumber
-  * def finalMt103 = content.replaceAll("20:MT103COSTARICA202401040001", "20:" + referencenumber )
+  * def finalMt103 = content.replaceAll("20:MT103COSTARICA20240104001", "20:" + referencenumber )
   * print finalMt103
   * jutil.SetData("GetAuditsCostaricamt103rspostive",referencenumber)
   * def user = testData.Visa_Mk
@@ -84,7 +84,7 @@ Background:
   * def content = read('classpath:visab2b/MT103_files/COSTARICA.txt')
   * def referencenumber = "AUTOMT103SFTPCOSTARICA" + Accno
   * print referencenumber
-  * def finalMt103 = content.replaceAll("20:MT103COSTARICA202401040001", "20:" + referencenumber ).replaceAll("77B:/INN/112233445566", "77B:/INN/1122334455667")
+  * def finalMt103 = content.replaceAll("20:MT103COSTARICA20240104001", "20:" + referencenumber ).replaceAll("77B:/INN/112233445566", "77B:/INN/1122334455667")
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -150,7 +150,7 @@ Background:
   * def content = read('classpath:visab2b/MT103_files/COSTARICA.txt')
   * def referencenumber = "AUTOMT103SFTPCOSTARICA" + Accno
   * print referencenumber
-  * def finalMt103 = content.replaceAll("20:MT103COSTARICA202401040001", "20:" + referencenumber ).replaceAll("77B:/INN/112233445566", "77B:/INN/11223344556677")
+  * def finalMt103 = content.replaceAll("20:MT103COSTARICA20240104001", "20:" + referencenumber ).replaceAll("77B:/INN/112233445566", "77B:/INN/11223344556677")
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -216,7 +216,7 @@ Background:
   * def content = read('classpath:visab2b/MT103_files/COSTARICA.txt')
   * def referencenumber = "AUTOMT103SFTPCOSTARICA" + Accno
   * print referencenumber
-  * def finalMt103 = content.replaceAll("20:MT103COSTARICA202401040001", "20:" + referencenumber ).replaceAll("77B:/INN/112233445566", "77B:/INN/112233445566778")
+  * def finalMt103 = content.replaceAll("20:MT103COSTARICA20240104001", "20:" + referencenumber ).replaceAll("77B:/INN/112233445566", "77B:/INN/112233445566778")
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -281,7 +281,7 @@ Background:
   * def content = read('classpath:visab2b/MT103_files/COSTARICA.txt')
   * def referencenumber = "AUTOMT103SFTPCOSTARICA" + Accno
   * print referencenumber
-  * def finalMt103 = content.replaceAll("20:MT103COSTARICA202401040001", "20:" + referencenumber ).replaceAll("32A:200408COP18.28", "32A:200408USD138.28").replaceAll("70:/POP/Payment as agreed COSTARICA", "70:")
+  * def finalMt103 = content.replaceAll("20:MT103COSTARICA20240104001", "20:" + referencenumber ).replaceAll("32A:200408COP18.28", "32A:200408USD138.28").replaceAll("70:/POP/Payment as agreed COSTARICA", "70:")
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -347,7 +347,7 @@ Scenario: Transaction with end to end identification already exists
 	* def content = read('classpath:visab2b/MT103_files/COSTARICA.txt')
 	* def duplref = jutil.GetData('Duplicaterefnumber')
 	* print duplref
-	* def finalMt103 = content.replaceAll("20:MT103COSTARICA202401040001", "20:" + duplref )
+	* def finalMt103 = content.replaceAll("20:MT103COSTARICA20240104001", "20:" + duplref )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -365,7 +365,7 @@ Scenario: Transaction with end to end identification already exists
 	#@ignore
 Scenario: Transaction with end to end as Empty
 	* def content = read('classpath:visab2b/MT103_files/COSTARICA.txt')
-	* def finalMt103 = content.replaceAll("20:MT103COSTARICA202401040001", "20:"  )
+	* def finalMt103 = content.replaceAll("20:MT103COSTARICA20240104001", "20:"  )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -568,7 +568,7 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	#@ignore
 Scenario: Purpose of payment(POP)- as Empty
 	* def content = read('classpath:visab2b/MT103_files/COSTARICA.txt')
-	* def finalMt103 = content.replaceAll("70:/POP/Purpose of payment	COSTARICA", "70:"  ).replaceAll("20:MT103COSTARICA202401040001", "20:AUTOMT103SFTPCOSTARICA" + Accno )
+	* def finalMt103 = content.replaceAll("70:/POP/Purpose of payment	COSTARICA", "70:"  ).replaceAll("20:MT103COSTARICA20240104001", "20:AUTOMT103SFTPCOSTARICA" + Accno )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -586,7 +586,7 @@ Scenario: Purpose of payment(POP)- as Empty
 	
 	Scenario: 14-digit Beneficiary Tax ID- as Empty
 	* def content = read('classpath:visab2b/MT103_files/COSTARICA.txt')
-	* def finalMt103 = content.replaceAll("72:/INN/112233445566", "72:/INN/"  ).replaceAll("20:MT103COSTARICA202401040001", "20:AUTOMT103SFTPCOSTARICA" + Accno )
+	* def finalMt103 = content.replaceAll("72:/INN/112233445566", "72:/INN/"  ).replaceAll("20:MT103COSTARICA20240104001", "20:AUTOMT103SFTPCOSTARICA" + Accno )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -604,7 +604,7 @@ Scenario: Purpose of payment(POP)- as Empty
 	
 	Scenario: More than 15-digit Beneficiary Tax ID
 	* def content = read('classpath:visab2b/MT103_files/COSTARICA.txt')
-	* def finalMt103 = content.replaceAll("72:/INN/112233445566", "72:/INN/1122334455667788"  ).replaceAll("20:MT103COSTARICA202401040001", "20:AUTOMT103SFTPCOSTARICA" + Accno )
+	* def finalMt103 = content.replaceAll("72:/INN/112233445566", "72:/INN/1122334455667788"  ).replaceAll("20:MT103COSTARICA20240104001", "20:AUTOMT103SFTPCOSTARICA" + Accno )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -622,7 +622,7 @@ Scenario: Purpose of payment(POP)- as Empty
 	
 	Scenario: Less than 12-digit Beneficiary Tax ID
 	* def content = read('classpath:visab2b/MT103_files/COSTARICA.txt')
-	* def finalMt103 = content.replaceAll("72:/INN/112233445566", "72:/INN/11223344556"  ).replaceAll("20:MT103COSTARICA202401040001", "20:AUTOMT103SFTPCOSTARICA" + Accno )
+	* def finalMt103 = content.replaceAll("72:/INN/112233445566", "72:/INN/11223344556"  ).replaceAll("20:MT103COSTARICA20240104001", "20:AUTOMT103SFTPCOSTARICA" + Accno )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'

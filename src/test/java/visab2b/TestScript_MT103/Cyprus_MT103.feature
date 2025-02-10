@@ -168,7 +168,7 @@ Scenario: Transaction with end to end identification already exists
 	#@ignore
 Scenario: Transaction with end to end as Empty
 	* def content = read('classpath:visab2b/MT103_files/CYPRUS.txt')
-	* def finalMt103 = content.replaceAll("20:AUTOCYPRUSMT103", "20:"  )
+	* def finalMt103 = content.replaceAll("20:MT103CYPRUS2024010400001", "20:"  )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -223,7 +223,7 @@ Scenario: DebtorName as Empty
 	#@ignore
 Scenario: Creditor Bic as Empty
 	* def content = read('classpath:visab2b/MT103_files/CYPRUS.txt')
-	* def finalMt103 = content.replaceAll(":57A:HKBOHR2XXXX", ":57A:")
+	* def finalMt103 = content.replaceAll(":57A:BCYPCY2N010", ":57A:")
   * print finalMt103
   * def user = testData.Visa_Mk	
   Given url QaUrl + 'api'
@@ -242,7 +242,7 @@ Scenario: Creditor Bic as Empty
 	#@ignore
 Scenario: Creditor Bic as Invaild
 	* def content = read('classpath:visab2b/MT103_files/CYPRUS.txt')
-	* def finalMt103 = content.replaceAll(":57A:HKBOHR2XXXX", ":57A:ABCD")
+	* def finalMt103 = content.replaceAll(":57A:BCYPCY2N010", ":57A:ABCD")
   * print finalMt103
   * def user = testData.Visa_Mk	
   Given url QaUrl + 'api'
@@ -260,7 +260,7 @@ Scenario: Creditor Bic as Invaild
 	#@ignore
 	Scenario: Creditor Bic Less than 8 character
 	* def content = read('classpath:visab2b/MT103_files/CYPRUS.txt')
-	* def finalMt103 = content.replaceAll(":57A:HKBOHR2XXXX", ":57A:BBHOBDD")
+	* def finalMt103 = content.replaceAll(":57A:BCYPCY2N010", ":57A:BBHOBDD")
   * print finalMt103
   * def user = testData.Visa_Mk	
   Given url QaUrl + 'api'
@@ -278,7 +278,7 @@ Scenario: Creditor Bic as Invaild
 	#@ignore
 	Scenario: Creditor Bic MORE THAN 11 CHARACTER
 	* def content = read('classpath:visab2b/MT103_files/CYPRUS.txt')
-	* def finalMt103 = content.replaceAll(":57A:HKBOHR2XXXX", ":57A:HKBOHR2XXXXX")
+	* def finalMt103 = content.replaceAll(":57A:BCYPCY2N010", ":57A:BCYPCY2N010X")
   * print finalMt103
   * def user = testData.Visa_Mk	
   Given url QaUrl + 'api'
@@ -297,7 +297,7 @@ Scenario: Creditor Bic as Invaild
 
 Scenario: CreditorIBAN/AccountNumber as Empty
 	* def content = read('classpath:visab2b/MT103_files/CYPRUS.txt')
-	* def finalMt103 = content.replaceAll("59:/HR1210010051863000160", "59:"  )
+	* def finalMt103 = content.replaceAll("59:/CY17002001280000001200527600", "59:"  )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'

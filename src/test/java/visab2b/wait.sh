@@ -16,7 +16,7 @@ for file in "$FEATURE_FOLDER"/*.feature; do
 
         # Use sed to add a delay (sleep) before the third POST method
         # The script searches for the third occurrence of "When method POST" and adds the delay right before it.
-        sed -i '/When method POST/{n;n;x;s//\* def sleep = function(millis){ java.lang.Thread.sleep(millis) }\n\* eval sleep(20000)\n&/;x;}' "$file"
+        sed -i '/When method POST/{n;n;x;s//\* def sleep = function(millis){ java.lang.Thread.sleep(millis) }\n\* eval sleep(30000)\n&/;x;}' "$file"
         
     else
         echo "Less than three POST methods, skipping $file"
@@ -24,4 +24,7 @@ for file in "$FEATURE_FOLDER"/*.feature; do
 done
 
 echo "Processing complete."
+
+
+
 

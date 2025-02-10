@@ -116,7 +116,7 @@ Feature: swift_file_transfer_MT103_Albania
 
   Scenario: DebtorAccountNumber as Empty
     * def content = read('classpath:visab2b/MT103_files/ALBANIA.txt')
-    * def finalMt103 = content.replaceAll(":50K:/80011101011", "50K:"  )
+    * def finalMt103 = content.replaceAll(":50K:/9100910001", ":50K:"  )
     * print finalMt103
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
@@ -134,7 +134,25 @@ Feature: swift_file_transfer_MT103_Albania
 
   Scenario: DebtorName as Empty
     * def content = read('classpath:visab2b/MT103_files/ALBANIA.txt')
-    * def finalMt103 = content.replaceAll("SMART VIEW", "").replaceAll("840 MASSACHUSETTS ST", "").replaceAll("LAWRENCE, KS 66044, USA", "")
+    * def finalMt103 = content.replaceAll("JIAXING INDUSTRY", "")
+    * print finalMt103
+    * def user = testData.Visa_Mk
+    Given url QaUrl + 'api'
+    * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
+    * print reqadd
+    * reqadd.params.Api.Credential = testData.Visa_Mk.Credential
+    * reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
+    * reqadd.params.Payload.swiftFiles[0].file = finalMt103
+    * reqadd.params.Payload.swiftFiles[0].fileName = "ALBANIA.txt"
+    * def value = signsreq(reqadd,user)
+    And request value
+    When method POST
+    Then status 200
+    * match response.error.message contains validations.MT103_Empty_DebtorNameORAddress
+    
+  Scenario: DebtorName and address as Empty
+    * def content = read('classpath:visab2b/MT103_files/ALBANIA.txt')
+    * def finalMt103 = content.replaceAll("JIAXING INDUSTRY", "").replaceAll("840 MASSACHUSETTS ST", "").replaceAll("LAWRENCE, KS 66044, USA", "")
     * print finalMt103
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'

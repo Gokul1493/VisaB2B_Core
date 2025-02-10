@@ -19,7 +19,7 @@ Background:
   * def finalMt103 = content.replaceAll("20:2603001SFTPMT10US4234535435465654625212", "20:" + referencenumber )
   * print finalMt103
   * jutil.SetData("GetAuditsUSMT103rspostive",referencenumber)
-    * def user = testData.Visa_Mk
+  * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
   * print reqadd
@@ -119,7 +119,7 @@ Scenario: Transaction with end to end as Empty
 	
 Scenario: Creditor Bic as Empty
 	 * def content = read('classpath:visab2b/MT103_files/UNITEDSTATES.txt')
-	 * def finalMt103 = content.replaceAll(":57A:USBKUS44XXX", ":57A:"  ).replaceAll(":57D://FW123456789", ""  )
+	 * def finalMt103 = content.replaceAll(":57A:USBKUS44XXX", ":57A:"  ).replaceAll(":57D:FW123456789", ""  )
    * print finalMt103
    * def user = testData.Visa_Mk
    Given url QaUrl + 'api'
@@ -137,7 +137,7 @@ Scenario: Creditor Bic as Empty
 	 
 	 Scenario: Creditor Bic as Invaild
 	 * def content = read('classpath:visab2b/MT103_files/UNITEDSTATES.txt')
-	 * def finalMt103 = content.replaceAll(":57A:USBKUS44XXX", ":57A:ABC"  ).replaceAll(":57D://FW123456789", ""  )
+	 * def finalMt103 = content.replaceAll(":57A:USBKUS44XXX", ":57A:ABC"  ).replaceAll(":57D:FW123456789", ""  )
    * print finalMt103
    * def user = testData.Visa_Mk
    Given url QaUrl + 'api'
@@ -151,7 +151,7 @@ Scenario: Creditor Bic as Empty
 	 And request value
 	 When method POST
 	 Then status 200
-	 * match response.error.message contains validations.MT103_Empty_CBic_CCMID
+	 * match response.error.message contains validations.InvalidBic
 	 
 	
 Scenario: DebtorAccountNumber as Empty
@@ -193,7 +193,7 @@ Scenario: DebtorName as Empty
 
 Scenario: CreditorIBAN/AccountNumber as Empty
 	* def content = read('classpath:visab2b/MT103_files/UNITEDSTATES.txt')
-	* def finalMt103 = content.replaceAll(":59:/232243546575638476867869", "59:"  )
+	* def finalMt103 = content.replaceAll(":59:/232243546575638476867869", ":59:"  )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -213,7 +213,7 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	
 	Scenario: To verify the Creditor Agent Clearing Member ID above 9 digit
 	* def content = read('classpath:visab2b/MT103_files/UNITEDSTATES.txt')
-	* def finalMt103 = content.replaceAll(":57A:USBKUS44XXX", ""  ).replaceAll(":57D://FW123456789", ":57D://FW1234567890"  )
+	* def finalMt103 = content.replaceAll(":57A:USBKUS44XXX", ":57A:"  ).replaceAll(":57D:FW123456789", ":57D:FW1234567890"  )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -227,12 +227,12 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.MT103_Empty_CAccNumber_IBAN
+	* match response.error.message contains validations.CMIDStartswithAlpha_US
 	
 	
 	Scenario: To verify the Creditor Agent Clearing Member ID below 9 digit
 	* def content = read('classpath:visab2b/MT103_files/UNITEDSTATES.txt')
-	* def finalMt103 = content.replaceAll(":57A:USBKUS44XXX", ""  ).replaceAll(":57D://FW123456789", ":57D://FW12345678"  )
+	* def finalMt103 = content.replaceAll(":57A:USBKUS44XXX", ":57A:"  ).replaceAll(":57D:FW123456789", ":57D:FW12345678"  )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -246,12 +246,12 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.MT103_Empty_CAccNumber_IBAN
+	* match response.error.message contains validations.CMIDStartswithAlpha_US
 	
 	
 	Scenario: To verify the without prefix Creditor Agent Clearing Member ID 
 	* def content = read('classpath:visab2b/MT103_files/UNITEDSTATES.txt')
-	* def finalMt103 = content.replaceAll(":57A:USBKUS44XXX", ""  ).replaceAll(":57D://FW123456789", ":57D://123456789"  )
+	* def finalMt103 = content.replaceAll(":57A:USBKUS44XXX", ":57A:"  ).replaceAll(":57D:FW123456789", ":57D:123456789"  )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -265,12 +265,12 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.MT103_Empty_CAccNumber_IBAN
+	* match response.error.message contains validations.MT103_CMID_Start2Alpha
 	
 	
 	Scenario: To verify the without Creditor Agent Clearing Member ID  
 	* def content = read('classpath:visab2b/MT103_files/UNITEDSTATES.txt')
-	* def finalMt103 = content.replaceAll(":57A:USBKUS44XXX", ""  ).replaceAll(":57D://FW123456789", ""  )
+	* def finalMt103 = content.replaceAll(":57A:USBKUS44XXX", ":57A:"  ).replaceAll(":57D:FW123456789", ":57D:"  )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -284,7 +284,7 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.MT103_Empty_CAccNumber_IBAN
+	* match response.error.message contains validations.MT103_Empty_CBic_CCMID
 	
 	
 Scenario: Transaction initated for UnitedStates country with different currency  (currency:- USD)

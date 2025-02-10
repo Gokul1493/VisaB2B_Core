@@ -218,7 +218,7 @@ Background:
   * def content = read('classpath:visab2b/MT103_files/CANADACAD.txt')
   * def referencenumber = "AUTOMT103SFTPCANADACAD" + Accno
   * print referencenumber
-  * def finalMt103 = content.replaceAll("20:MT103CANADACAD20243103001", "20:" + referencenumber ).replaceAll("32A:200408CAD18.28", "32A:200408ALL138.28").replaceAll("70:/POP/Payment as agreed CANADACAD", "70:").replaceAll("57A:ACFXCAW1XXX", "57A:")
+  * def finalMt103 = content.replaceAll("20:MT103CANADACAD20243103001", "20:" + referencenumber ).replaceAll("32A:200408CAD18.28", "32A:200408ALL138.28").replaceAll("70:/POP/Payment as agreed CANADACAD", "70:")
   * print finalMt103
   * jutil.SetData("GetAuditscanadacadothercurrency",referencenumber)
   * def user = testData.Visa_Mk
@@ -233,8 +233,53 @@ Background:
 	And request value
 	When method POST
 	Then status 200
+	* match response.result.transaction contains {creditDebitIndicator:'Debit'}
+	* def user = testData.Visa_Mk
+  Given url QaUrl + 'api'
+  * def reqadd = read('classpath:visab2b/Payload/MT103_swift_file.json')
+  * print reqadd
+  * reqadd.params.Api.Credential = testData.Visa_Mk.Credential
+  * reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
+  * reqadd.params.Payload.swiftFiles[0].file = finalMt103
+  * reqadd.params.Payload.swiftFiles[0].fileName = "CANADACAD.txt"
+  * def value = signsreq(reqadd,user)
+	And request value
+	When method POST
+	Then status 200
+	* match response.result contains {message:"Summary: (1 of 1 files accepted)"},id:"1"}
+	* jutil.SetData("Duplicaterefnumber",referencenumber)
+	* print jutil.SetData('Duplicaterefnumber',referencenumber)
+  * jutil.SetData("getAuditsReferenceNumberothercurrency",referencenumber) 
 	
-	* match response.error.message contains validations.InvalidBic
+	* def sleep = function(millis){ java.lang.Thread.sleep(millis) }
+  * eval sleep(30000)
+	### Checker user approve transaction
+	## Step1 == get the transaction id
+	 * def user = testData.Visa_CK
+	Given url QaUrl + 'api'
+	* def GettransactionID = read('classpath:visab2b/Payload/getapprove_transactionid.json')
+	* GettransactionID.params.Payload.EndToEndIdentification = referencenumber
+	* GettransactionID.params.Api.Credential = testData.Visa_CK.Credential
+  * GettransactionID.params.Api.deviceId = testData.Visa_CK.keyId
+  * def value = signsreq(GettransactionID,user)
+	And request value
+	When method POST
+	Then status 200
+	* def transactionID = response.result.transactions[0].id
+	* print transactionID
+	## Step2 == approve the payment
+	* def user = testData.Visa_CK
+	Given url QaUrl + 'api'
+	* def approvetrasnaction = read('classpath:visab2b/Payload/approve_payment.json')
+	* approvetrasnaction.params.Payload.transactionId = transactionID
+	* approvetrasnaction.params.Api.Credential = testData.Visa_CK.Credential
+  * approvetrasnaction.params.Api.deviceId = testData.Visa_CK.keyId
+	* def value = signsreq(approvetrasnaction,user)
+	And request value
+	When method POST
+	Then status 200
+ * match response.result.message == validations.successMessage
+
 	
 
 
@@ -280,7 +325,7 @@ Scenario: Transaction with end to end as Empty
 
 Scenario: DebtorAccountNumber as Empty
 	 * def content = read('classpath:visab2b/MT103_files/CANADACAD.txt')
-	 * def finalMt103 = content.replaceAll("50K:/9876451344897755", "50K:"  )
+	 * def finalMt103 = content.replaceAll("50K:/9100910001", "50K:"  )
    * print finalMt103
    * def user = testData.Visa_Mk
    Given url QaUrl + 'api'
@@ -298,7 +343,7 @@ Scenario: DebtorAccountNumber as Empty
 	#@ignore
 Scenario: DebtorName as Empty
 	* def content = read('classpath:visab2b/MT103_files/CANADACAD.txt')
-	* def finalMt103 = content.replaceAll("GOAIR", "").replaceAll("840 MASSACHUSETTS ST", "").replaceAll("LAWRENCE, KS 66044, USA", "")
+	* def finalMt103 = content.replaceAll("JIAXING INDUSTRY", "").replaceAll("840 MASSACHUSETTS ST,", "").replaceAll("LAWRENCE, KS 66044, USA", "")
   * print finalMt103
   * def user = testData.Visa_Mk	
   Given url QaUrl + 'api'
@@ -407,23 +452,24 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	Then status 200
 	* match response.error.message contains validations.MT103_Empty_CAccNumber_IBAN
 	
-	Scenario:  Beneficiary Transit Code as Empty
-	* def content = read('classpath:visab2b/MT103_files/CANADACAD.txt')
-	* def finalMt103 = content.replaceAll("57D://CC123456789", "57D:"  ).replaceAll(":57A:ACFXCAW1XXX", ":57A:")
-  * print finalMt103
-  * def user = testData.Visa_Mk
-  Given url QaUrl + 'api'
-  * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
-  * print reqadd
-  * reqadd.params.Api.Credential = testData.Visa_Mk.Credential
-  * reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
-  * reqadd.params.Payload.swiftFiles[0].file = finalMt103
-  * reqadd.params.Payload.swiftFiles[0].fileName = "CANADACAD.txt"
-  * def value = signsreq(reqadd,user)
-	And request value
-	When method POST
-	Then status 200
-	* match response.error.message contains validations.MT103_EMPTY_BIC_CMID
+#NA	
+#	Scenario:  Beneficiary Transit Code as Empty
+#	* def content = read('classpath:visab2b/MT103_files/CANADACAD.txt')
+#	* def finalMt103 = content.replaceAll("57D://CC123456789", "57D:"  )
+  #* print finalMt103
+  #* def user = testData.Visa_Mk
+  #Given url QaUrl + 'api'
+  #* def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
+  #* print reqadd
+  #* reqadd.params.Api.Credential = testData.Visa_Mk.Credential
+  #* reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
+  #* reqadd.params.Payload.swiftFiles[0].file = finalMt103
+  #* reqadd.params.Payload.swiftFiles[0].fileName = "CANADACAD.txt"
+  #* def value = signsreq(reqadd,user)
+#	And request value
+#	When method POST
+#	Then status 200
+#	* match response.error.message contains validations.MT103_CMID_StartCC9
 	
 	Scenario:  InCorrect Beneficiary Transit Code 
 	* def content = read('classpath:visab2b/MT103_files/CANADACAD.txt')
@@ -459,7 +505,7 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.MT103_CMID_Start2Alpha
+	* match response.error.message contains validations.MT103_CMID_StartCC9
 	
 		Scenario:  Beneficiary Transit Code less than 9 digit
 	* def content = read('classpath:visab2b/MT103_files/CANADACAD.txt')

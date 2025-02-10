@@ -86,7 +86,7 @@ Background:
   * print referencenumber
    * def clearingId = "AU12345" 
   * print clearingId
-  * def finalMt103 = content.replaceAll("20:MT103AUSTRILIA3456546568", "20:" + referencenumber ).replaceAll("57D://AU235645", "57D:" + clearingId )
+  * def finalMt103 = content.replaceAll("20:MT103AUSTRILIA3456546568", "20:" + referencenumber ).replaceAll(":57D:/AU235645", ":57D:" + clearingId )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -100,7 +100,7 @@ Background:
 	And request value
 	When method POST
 	Then status 200
-	* match response.result.transaction contains {message:"Creditor Agent Clearing MemberID must start with 2 Alpha.","data":null}
+		* match response.error.message contains validations.CMIDLessmorethanSIX_AUD
 
 ## clearing member above 6 digit
  Scenario: verify the clearing member above 6 digit
@@ -109,7 +109,7 @@ Background:
   * print referencenumber
    * def clearingId = "AU1234567" 
   * print clearingId
-  * def finalMt103 = content.replaceAll(":20:MT103AUSTRILIA3456546568", ":20:" + referencenumber ).replaceAll(":57D://AU235645", ":57D:" + clearingId )
+  * def finalMt103 = content.replaceAll(":20:MT103AUSTRILIA3456546568", ":20:" + referencenumber ).replaceAll(":57D:/AU235645", ":57D:" + clearingId )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -123,7 +123,7 @@ Background:
 	And request value
 	When method POST
 	Then status 200
-	* match response.result.transaction contains {message:"Creditor Agent Clearing MemberID must start with 2 Alpha.","data":null}
+	* match response.error.message contains validations.CMIDLessmorethanSIX_AUD
 
 
 ## clearing member as only numeric value
@@ -133,7 +133,7 @@ Background:
   * print referencenumber
    * def clearingId = "12345" 
   * print clearingId
-  * def finalMt103 = content.replaceAll("20:MT103AUSTRILIA3456546568", "20:" + referencenumber ).replaceAll(":57D://AU235645", ":57D:" + clearingId )
+  * def finalMt103 = content.replaceAll("20:MT103AUSTRILIA3456546568", "20:" + referencenumber ).replaceAll(":57D:/AU235645", ":57D:" + clearingId )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -155,7 +155,7 @@ Background:
   * def content = read('classpath:visab2b/MT103_files/AUSTRALIA.txt')
   * def referencenumber = "AUTOMT103SFTPAUSTRILIA" + Accno
   * print referencenumber
-  * def finalMt103 = content.replaceAll("20:MT103AUSTRILIA3456546568", "20:" + referencenumber ).replaceAll(":57D://AU235645", ""  ).replaceAll(":57A:ANNCAU22", "" )
+  * def finalMt103 = content.replaceAll("20:MT103AUSTRILIA3456546568", "20:" + referencenumber ).replaceAll(":57D:/AU235645", ""  )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -169,7 +169,7 @@ Background:
 	And request value
 	When method POST
 	Then status 200
-	* match response.result.transaction contains {creditDebitIndicator:'Debit'}
+	* match response.error.message contains validations.MT103_AZN_BICinLine1
 
 Scenario: Transaction with end to end identification already exists
 	* def content = read('classpath:visab2b/MT103_files/AUSTRALIA.txt')
@@ -193,7 +193,7 @@ Scenario: Transaction with end to end identification already exists
 	
 Scenario: Transaction with end to end as Empty
 	* def content = read('classpath:visab2b/MT103_files/AUSTRALIA.txt')
-	* def finalMt103 = content.replaceAll("20:MT103AUSTRALIA3456546568", "20:"  )
+	* def finalMt103 = content.replaceAll("20:MT103AUSTRILIA3456546568", "20:"  )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -210,8 +210,10 @@ Scenario: Transaction with end to end as Empty
 	* match response.error.message contains validations.MT103_Empty_End2EndID
 	
 Scenario: Creditor Bic as Empty
-	 * def content = read('classpath:visab2b/MT103_files/ALBANIA.txt')
-	 * def finalMt103 = content.replaceAll(":57A:ANNCAU22", "57A:"  )
+	 * def content = read('classpath:visab2b/MT103_files/AUSTRALIA.txt')
+	   * def referencenumber = "AUTOMT103SFTPAUSTRILIA" + Accno
+  * print referencenumber
+  * def finalMt103 = content.replaceAll("20:MT103AUSTRILIA3456546568", "20:" + referencenumber ).replaceAll(":57A:ANNCAU22", ":57A:"  ).replaceAll(":57D:/AU235645",":57D:")
    * print finalMt103
    * def user = testData.Visa_Mk
    Given url QaUrl + 'api'
@@ -229,7 +231,9 @@ Scenario: Creditor Bic as Empty
 	 
 	 Scenario: Creditor Bic as Invaild
 	 * def content = read('classpath:visab2b/MT103_files/AUSTRALIA.txt')
-	 * def finalMt103 = content.replaceAll(":57A:ANNCAU22", "57A:ABC"  )
+	 * def referencenumber = "AUTOMT103SFTPAUSTRILIA" + Accno
+   * print referencenumber
+   * def finalMt103 = content.replaceAll("20:MT103AUSTRILIA3456546568", "20:" + referencenumber ).replaceAll(":57A:ANNCAU22", ":57A:ABC"  )
    * print finalMt103
    * def user = testData.Visa_Mk
    Given url QaUrl + 'api'
@@ -243,12 +247,14 @@ Scenario: Creditor Bic as Empty
 	 And request value
 	 When method POST
 	 Then status 200
-	 * match response.error.message contains validations.MT103_EMPTY_BIC_CMID
+	 * match response.error.message contains validations.InvalidBic
 	 
 	
 Scenario: DebtorAccountNumber as Empty
 	 * def content = read('classpath:visab2b/MT103_files/AUSTRALIA.txt')
-	 * def finalMt103 = content.replaceAll(":50K:/80011101011", "50K:"  )
+	    * def referencenumber = "AUTOMT103SFTPAUSTRILIA" + Accno
+  * print referencenumber
+  * def finalMt103 = content.replaceAll("20:MT103AUSTRILIA3456546568", "20:" + referencenumber ).replaceAll(":50K:/9100910001", ":50K:"  )
    * print finalMt103
    * def user = testData.Visa_Mk
    Given url QaUrl + 'api'
@@ -266,7 +272,25 @@ Scenario: DebtorAccountNumber as Empty
 	
 Scenario: DebtorName as Empty
 	* def content = read('classpath:visab2b/MT103_files/AUSTRALIA.txt')
-	* def finalMt103 = content.replaceAll("SMART VIEW", "").replaceAll("840 MASSACHUSETTS ST", "").replaceAll("LAWRENCE, KS 66044, USA", "")
+	* def finalMt103 = content.replaceAll("JIAXING INDUSTRY", "").replaceAll("840 MASSACHUSETTS ST", "").replaceAll("LAWRENCE, KS 66044, USA", "")
+  * print finalMt103
+  * def user = testData.Visa_Mk	
+  Given url QaUrl + 'api'
+  * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
+  * print reqadd
+  * reqadd.params.Api.Credential = testData.Visa_Mk.Credential
+  * reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
+  * reqadd.params.Payload.swiftFiles[0].file = finalMt103
+  * reqadd.params.Payload.swiftFiles[0].fileName = "AUSTRALIA.txt"
+  * def value = signsreq(reqadd,user)
+	And request value
+	When method POST
+	Then status 200
+	* match response.error.message contains validations.MT103_Empty_DebtorName_Address
+	
+	Scenario: DebtorName&Address as Empty
+	* def content = read('classpath:visab2b/MT103_files/AUSTRALIA.txt')
+	* def finalMt103 = content.replaceAll("JIAXING INDUSTRY", "").replaceAll("840 MASSACHUSETTS ST", "").replaceAll("LAWRENCE, KS 66044, USA", "")
   * print finalMt103
   * def user = testData.Visa_Mk	
   Given url QaUrl + 'api'
@@ -305,7 +329,7 @@ Scenario: Transaction initated for Australia country with different currency  (c
   * def content = read('classpath:visab2b/MT103_files/AUSTRALIA.txt')
   * def referencenumber = "MT103SFTPALBENIA" + Accno
   * print referencenumber
-  * def finalMt103 = content.replaceAll("20:MT103AUSTRALIA3456546568", "20:" + referencenumber ).replaceAll(":32A:200408ALL138.28", ":32A:200408USD138.28").replaceAll("70:/POP/Payment as agreed", "70:"  )
+  * def finalMt103 = content.replaceAll("20:MT103AUSTRILIA3456546568", "20:" + referencenumber ).replaceAll(":32A:200408ALL138.28", ":32A:200408USD138.28").replaceAll("70:/POP/Payment as agreed", "70:"  )
   * print finalMt103
   * jutil.SetData("GetAuditsAustraliamt103rsothercurrency",referencenumber)
   * def user = testData.Visa_Mk
