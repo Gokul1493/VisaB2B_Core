@@ -15,6 +15,7 @@
      "TaxID_must11":"Creditor TaxId must be 11-numeric.",
 	 "TaxID_must10":"Creditor TaxId must be 10-numeric.",
      "CMIDStartswithAlpha":"Creditor Agent Clearing MemberID must start with 2 Alpha.",
+	 "CMIDStartswithAlpha_US":"Creditor Agent Clearing MemberID must be starts with FW and followed by 9 numeric digit.",
      "CMIDLessmorethanSIX_AUD":"Creditor Agent Clearing MemberID must be starts with AU and followed by 6 numeric digit",
 	 "CMIDLessmorethan3_SK":"Creditor Agent Clearing MemberID must be starts with KR and followed by 3 numeric digit.",
      "EmptyContactname":"Parameter \'CreditorContactName\' cannot be null.",
@@ -76,6 +77,7 @@
 	 "MT103_Invalid_AccNum18":"Creditor AccountNumber must be 18-numeric.",
 	 "MT103_Invalid_AccNum24":"Creditor AccountNumber must be 24-numeric.",
 	 "MT103_Invlaid_PPC":"Payment Purpose Code must be 4-numeric.",
+	 "MT103_Invlaid_PPC3":"Payment Purpose Code must be 3 Characters.",
 	 "MT103_NonExistingACC":"Contains invalid/non-existent account",
 	 "MT103_Mongolia_POP":"Payment purpose must be starts with VO and followed by characters.",
 

@@ -10,6 +10,7 @@ Background:
 * def orgName = arg.slice(5,10)
 * def Accno = arg.slice(3,10)
 * print Accno
+* def referencenumber = "AUTOMT103SFTPSOUTHKOREA" + Accno
 
  ## Maker user intiate the transaction
  Scenario: Positive flow of the transaction
@@ -133,7 +134,7 @@ Scenario: Creditor Bic as Empty
 	 And request value
 	 When method POST
 	 Then status 200
-	 * match response.error.message contains validations.MT103_Empty_CBic_CCMID
+	 * match response.error.message contains validations.EmptyBIC_AZ
 	 
 	 Scenario: Creditor Bic as Invaild
 	 * def content = read('classpath:visab2b/MT103_files/SOUTHKOREA.txt')
@@ -151,7 +152,7 @@ Scenario: Creditor Bic as Empty
 	 And request value
 	 When method POST
 	 Then status 200
-	 * match response.error.message contains validations.MT103_Empty_CBic_CCMID
+	 * match response.error.message contains validations.InvalidBic
 	 
 	
 Scenario: DebtorAccountNumber as Empty
@@ -196,8 +197,7 @@ Scenario: DebtorName as Empty
 	* def content = read('classpath:visab2b/MT103_files/SOUTHKOREA.txt')
 	* def referencenumber = "AUTOMT103SFTPSOUTHKOREA" + Accno
   * print referencenumber
-  * def finalMt103 = content.replaceAll("20:2603001SFTPr000271254012", "20:" + referencenumber )
-	* def finalMt103 = content.replaceAll(":57D:/KR654", ":57D:/KR123").replaceAll(":57A:/ANZBKRSXXXX", ":57A:/ANZBKRSX")
+	* def finalMt103 = content.replaceAll("20:2603001SFTPr000271254012", "20:" + referencenumber ).replaceAll(":57D:/KR654", ":57D:/KR1234").replaceAll(":57A:/ANZBKRSXXXX", ":57A:/ANZBKRSX")
   * print finalMt103
   * def user = testData.Visa_Mk	
   Given url QaUrl + 'api'
@@ -247,7 +247,7 @@ Scenario: DebtorName as Empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.CMIDLessmorethan3_SK
+	* match response.error.message contains validations.CMIDStartswithAlpha
 	
 	
 		Scenario: To verify the without Clearing Member ID 
@@ -266,13 +266,14 @@ Scenario: DebtorName as Empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.EmptyCMID_Azerbaijan
+	* match response.error.message contains validations.CMIDLessmorethan3_SK
 	
 	##Beneficiary Bank SWIFT BIC11
 	
 		Scenario: To verify the Beneficiary Bank SWIFT BIC as 11 digit and without BIC
 	* def content = read('classpath:visab2b/MT103_files/SOUTHKOREA.txt')
-	* def finalMt103 = content.replaceAll(":57A:/ANZBKRSXXXX", ":57A://ANZBKRSXXXX").replaceAll(":57D:/KR654", "")
+	* print referencenumber
+	* def finalMt103 = content.replaceAll("20:2603001SFTPr000271254012", "20:" + referencenumber ).replaceAll(":57A:/ANZBKRSXXXX", ":57A://ANZBKRSXXXX").replaceAll(":57D:/KR654", ":57D:")
   * print finalMt103
   * def user = testData.Visa_Mk	
   Given url QaUrl + 'api'
@@ -286,44 +287,48 @@ Scenario: DebtorName as Empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.MT103_Empty_DebtorName_Address
-	
-		Scenario: To verify the Clearing Member ID without prefix
-	* def content = read('classpath:visab2b/MT103_files/SOUTHKOREA.txt')
-	* def finalMt103 = content.replaceAll(":57A:/ANZBKRSXXXX", ":57A:/123")
-  * print finalMt103
-  * def user = testData.Visa_Mk	
-  Given url QaUrl + 'api'
-  * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
-  * print reqadd
-  * reqadd.params.Api.Credential = testData.Visa_Mk.Credential
-  * reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
-  * reqadd.params.Payload.swiftFiles[0].file = finalMt103
-  * reqadd.params.Payload.swiftFiles[0].fileName = "SOUTHKOREA.txt"
-  * def value = signsreq(reqadd,user)
-	And request value
-	When method POST
-	Then status 200
-	* match response.error.message contains validations.MT103_Empty_DebtorName_Address
+	* match response.result.transaction contains {creditDebitIndicator:'Debit'}
 	
 	
-		Scenario: To verify the without Clearing Member ID 
-	* def content = read('classpath:visab2b/MT103_files/SOUTHKOREA.txt')
-	* def finalMt103 = content.replaceAll(":57A:/ANZBKRSXXXX", "")
-  * print finalMt103
-  * def user = testData.Visa_Mk	
-  Given url QaUrl + 'api'
-  * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
-  * print reqadd
-  * reqadd.params.Api.Credential = testData.Visa_Mk.Credential
-  * reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
-  * reqadd.params.Payload.swiftFiles[0].file = finalMt103
-  * reqadd.params.Payload.swiftFiles[0].fileName = "SOUTHKOREA.txt"
-  * def value = signsreq(reqadd,user)
-	And request value
-	When method POST
-	Then status 200
-	* match response.error.message contains validations.MT103_Empty_DebtorName_Address
+	
+#Duplicate scenario	
+	
+#		Scenario: To verify the Clearing Member ID without prefix
+#	* def content = read('classpath:visab2b/MT103_files/SOUTHKOREA.txt')
+#	* def finalMt103 = content.replaceAll(":57A:/ANZBKRSXXXX", ":57A:/123")
+  #* print finalMt103
+  #* def user = testData.Visa_Mk	
+  #Given url QaUrl + 'api'
+  #* def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
+  #* print reqadd
+  #* reqadd.params.Api.Credential = testData.Visa_Mk.Credential
+  #* reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
+  #* reqadd.params.Payload.swiftFiles[0].file = finalMt103
+  #* reqadd.params.Payload.swiftFiles[0].fileName = "SOUTHKOREA.txt"
+  #* def value = signsreq(reqadd,user)
+#	And request value
+#	When method POST
+#	Then status 200
+#	* match response.error.message contains validations.MT103_Empty_DebtorName_Address
+	
+#	Duplicate scenario
+#		Scenario: To verify the without Clearing Member ID 
+#	* def content = read('classpath:visab2b/MT103_files/SOUTHKOREA.txt')
+#	* def finalMt103 = content.replaceAll(":57A:/ANZBKRSXXXX", "")
+  #* print finalMt103
+  #* def user = testData.Visa_Mk	
+  #Given url QaUrl + 'api'
+  #* def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
+  #* print reqadd
+  #* reqadd.params.Api.Credential = testData.Visa_Mk.Credential
+  #* reqadd.params.Api.deviceId = testData.Visa_Mk.keyId
+  #* reqadd.params.Payload.swiftFiles[0].file = finalMt103
+  #* reqadd.params.Payload.swiftFiles[0].fileName = "SOUTHKOREA.txt"
+  #* def value = signsreq(reqadd,user)
+#	And request value
+#	When method POST
+#	Then status 200
+#	* match response.error.message contains validations.MT103_Empty_DebtorName_Address
 	
 	
 ## Beneficiary Contact Phone Number
@@ -343,7 +348,7 @@ Scenario: To verify the Beneficiary Contact Phone Number as empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.MT103_Empty_DebtorName_Address
+	* match response.error.message contains validations.MT103_Empty_CCPhoneNumber
 	
 	
 	Scenario: To verify the Beneficiary Contact Phone Number without prefix
@@ -362,11 +367,11 @@ Scenario: To verify the Beneficiary Contact Phone Number as empty
 	And request value
 	When method POST
 	Then status 200
-	* match response.error.message contains validations.MT103_Empty_DebtorName_Address
+	* match response.error.message contains validations.MT103_Empty_CCPhoneNumber
 
 Scenario: CreditorIBAN/AccountNumber as Empty
 	* def content = read('classpath:visab2b/MT103_files/SOUTHKOREA.txt')
-	* def finalMt103 = content.replaceAll(":59:/485278645312645", "59:"  )
+	* def finalMt103 = content.replaceAll(":59:/485278645312645", ":59:"  )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
@@ -384,7 +389,7 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	
 	Scenario: Purpose of payment(POP)- as Empty
 	* def content = read('classpath:visab2b/MT103_files/SERBIA.txt')
-	* def finalMt103 = content.replaceAll(":77B:/POP/purpose of payment", "70:"  ).replaceAll("20:2603001SFTPMT10RSD20220867557563662121", "20:MT103SFTPPANAMA" + Accno )
+	* def finalMt103 = content.replaceAll(":70:/POP/testing SERBIA", ":70:"  ).replaceAll("20:2603001SFTPMT10RSD20220867557563662121", "20:MT103SFTPPANAMA" + Accno )
   * print finalMt103
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
