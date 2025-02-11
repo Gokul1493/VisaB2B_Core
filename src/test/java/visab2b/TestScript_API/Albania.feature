@@ -59,7 +59,7 @@ Scenario: Albania Positive flow with Other currency(EUR)
 * print all_eid
     
 * def sleep = function(millis){ java.lang.Thread.sleep(millis) }
-* eval sleep(10000)
+* eval sleep(15000)
     
 # Approve Transaction
 * def user = testData.Visa_API_CK

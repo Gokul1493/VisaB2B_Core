@@ -45,8 +45,6 @@ Feature: swift_file_transfer_Form_Australia
     * jutil.SetData("GetAuditsAustraliaformpostive",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
-    
-    
     ### Checker user approve transaction
     ## Step1 == get the transaction id
     * def user = testData.Visa_CK
@@ -62,6 +60,8 @@ Feature: swift_file_transfer_Form_Australia
     * def transactionID = response.result.transactions[0].id
     * print transactionID
     ## Step2 == approve the payment
+    * def sleep = function(millis){ return java.lang.Thread.sleep(millis) }
+    * eval sleep(25000)
     * def user = testData.Visa_CK
     Given url QaUrl + 'api'
     * def approvetrasnaction = read('classpath:visab2b/Payload/approve_payment.json')
@@ -106,8 +106,6 @@ Feature: swift_file_transfer_Form_Australia
     * jutil.SetData("GetAuditsAustraliaFormothercurrency",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
-    
-    
     ### Checker user approve transaction
     ## Step1 == get the transaction id
     * def user = testData.Visa_CK
@@ -123,6 +121,8 @@ Feature: swift_file_transfer_Form_Australia
     * def transactionID = response.result.transactions[0].id
     * print transactionID
     ## Step2 == approve the payment
+    * def sleep = function(millis){ return java.lang.Thread.sleep(millis) }
+    * eval sleep(25000)
     * def user = testData.Visa_CK
     Given url QaUrl + 'api'
     * def approvetrasnaction = read('classpath:visab2b/Payload/approve_payment.json')
@@ -184,8 +184,6 @@ Feature: swift_file_transfer_Form_Australia
     When method POST
     Then status 200
     * match response.error.message contains validations.InvalidBic
-    
-    * eval sleep(10000)
 
   Scenario: Clearing member ID below 6 digit
     * def user = testData.Visa_Mk
@@ -201,8 +199,6 @@ Feature: swift_file_transfer_Form_Australia
     When method POST
     Then status 200
     * match response.error contains {"message":"Creditor Agent Clearing MemberID must be starts with AU and followed by 6 numeric digit",data:null}
-    
-    * eval sleep(10000)
 
   Scenario: Clearing member ID above 6 digit
     * def user = testData.Visa_Mk
@@ -266,8 +262,6 @@ Feature: swift_file_transfer_Form_Australia
     * jutil.SetData("GetAuditsAustraliaFormothercurrency",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
-    
-    
     ### Checker user approve transaction
     ## Step1 == get the transaction id
     * def user = testData.Visa_CK
@@ -283,6 +277,8 @@ Feature: swift_file_transfer_Form_Australia
     * def transactionID = response.result.transactions[0].id
     * print transactionID
     ## Step2 == approve the payment
+    * def sleep = function(millis){ return java.lang.Thread.sleep(millis) }
+    * eval sleep(25000)
     * def user = testData.Visa_CK
     Given url QaUrl + 'api'
     * def approvetrasnaction = read('classpath:visab2b/Payload/approve_payment.json')
