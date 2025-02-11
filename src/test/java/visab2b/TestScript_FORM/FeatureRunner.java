@@ -128,7 +128,7 @@ class FeatureRunner {
         		"Uruguay_Form",
         		"Vietnam_Form",
         		"Zambia_Form",
-//        		"Audit",
+        		"Audit",
         		"GetAuditsform"
         		).relativeTo(getClass());
         

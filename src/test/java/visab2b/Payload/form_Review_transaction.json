@@ -11,7 +11,7 @@
     "Payload": {
       "InstructedAmount": {
         "Currency": "",
-        "Amount": "254"
+        "Amount": "25441"
       },
       "CreditorAccount": {
         "Name": "John deo",
@@ -23,14 +23,18 @@
         "TaxId": ""
       },
       "DebtorAccount": {
-      "Accountnumber":"9100910001"
+		"Name": "John deo",
+      "Accountnumber":"9100910001",
+      "Address": "2365 Tetrick Road"
       },
       "CreditorAgent": {
         "Bic": "",
-        "ClearingMemberId": ""
+        "ClearingMemberId": "",
+		"CreditorAgentIBAN":"",
+		"BranchName":""
       },
       "DebtorAgent": {},
-      "CompanyId": "64e8d5236e69a8d7ee1d5b5c",
+      "CompanyId": "",
       "EndToEndIdentification": "#('AUTOFORM'+country+ Accno)",
       "structuredRemittance": [
                 {
@@ -45,6 +49,8 @@
        "Description": "Recall",
       "intermediaryAgentBic": "CHASUSU3XXX",
       "PaymentPurpose": "",
+	  "CreditorAgentIBAN": "",
+	  "CreditorAgentTaxID": "",
       "CreationDateTime": "2024-03-26T14:04:19.364Z",
       "userEmail": "e.arivalagan+7033@netxd.com",
       "paymentMode": "API"
