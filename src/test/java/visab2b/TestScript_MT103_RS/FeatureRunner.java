@@ -1,4 +1,4 @@
-package visab2b.TestScript_MT103;
+package visab2b.TestScript_MT103_RS;
 import com.intuit.karate.junit5.Karate;
 
 class FeatureRunner {

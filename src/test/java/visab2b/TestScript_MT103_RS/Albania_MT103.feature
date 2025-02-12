@@ -47,7 +47,7 @@ Feature: swift_file_transfer_MT103_Albania
     * match response.result contains {message:"Summary: (1 of 1 files accepted)"},id:"1"}
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
-    * def sleep = function(millis){ java.lang.Thread.sleep(millis) }
+    * def sleep = function(millis){return java.lang.Thread.sleep(millis) }
     * eval sleep(30000)
     ### Checker user approve transaction
     ## Step1 == get the transaction id

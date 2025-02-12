@@ -1,4 +1,4 @@
-package visab2b.TestScript_MT103_submit;
+package visab2b.TestScript_MT103_DS;
 
 import com.intuit.karate.junit5.Karate;
 

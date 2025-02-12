@@ -10,12 +10,15 @@ Feature: GETAUDITS_FORM
     * def orgName = arg.slice(5,10)
     * def Accno = arg.slice(3,10)
     * print Accno
+    * def reasonCode = "Z200"
+    * def resonDesc = "Payment Processing successful."
 
   Scenario: Audits for Albania mt103 review submit Transaction
     # Get Audits for same currency
     Given url QaUrl + 'api'
     * def user = testData.Visa_CK
     * def getReferenceNumber = jutil.GetData('GetAuditsAlbaniaMT103RSpostive')
+    * print getReferenceNumber
     * def getAudits = read('classpath:visab2b/Payload/GetAudits.json')
     * getAudits.params.Payload.reference = getReferenceNumber
     * getAudits.params.Api.Credential = testData.Visa_CK.Credential
@@ -24,20 +27,22 @@ Feature: GETAUDITS_FORM
     And request audits
     When method POST
     Then status 200
-    * def requestName = response.result.audits[0].requestName
+    * def requestName = response.result.audits[1].requestName
     * print requestName
-    * def visarequest = response.result.audits[0].request
+    * def visarequest = response.result.audits[1].request
     * print visarequest
-    * def visaresponse = response.result.audits[0].response
+    * def visaresponse = response.result.audits[1].response
+    * print visaresponse
     * print visaresponse.responseList[0].reasonCode
     * print visaresponse.responseList[0].reasonDesc
     * match requestName == "Payment"
-    * match visaresponse.responseList[0].reasonCode = "Z200"
-    * match visaresponse.responseList[0].reasonDesc = " Payment Processing successful."
+    * match visaresponse.responseList[0].reasonCode = reasonCode
+    * match visaresponse.responseList[0].reasonDesc = resonDesc
     # Get Audits for different currency
     Given url QaUrl + 'api'
     * def user = testData.Visa_CK
     * def getReferenceNumberothercurrency = jutil.GetData('GetAuditsAlbaniaMT103RSothercurrency')
+    * print getReferenceNumberothercurrency
     * def getAudits = read('classpath:visab2b/Payload/GetAudits.json')
     * getAudits.params.Payload.reference = getReferenceNumberothercurrency
     * getAudits.params.Api.Credential = testData.Visa_CK.Credential
@@ -46,11 +51,11 @@ Feature: GETAUDITS_FORM
     And request audits
     When method POST
     Then status 200
-    * def requestName = response.result.audits[0].requestName
+    * def requestName = response.result.audits[1].requestName
     * print requestName
-    * def visarequest = response.result.audits[0].request
+    * def visarequest = response.result.audits[1].request
     * print visarequest
-    * def visaresponse = response.result.audits[0].response
+    * def visaresponse = response.result.audits[1].response
     * print visaresponse
     * print visaresponse.responseList[0].reasonCode
     * print visaresponse.responseList[0].reasonDesc
@@ -71,11 +76,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -93,11 +98,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -118,11 +123,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -140,11 +145,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -165,11 +170,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -187,11 +192,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -212,11 +217,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -234,11 +239,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -259,11 +264,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -281,11 +286,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -306,11 +311,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -328,11 +333,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -353,11 +358,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -375,11 +380,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -400,11 +405,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -422,11 +427,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -447,11 +452,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -469,11 +474,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -494,11 +499,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -518,11 +523,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -540,11 +545,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -565,11 +570,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -587,11 +592,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -612,11 +617,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -634,11 +639,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -659,11 +664,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -681,11 +686,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -706,11 +711,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -728,11 +733,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -753,11 +758,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -775,11 +780,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -800,11 +805,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -822,11 +827,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -847,11 +852,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -869,11 +874,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -894,11 +899,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -916,11 +921,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -941,11 +946,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -963,11 +968,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -988,11 +993,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -1010,11 +1015,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -1035,11 +1040,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -1057,11 +1062,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -1080,11 +1085,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -1105,11 +1110,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -1129,11 +1134,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -1151,11 +1156,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -1176,11 +1181,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -1198,11 +1203,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -1223,11 +1228,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -1245,11 +1250,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -1270,11 +1275,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -1292,11 +1297,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -1317,11 +1322,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -1339,11 +1344,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -1364,11 +1369,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -1386,11 +1391,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -1411,11 +1416,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -1433,11 +1438,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -1458,11 +1463,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -1480,11 +1485,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -1505,11 +1510,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -1527,11 +1532,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -1552,11 +1557,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -1574,11 +1579,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -1599,11 +1604,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -1621,11 +1626,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -1646,11 +1651,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -1668,11 +1673,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -1693,11 +1698,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -1715,11 +1720,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -1738,11 +1743,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -1761,11 +1766,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -1786,11 +1791,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -1808,11 +1813,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -1833,11 +1838,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -1855,11 +1860,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -1880,11 +1885,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -1902,11 +1907,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -1927,11 +1932,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -1949,11 +1954,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -1974,11 +1979,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -1996,11 +2001,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -2021,11 +2026,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -2043,11 +2048,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -2068,11 +2073,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -2090,11 +2095,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -2115,11 +2120,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -2137,11 +2142,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -2162,11 +2167,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -2184,11 +2189,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -2209,11 +2214,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -2231,11 +2236,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -2256,11 +2261,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -2278,11 +2283,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -2303,11 +2308,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -2325,11 +2330,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -2350,11 +2355,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -2372,11 +2377,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -2397,11 +2402,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -2419,11 +2424,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -2444,11 +2449,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -2466,11 +2471,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -2491,11 +2496,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -2513,11 +2518,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -2538,11 +2543,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -2560,11 +2565,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -2585,11 +2590,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -2607,11 +2612,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -2632,11 +2637,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -2654,11 +2659,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -2679,11 +2684,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -2701,11 +2706,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -2726,11 +2731,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -2748,11 +2753,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -2773,11 +2778,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -2795,11 +2800,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -2820,11 +2825,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -2842,11 +2847,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -2867,11 +2872,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -2889,11 +2894,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -2914,11 +2919,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -2936,11 +2941,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -2961,11 +2966,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -2983,11 +2988,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -3008,11 +3013,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -3030,11 +3035,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -3055,11 +3060,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -3077,11 +3082,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -3102,11 +3107,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -3124,11 +3129,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -3149,11 +3154,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -3171,11 +3176,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -3196,11 +3201,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -3218,11 +3223,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -3243,11 +3248,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -3265,11 +3270,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -3290,11 +3295,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -3312,11 +3317,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -3337,11 +3342,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -3359,11 +3364,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -3384,11 +3389,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -3406,11 +3411,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -3431,11 +3436,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -3453,11 +3458,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -3478,11 +3483,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -3500,11 +3505,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -3525,11 +3530,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -3547,11 +3552,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -3572,11 +3577,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -3594,11 +3599,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -3619,11 +3624,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -3641,11 +3646,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -3666,11 +3671,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -3688,11 +3693,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -3713,11 +3718,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -3735,11 +3740,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -3760,11 +3765,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -3782,11 +3787,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -3807,11 +3812,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -3829,11 +3834,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -3854,11 +3859,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -3876,11 +3881,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -3901,11 +3906,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -3923,11 +3928,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -3948,11 +3953,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -3970,11 +3975,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -3995,11 +4000,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -4017,11 +4022,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -4042,11 +4047,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -4064,11 +4069,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -4089,11 +4094,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -4111,11 +4116,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -4136,11 +4141,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -4158,11 +4163,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -4183,11 +4188,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -4205,11 +4210,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -4230,11 +4235,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -4252,11 +4257,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -4277,11 +4282,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -4299,11 +4304,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -4324,11 +4329,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -4346,11 +4351,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -4371,11 +4376,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -4393,11 +4398,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -4418,11 +4423,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -4440,11 +4445,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -4465,11 +4470,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -4487,11 +4492,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -4512,11 +4517,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -4534,11 +4539,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -4559,11 +4564,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -4581,11 +4586,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -4606,11 +4611,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -4628,11 +4633,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -4653,11 +4658,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -4675,11 +4680,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -4700,11 +4705,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -4722,11 +4727,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -4747,11 +4752,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -4769,11 +4774,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -4794,11 +4799,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -4816,11 +4821,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -4841,11 +4846,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -4863,11 +4868,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -4888,11 +4893,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -4910,11 +4915,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -4935,11 +4940,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -4957,11 +4962,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -4982,11 +4987,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -5004,11 +5009,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -5029,11 +5034,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -5051,11 +5056,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -5076,11 +5081,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -5098,11 +5103,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -5123,11 +5128,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -5145,11 +5150,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -5170,11 +5175,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -5192,11 +5197,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -5217,11 +5222,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -5239,11 +5244,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -5264,11 +5269,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -5286,11 +5291,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -5311,11 +5316,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -5333,11 +5338,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -5358,11 +5363,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -5380,11 +5385,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
@@ -5405,11 +5410,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
     #* match requestName == "Payment"
@@ -5427,11 +5432,11 @@ Feature: GETAUDITS_FORM
     #And request audits
     #When method POST
     #Then status 200
-    #* def requestName = response.result.audits[0].requestName
+    #* def requestName = response.result.audits[1].requestName
     #* print requestName
-    #* def visarequest = response.result.audits[0].request
+    #* def visarequest = response.result.audits[1].request
     #* print visarequest
-    #* def visaresponse = response.result.audits[0].response
+    #* def visaresponse = response.result.audits[1].response
     #* print visaresponse
     #* print visaresponse.responseList[0].reasonCode
     #* print visaresponse.responseList[0].reasonDesc
