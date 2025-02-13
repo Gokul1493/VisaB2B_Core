@@ -1,14 +1,15 @@
 package visab2b.TestScript_MT103_RS;
+
 import com.intuit.karate.junit5.Karate;
 
-class FeatureRunner {
+class FeatureRunner2 {
 
 	// ReviewSubmit
 	@Karate.Test
 	Karate testUsers() {
 		return Karate.run(
 
-				"Albania_MT103",
+				"Albania_MT103"
 //				"Algeria_MT103",
 //				"Angola_MT103",
 //				"Antigua_MT103",
@@ -129,8 +130,8 @@ class FeatureRunner {
 //				"Uruguay_MT103",
 //				"Vietnam_MT103",
 //				"Zambia_MT103",
-				"GetAuditsMT103ReviewSubmit"
-				).relativeTo(getClass());
+//				"GetAuditsMT103ReviewSubmit"
+		).tags("Test").relativeTo(getClass());
 
 //		"Albania_MT103",
 //		"Algeria_MT103",

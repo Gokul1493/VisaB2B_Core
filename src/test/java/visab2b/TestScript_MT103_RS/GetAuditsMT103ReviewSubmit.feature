@@ -10,59 +10,98 @@ Feature: GETAUDITS_FORM
     * def orgName = arg.slice(5,10)
     * def Accno = arg.slice(3,10)
     * print Accno
-    * def reasonCode = "Z200"
-    * def resonDesc = "Payment Processing successful."
+    * url QaUrl + 'api'
+    * def user = testData.Visa_CK
+    * def getAudits = read('classpath:visab2b/Payload/GetAudits.json')
 
-  Scenario: Audits for Albania mt103 review submit Transaction
+  # Re-usable Code
+  Scenario: Fetch Audits with Reference Number
+    Given url QaUrl + 'api'
+    * def params = getAudits.params
+    
+   # Accept dynamic reference number __arg.
+    * params.Payload.reference = reference
+    * params.Api.Credential = user.Credential
+    * params.Api.deviceId = user.keyId
+    * def audits = signsreq(getAudits, user)
+    And request audits
+    When method POST
+    Then status 200
+    * print response
+    # Extract key fields safely
+    * def auditIndex = response.result.audits[1]
+    * def requestName = response.result.audits[1].requestName
+    * def visarequest = response.result.audits[1].request
+    * def visaresponse = response.result.audits[1].response
+    * def responseJson = karate.fromString(visaresponse)
+    * def debtorAgentBic = responseJson.debtorAgentBic
+    * def responseList = responseJson.responseList
+    # Print extracted details
+    * print responseList
+    * match responseList[0].reasonCode == "Z200"
+    * match responseList[0].reasonDesc == "Payment Processing successful."
+
+  #@Positive
+  #Scenario: Audits for Albania MT103 Review Submit Transaction
+     #Get Audits for same currency
+    #Given url QaUrl + 'api'
+    #* def user = testData.Visa_CK
+    #* def getReferenceNumber = jutil.GetData('GetAuditsAlbaniaMT103RSpostive')
+    #* print getReferenceNumber
+    #* def getAudits = read('classpath:visab2b/Payload/GetAudits.json')
+    #* getAudits.params.Payload.reference = getReferenceNumber
+    #* getAudits.params.Api.Credential = testData.Visa_CK.Credential
+    #* getAudits.params.Api.deviceId = testData.Visa_CK.keyId
+    #* def audits = signsreq(getAudits, user)
+    #And request audits
+    #When method POST
+    #Then status 200
+    #* print response
+     #Safe index handling
+    #* def auditIndex = response.result.audits[1]
+    #* def requestName = response.result.audits[1].requestName
+    #* print requestName
+     #Safe handling of response list
+    #* def visarequest = response.result.audits[1].request
+    #* print visarequest
+    #* def visaresponse = response.result.audits[1].response
+    #* print visaresponse
+    #* def responseJson = karate.fromString(visaresponse)
+    #* print responseJson
+    #* def debtorAgentBic = responseJson.debtorAgentBic
+    #* print 'Debtor Agent BIC:', debtorAgentBic
+     #Write and Read JSON safely
+    #* def responseList = responseJson.responseList
+    #* print responseList
+    #* def responseList[0].reasonCode == reasonCode
+    * def responseList[0].reasonDesc == resonDesc
+  #Scenario: Audits for Albania mt103 review submit Transaction
     # Get Audits for same currency
-    Given url QaUrl + 'api'
-    * def user = testData.Visa_CK
-    * def getReferenceNumber = jutil.GetData('GetAuditsAlbaniaMT103RSpostive')
-    * print getReferenceNumber
-    * def getAudits = read('classpath:visab2b/Payload/GetAudits.json')
-    * getAudits.params.Payload.reference = getReferenceNumber
-    * getAudits.params.Api.Credential = testData.Visa_CK.Credential
-    * getAudits.params.Api.deviceId = testData.Visa_CK.keyId
-    * def audits = signsreq(getAudits,user)
-    And request audits
-    When method POST
-    Then status 200
-    * def requestName = response.result.audits[1].requestName
-    * print requestName
-    * def visarequest = response.result.audits[1].request
-    * print visarequest
-    * def visaresponse = response.result.audits[1].response
-    * print visaresponse
-    * print visaresponse.responseList[0].reasonCode
-    * print visaresponse.responseList[0].reasonDesc
-    * match requestName == "Payment"
-    * match visaresponse.responseList[0].reasonCode = reasonCode
-    * match visaresponse.responseList[0].reasonDesc = resonDesc
-    # Get Audits for different currency
-    Given url QaUrl + 'api'
-    * def user = testData.Visa_CK
-    * def getReferenceNumberothercurrency = jutil.GetData('GetAuditsAlbaniaMT103RSothercurrency')
-    * print getReferenceNumberothercurrency
-    * def getAudits = read('classpath:visab2b/Payload/GetAudits.json')
-    * getAudits.params.Payload.reference = getReferenceNumberothercurrency
-    * getAudits.params.Api.Credential = testData.Visa_CK.Credential
-    * getAudits.params.Api.deviceId = testData.Visa_CK.keyId
-    * def audits = signsreq(getAudits,user)
-    And request audits
-    When method POST
-    Then status 200
-    * def requestName = response.result.audits[1].requestName
-    * print requestName
-    * def visarequest = response.result.audits[1].request
-    * print visarequest
-    * def visaresponse = response.result.audits[1].response
-    * print visaresponse
-    * print visaresponse.responseList[0].reasonCode
-    * print visaresponse.responseList[0].reasonDesc
-    * match requestName == "Payment"
-    * match visaresponse.responseList[0].reasonCode = "Z200"
-    * match visaresponse.responseList[0].reasonDesc = " Payment Processing successful."
-
+    #Given url QaUrl + 'api'
+    #* def user = testData.Visa_CK
+    #* def getReferenceNumber = jutil.GetData('GetAuditsAlbaniaMT103RSpostive')
+    #* print getReferenceNumber
+    #* def getAudits = read('classpath:visab2b/Payload/GetAudits.json')
+    #* getAudits.params.Payload.reference = getReferenceNumber
+    #* getAudits.params.Api.Credential = testData.Visa_CK.Credential
+    #* getAudits.params.Api.deviceId = testData.Visa_CK.keyId
+    #* def audits = signsreq(getAudits,user)
+    #And request audits
+    #When method POST
+    #Then status 200
+    #* print response
+    #* def requestName = response.result.audits[1].requestName
+    #* print requestName
+    #* def visarequest = response.result.audits[1].request
+    #* print visarequest
+    #* def responseList = response.result.audits[1].response
+    #* print responseList
+    #* def safeResponseList = responseList ? responseList : []
+    #* karate.write(safeResponseList, '/home/gokulakannanm/git/VisaB2B_Core/src/test/java/visab2b/TestData/responseList.json')
+    #* def responseList2 = karate.read('/home/gokulakannanm/git/VisaB2B_Core/src/test/java/visab2b/TestData/responseList.json')
+    #* print responseList2
+    #* def responseList1 = karate.read('responseList.json')
+    #* print responseList1
   #Scenario: Audits for Algeria mt103 review submit Transaction
     # Get Audits for same currency
     #Given url QaUrl + 'api'

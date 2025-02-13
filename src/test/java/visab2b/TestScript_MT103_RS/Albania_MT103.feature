@@ -12,6 +12,7 @@ Feature: swift_file_transfer_MT103_Albania
     * print Accno
 
   ## Maker user intiate the transaction
+  @Positive
   Scenario: Positive flow of the transaction
     * def content = read('classpath:visab2b/MT103_files/ALBANIA.txt')
     * def referencenumber = "AUTOMT103SFTPALBENIA" + Accno
@@ -149,7 +150,7 @@ Feature: swift_file_transfer_MT103_Albania
     When method POST
     Then status 200
     * match response.error.message contains validations.MT103_Empty_DebtorNameORAddress
-    
+
   Scenario: DebtorName and address as Empty
     * def content = read('classpath:visab2b/MT103_files/ALBANIA.txt')
     * def finalMt103 = content.replaceAll("JIAXING INDUSTRY", "").replaceAll("840 MASSACHUSETTS ST", "").replaceAll("LAWRENCE, KS 66044, USA", "")
@@ -240,6 +241,7 @@ Feature: swift_file_transfer_MT103_Albania
     Then status 200
     * match response.error.message contains validations.EmptyPOP
 
+  @Test
   Scenario: Transaction initated for albania country with different currency  (currency:- USD)
     * def content = read('classpath:visab2b/MT103_files/ALBANIA.txt')
     * def referencenumber = "MT103SFTPALBENIA" + Accno
@@ -303,3 +305,13 @@ Feature: swift_file_transfer_MT103_Albania
     When method POST
     Then status 200
     * match response.result.message == validations.successMessage
+
+  @Positive
+  Scenario: Get Audits for Same Currency
+    * def getReferenceNumber = jutil.GetData('GetAuditsAlbaniaMT103RSpostive')
+    * call read('classpath:/visab2b/TestScript_MT103_RS/GetAuditsMT103ReviewSubmit.feature') { reference: '#(getReferenceNumber)' }
+
+  @Test
+  Scenario: Get Audits for Different Case
+    * def getReferenceNumber = jutil.GetData('GetAuditsAlbaniaMT103RSothercurrency')
+    * call read('classpath:/visab2b/TestScript_MT103_RS/GetAuditsMT103ReviewSubmit.feature@Fetch Audits with Reference Number') { reference: '#(getReferenceNumber)' }
