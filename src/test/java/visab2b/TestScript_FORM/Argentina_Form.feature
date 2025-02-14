@@ -67,6 +67,8 @@ Background:
 	* def transactionID = response.result.transactions[0].id
 	* print transactionID
 	## Step2 == approve the payment
+* def sleep = function(millis){ return java.lang.Thread.sleep(millis) }
+    * eval sleep(25000)
 	* def user = testData.Visa_CK
 	Given url QaUrl + 'api'
 	* def approvetrasnaction = read('classpath:visab2b/Payload/approve_payment.json')
@@ -379,6 +381,8 @@ Scenario: Tax ID above 11 digits
 	* def transactionID = response.result.transactions[0].id
 	* print transactionID
 	## Step2 == approve the payment
+* def sleep = function(millis){ return java.lang.Thread.sleep(millis) }
+    * eval sleep(25000)
 	* def user = testData.Visa_CK
 	Given url QaUrl + 'api'
 	* def approvetrasnaction = read('classpath:visab2b/Payload/approve_payment.json')

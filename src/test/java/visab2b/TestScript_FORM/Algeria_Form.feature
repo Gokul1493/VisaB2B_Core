@@ -63,7 +63,7 @@ Feature: swift_file_transfer_Form_Algeria
     * def transactionID = response.result.transactions[0].id
     * print transactionID
     ## Step2 == approve the payment
-    * def sleep = function(millis){java.lang.Thread.sleep(millis)}
+    * def sleep = function(millis){ return java.lang.Thread.sleep(millis) }
     * eval sleep(25000)
     * def user = testData.Visa_CK
     Given url QaUrl + 'api'
@@ -125,7 +125,7 @@ Feature: swift_file_transfer_Form_Algeria
     * def transactionID = response.result.transactions[0].id
     * print transactionID
     ## Step2 == approve the payment
-    * def sleep = function(millis){java.lang.Thread.sleep(millis)}
+    * def sleep = function(millis){ return java.lang.Thread.sleep(millis) }
     * eval sleep(25000)
     * def user = testData.Visa_CK
     Given url QaUrl + 'api'

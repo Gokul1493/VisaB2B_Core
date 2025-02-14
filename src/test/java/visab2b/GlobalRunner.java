@@ -9,12 +9,12 @@ import com.intuit.karate.Runner;
 
 class GlobalRunner {
 
-    @Test
-    void testParallel() {
-        Results results = Runner.path("classpath:visab2b/TestScript_MT103")
-                //.outputCucumberJson(true)
-                .parallel(5);
-        assertEquals(0, results.getFailCount(), results.getErrorMessages());
-    }
+	@Test
+	void testParallel() {
+		Results results = Runner.path("classpath:visab2b/TestScript_MT103_RS")
+				// .outputCucumberJson(true)
+				.parallel(5);
+		assertEquals(0, results.getFailCount(), results.getErrorMessages());
+	}
 
 }

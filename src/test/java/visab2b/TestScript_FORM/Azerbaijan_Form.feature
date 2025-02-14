@@ -52,8 +52,6 @@ Feature: swift_file_transfer_Form_Azerbaijan
     * jutil.SetData("GetAuditsAzerbaijanformpostive",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
-    
-    
     ### Checker user approve transaction
     ## Step1 == get the transaction id
     * def user = testData.Visa_CK
@@ -69,6 +67,8 @@ Feature: swift_file_transfer_Form_Azerbaijan
     * def transactionID = response.result.transactions[0].id
     * print transactionID
     ## Step2 == approve the payment
+    * def sleep = function(millis){ return java.lang.Thread.sleep(millis) }
+    * eval sleep(25000)
     * def user = testData.Visa_CK
     Given url QaUrl + 'api'
     * def approvetrasnaction = read('classpath:visab2b/Payload/approve_payment.json')
@@ -106,7 +106,7 @@ Feature: swift_file_transfer_Form_Azerbaijan
     Then status 200
     * match response.error.message contains validations.EndtoEndID
 
-	@negative
+  @negative
   Scenario: BIC as empty
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
@@ -336,8 +336,6 @@ Feature: swift_file_transfer_Form_Azerbaijan
     * jutil.SetData("GetAuditsAzerbaijanFormothercurrency",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
-    
-    
     ### Checker user approve transaction
     ## Step1 == get the transaction id
     * def user = testData.Visa_CK
@@ -353,6 +351,8 @@ Feature: swift_file_transfer_Form_Azerbaijan
     * def transactionID = response.result.transactions[0].id
     * print transactionID
     ## Step2 == approve the payment
+    * def sleep = function(millis){ return java.lang.Thread.sleep(millis) }
+    * eval sleep(25000)
     * def user = testData.Visa_CK
     Given url QaUrl + 'api'
     * def approvetrasnaction = read('classpath:visab2b/Payload/approve_payment.json')

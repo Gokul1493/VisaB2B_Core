@@ -1,8 +1,8 @@
 Feature: swift_file_transfer_Form_China
 
   Background: 
-    * def validation_Messages = read('classpath:visab2b/TestData/Validation.json')
-    * def validations = validation_Messages.Validations
+* def validation_Messages = read('classpath:visab2b/TestData/Validation.json')
+* def validations = validation_Messages.Validations
     * def testData = read('classpath:visab2b/TestData/Config.json')
     * def jutil = Java.type('visab2b.Drivers.Addons')
     * def arg = jutil.PLtoken()
@@ -64,6 +64,8 @@ Feature: swift_file_transfer_Form_China
     * def transactionID = response.result.transactions[0].id
     * print transactionID
     ## Step2 == approve the payment
+* def sleep = function(millis){ return java.lang.Thread.sleep(millis) }
+    * eval sleep(25000)
     * def user = testData.Visa_CK
     Given url QaUrl + 'api'
     * def approvetrasnaction = read('classpath:visab2b/Payload/approve_payment.json')
@@ -275,6 +277,8 @@ Feature: swift_file_transfer_Form_China
     * def transactionID = response.result.transactions[0].id
     * print transactionID
     ## Step2 == approve the payment
+* def sleep = function(millis){ return java.lang.Thread.sleep(millis) }
+    * eval sleep(25000)
     * def user = testData.Visa_CK
     Given url QaUrl + 'api'
     * def approvetrasnaction = read('classpath:visab2b/Payload/approve_payment.json')
