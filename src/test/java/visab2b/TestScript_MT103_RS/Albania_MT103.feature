@@ -19,7 +19,7 @@ Feature: swift_file_transfer_MT103_Albania
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:AUTOMT103SFTPALBENIA", "20:" + referencenumber )
     * print finalMt103
-    * jutil.SetData("GetAuditsAlbaniaMT103RSpostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveAlbania",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -248,7 +248,7 @@ Feature: swift_file_transfer_MT103_Albania
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:AUTOMT103SFTPALBENIA", "20:" + referencenumber ).replaceAll("59:/AL47212110090000000235698741", "59:ACCNO7098765433"  ).replaceAll(":32A:200408ALL138.28", ":32A:200408USD138.28").replaceAll("70:/POP/Payment as agreed", "70:"  )
     * print finalMt103
-    * jutil.SetData("GetAuditsAlbaniaMT103RSothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorderAlbania",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -306,12 +306,5 @@ Feature: swift_file_transfer_MT103_Albania
     Then status 200
     * match response.result.message == validations.successMessage
 
-  @Positive
-  Scenario: Get Audits for Same Currency
-    * def getReferenceNumber = jutil.GetData('GetAuditsAlbaniaMT103RSpostive')
-    * call read('classpath:/visab2b/TestScript_MT103_RS/GetAuditsMT103ReviewSubmit.feature') { reference: '#(getReferenceNumber)' }
 
-  @Test
-  Scenario: Get Audits for Different Case
-    * def getReferenceNumber = jutil.GetData('GetAuditsAlbaniaMT103RSothercurrency')
-    * call read('classpath:/visab2b/TestScript_MT103_RS/GetAuditsMT103ReviewSubmit.feature@Fetch Audits with Reference Number') { reference: '#(getReferenceNumber)' }
+    

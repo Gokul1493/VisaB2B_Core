@@ -18,7 +18,7 @@ Feature: ECUADOR_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103ECUADAR202401040001", "20:" + referencenumber )
     * print finalMt103
-    * jutil.SetData("GetAuditsEcuadormt103rspostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveEcuador",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -81,7 +81,7 @@ Feature: ECUADOR_MT103
     * def content = read('classpath:visab2b/MT103_files/ECUADOR.txt')
     * def referencenumber = "AUTOMT103SFTPECUADOR" + Accno
     * print referencenumber
-    * jutil.SetData("GetAuditsEcuadormt103rsothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorderEcuador",referencenumber)
     * def finalMt103 = content.replaceAll("20:MT103ECUADAR202401040001", "20:" + referencenumber ).replaceAll("32A:200408USD134", "32A:200408ALL138.28")
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
@@ -351,3 +351,5 @@ Feature: ECUADOR_MT103
     * print visarequest
     * def visaresponse = response.result.audits[0].response
     * print visaresponse
+
+

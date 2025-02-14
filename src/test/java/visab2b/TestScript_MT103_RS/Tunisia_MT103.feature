@@ -18,7 +18,7 @@ Background:
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:2603001SFTPMT10TND20220867556434345858", "20:" + referencenumber )
   * print finalMt103
-  * jutil.SetData("GetAuditsTunisiamt103rspostive",referencenumber)
+  * jutil.SetData("GetAuditPositiveTunisia",referencenumber)
     * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -216,7 +216,7 @@ Scenario: Transaction initated for Tunisia country with different currency  (cur
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:2603001SFTPMT10TND20220867556434345858", "20:" + referencenumber ).replaceAll(":32A:200408TND138,28", ":32A:200408USD138.28").replaceAll(":70:/POP/Testing", "70:"  )
   * print finalMt103
-  * jutil.SetData("GetAuditsTunisiamt103rsothercurrency",referencenumber)
+  * jutil.SetData("GetAuditCrossBorderTunisia",referencenumber)
     * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -328,3 +328,5 @@ Scenario: Transaction initated for Tunisia country with different currency  (cur
 	 When method POST
 	 Then status 200
 	 * match response.error.message contains validations.MT103_Invalid_CurMin3Alpha
+
+

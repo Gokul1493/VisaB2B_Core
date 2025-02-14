@@ -18,7 +18,7 @@ Background:
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:MT10JPY202208645435438", "20:" + referencenumber )
   * print finalMt103
-  * jutil.SetData("GetAuditsjanpanmt103rspostive",referencenumber)
+  * jutil.SetData("GetAuditPositiveJapan",referencenumber)
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -215,7 +215,7 @@ Scenario: Transaction initated for Japan country with different currency  (curre
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:MT10JPY202208645435438", "20:" + referencenumber ).replaceAll(":32A:200408ALL138.28", ":32A:200408USD138.28").replaceAll("70:/POP/Payment as agreed", "70:"  )
   * print finalMt103
-  * jutil.SetData("GetAuditsjapanmt103rsothercurrency",referencenumber)
+  * jutil.SetData("GetAuditCrossBorderJapan",referencenumber)
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -310,3 +310,4 @@ Scenario: Transaction initated for Japan country with different currency  (curre
 	 When method POST
 	 Then status 200
 	 * match response.error.message contains validations.InvalidBic
+

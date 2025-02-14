@@ -18,7 +18,7 @@ Feature: SOUTHAFRICA_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:2603001SFTPSFTPSOUTHAFRICA6755776714211", "20:" + referencenumber )
     * print finalMt103
-    * jutil.SetData("GetAuditssouthafricamt103rspostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveSouthAfrica",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -265,7 +265,7 @@ Feature: SOUTHAFRICA_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:2603001SFTPSFTPSOUTHAFRICA6755776714211", "20:" + referencenumber ).replaceAll(":32A:200408ZAR138,28", ":32A:200408USD138.28").replaceAll(":77B:/POP/purpose of payment", "70:"  )
     * print finalMt103
-    * jutil.SetData("GetAuditssouthafricamt103rsothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorderSouthAfrica",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -375,3 +375,5 @@ Feature: SOUTHAFRICA_MT103
     When method POST
     Then status 200
     * match response.error.message contains validations.MT103_Invalid_CurMin3Alpha
+
+

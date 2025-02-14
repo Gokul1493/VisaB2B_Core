@@ -18,7 +18,7 @@ Background:
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:MT10NEWZELAND208674653545648", "20:" + referencenumber )
   * print finalMt103
-  * jutil.SetData("GetAuditsnewzealandmt103rspostive",referencenumber)
+  * jutil.SetData("GetAuditPositiveNewZealand",referencenumber)
     * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -276,7 +276,7 @@ Scenario: Transaction initated for NewZealand country with different currency  (
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:MT10NEWZELAND208674653545648", "20:" + referencenumber ).replaceAll(":32A:200408NZD138.28", ":32A:200408USD138.28")
   * print finalMt103
-  * jutil.SetData("GetAuditsnewzealandmt103rsothercurrency",referencenumber)
+  * jutil.SetData("GetAuditCrossBorderNewZealand",referencenumber)
     * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -335,3 +335,4 @@ Scenario: Transaction initated for NewZealand country with different currency  (
 	When method POST
 	Then status 200
  * match response.result.message == validations.successMessage
+

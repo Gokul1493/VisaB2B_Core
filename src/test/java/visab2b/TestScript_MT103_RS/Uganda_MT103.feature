@@ -18,7 +18,7 @@ Background:
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:2603001SFTPMT10UGX20220867556434344543142146", "20:" + referencenumber )
   * print finalMt103
-  * jutil.SetData("GetAuditsugnadamt103rspostive",referencenumber)
+  * jutil.SetData("GetAuditPositiveUganda",referencenumber)
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -234,7 +234,7 @@ Scenario: Transaction initated for Uganda country with different currency  (curr
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:2603001SFTPMT10UGX20220867556434344543142146", "20:" + referencenumber ).replaceAll(":32A:200408UGX138,28", ":32A:200408USD138.28").replaceAll(":70:/POP/UGX", "70:"  )
   * print finalMt103
-  * jutil.SetData("GetAuditsugandamt103rsothercurrency",referencenumber)
+  * jutil.SetData("GetAuditCrossBorderUganda",referencenumber)
     * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -346,3 +346,5 @@ Scenario: Transaction initated for Uganda country with different currency  (curr
 	When method POST
 	Then status 200
 	* match response.error.message contains validations.InvalidBic
+
+

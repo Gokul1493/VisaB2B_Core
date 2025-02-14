@@ -18,7 +18,7 @@ Feature: GUYANA_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103GUYANA202402040001", "20:" + referencenumber )
     * print finalMt103
-    * jutil.SetData("GetAuditsGuyanamt103rspostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveGuyana",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -83,7 +83,7 @@ Feature: GUYANA_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103GUYANA202402040001", "20:" + referencenumber ).replaceAll("59:/1210029690", "59:/9858855577"  ).replaceAll("32A:200408GYD12.98", "32A:200408USD138.28")
     * print finalMt103
-    * jutil.SetData("GetAuditsGuyanamt103rsothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorderGuyana",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -361,3 +361,5 @@ Feature: GUYANA_MT103
     * print visarequest
     * def visaresponse = response.result.audits[0].response
     * print visaresponse
+
+

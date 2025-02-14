@@ -17,7 +17,7 @@ Scenario: Transaction initated for bahrain country with different currency  (cur
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:MT103BHARAINSFTPANY202403260001", "20:" + referencenumber )
   * print finalMt103
-  * jutil.SetData("GetAuditsBahrainacmt103rspostive",referencenumber)
+  * jutil.SetData("GetAuditPositiveBahrainANY",referencenumber)
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -265,3 +265,5 @@ Scenario: Purpose of payment(POP)- as Empty
 	When method POST
 	Then status 200
 	* match response.error.message contains validations.EmptyPaymentPurposeCode
+
+

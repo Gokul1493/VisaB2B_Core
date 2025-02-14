@@ -19,7 +19,7 @@ Background:
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:MT103FRANCE2024020001", "20:" + referencenumber )
   * print finalMt103
-  * jutil.SetData("GetAuditsFrancemt103rspostive",referencenumber)
+  * jutil.SetData("GetAuditPositiveFrance",referencenumber)
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -85,7 +85,7 @@ Background:
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:MT103FRANCE2024020001", "20:" + referencenumber ).replaceAll("32A:200408EUR12.98", "32A:200408ALL138.28").replaceAll(":59:/FR1420041010050500013M02606", ":59:/6508000000192000145")
   * print finalMt103  
-  * jutil.SetData("GetAuditsfrancemt103rsothercurrency",referencenumber)
+  * jutil.SetData("GetAuditCrossBorderFrance",referencenumber)
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -351,3 +351,5 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	* print visarequest
 	* def visaresponse = response.result.audits[0].response
   * print visaresponse
+
+

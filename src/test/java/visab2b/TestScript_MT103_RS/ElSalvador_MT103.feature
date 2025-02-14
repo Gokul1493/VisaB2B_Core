@@ -18,7 +18,7 @@ Feature: ELSALVADOR_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103EISALVADOR202404010001", "20:" + referencenumber )
     * print finalMt103
-    * jutil.SetData("GetAuditsElsalvadormt103rspostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveElSalvador",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -83,7 +83,7 @@ Feature: ELSALVADOR_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103EISALVADOR202404010001", "20:" + referencenumber ).replaceAll("32A:200408USD134", "32A:200408ALL138.28")
     * print finalMt103
-    * jutil.SetData("GetAuditselslavdormt103rsothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorderElSalvador",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -343,3 +343,5 @@ Feature: ELSALVADOR_MT103
     * print visarequest
     * def visaresponse = response.result.audits[0].response
     * print visaresponse
+
+

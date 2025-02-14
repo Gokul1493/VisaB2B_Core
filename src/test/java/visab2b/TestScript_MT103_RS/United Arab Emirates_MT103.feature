@@ -18,7 +18,7 @@ Background:
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:2603001SFTPMT10UAE20220867567671492567", "20:" + referencenumber )
   * print finalMt103
-  * jutil.SetData("GetAuditsuaemt103rspostive",referencenumber)
+  * jutil.SetData("GetAuditPositiveUnited Arab Emirates",referencenumber)
     * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -293,7 +293,7 @@ Scenario: Transaction initated for UnitedarabEmirates country with different cur
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:2603001SFTPMT10UAE20220867567671492567", "20:" + referencenumber ).replaceAll(":32A:200408UGX138,28", ":32A:200408USD138.28")
   * print finalMt103
-  * jutil.SetData("GetAuditsuaemt103rsothercurrency",referencenumber)
+  * jutil.SetData("GetAuditCrossBorderUnited Arab Emirates",referencenumber)
     * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -351,3 +351,5 @@ Scenario: Transaction initated for UnitedarabEmirates country with different cur
 	And request value
 	When method POST
 	Then status 200
+
+

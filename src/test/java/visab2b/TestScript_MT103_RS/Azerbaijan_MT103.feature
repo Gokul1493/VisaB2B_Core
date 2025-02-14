@@ -19,7 +19,7 @@ Feature: AZERBAIJAN_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103AZARBAJAN34664658779", "20:" + referencenumber )
     * print finalMt103
-    * jutil.SetData("GetAuditsazerbaijanmt103rspostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveAzerbaijan",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -433,7 +433,7 @@ Feature: AZERBAIJAN_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103AZARBAJAN34664658779", "20:" + referencenumber ).replaceAll(":32A:240918AZN176,89", ":32A:200408USD138.28").replaceAll(":57A:/AZ21NABZ00000000137010001933", ":57A:/IBAZAZ2XXXX")
     * print finalMt103
-    * jutil.SetData("GetAuditsAzerbaijanmt103rsothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorderAzerbaijan",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -526,3 +526,5 @@ Feature: AZERBAIJAN_MT103
     When method POST
     Then status 200
     * match response.error.message contains validations.MT103_EMPTY_BIC_CMID
+    
+

@@ -18,7 +18,7 @@ Feature: Namibia_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:AUTONAMIBIA0010", "20:" + referencenumber )
     * print finalMt103
-    * jutil.SetData("GetAuditsnamibiamt103rspostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveNamibia",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * def Duplicaterefnumber = jutil.GetData("Duplicaterefnumber")
     * print Duplicaterefnumber
@@ -85,7 +85,7 @@ Feature: Namibia_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:AUTONAMIBIA0010", "20:" + referencenumber ).replaceAll("32A:200408EUR138", "32A:200408ALL138.28")
     * print finalMt103
-    * jutil.SetData("GetAuditsNamibiamt103othercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorderNamibia",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -345,3 +345,5 @@ Feature: Namibia_MT103
     * print visarequest
     * def visaresponse = response.result.audits[0].response
     * print visaresponse
+
+

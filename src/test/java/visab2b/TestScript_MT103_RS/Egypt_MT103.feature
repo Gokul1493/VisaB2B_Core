@@ -18,7 +18,7 @@ Feature: EGYPT_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103EGYPT20240204001", "20:" + referencenumber )
     * print finalMt103
-    * jutil.SetData("GetAuditsEgyptmt103rspostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveEgypt",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -84,7 +84,7 @@ Feature: EGYPT_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103EGYPT20240204001", "20:" + referencenumber ).replaceAll("77B:/INN/112233445566", "77B:/INN/1122334455667")
     * print finalMt103
-    * jutil.SetData("GetAuditsEgyptmt103rsspostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveEgypt",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -150,7 +150,7 @@ Feature: EGYPT_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103EGYPT20240204001", "20:" + referencenumber ).replaceAll("77B:/INN/112233445566", "77B:/INN/11223344556677")
     * print finalMt103
-    * jutil.SetData("GetAuditsegyptmt10314digittaxidpostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveEgypt",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -216,7 +216,7 @@ Feature: EGYPT_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103EGYPT20240204001", "20:" + referencenumber ).replaceAll("77B:/INN/112233445566", "77B:/INN/112233445566778")
     * print finalMt103
-    * jutil.SetData("GetAuditsegyptmt10315digittaxidpostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveEgypt",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -658,3 +658,5 @@ Feature: EGYPT_MT103
     * print visarequest
     * def visaresponse = response.result.audits[0].response
     * print visaresponse
+
+

@@ -18,7 +18,7 @@ Feature: DENMARK_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103DENMARK202401040001", "20:" + referencenumber )
     * print finalMt103
-    * jutil.SetData("GetAuditsDenmarkmt103rspostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveDenmark",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -83,7 +83,7 @@ Feature: DENMARK_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103DENMARK202401040001", "20:" + referencenumber ).replaceAll("32A:200408DKK134", "32A:200408USD138.28").replaceAll("70:/POP/Payment as agreed BRITISHVIRGINISLANDS", "70:").replaceAll(":59:/DK9520000123456789", ":59:/6508000000192000145")
     * print finalMt103
-    * jutil.SetData("GetAuditsDenmarkmt103rsothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorderDenmark",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -343,3 +343,5 @@ Feature: DENMARK_MT103
     * print visarequest
     * def visaresponse = response.result.audits[0].response
     * print visaresponse
+
+

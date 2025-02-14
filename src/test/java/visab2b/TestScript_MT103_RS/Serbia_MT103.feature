@@ -18,7 +18,7 @@ Background:
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:2603001SFTPMT10RSD20220867557563662121", "20:" + referencenumber )
   * print finalMt103
-  * jutil.SetData("GetAuditsserbiamt103rspostive",referencenumber)
+  * jutil.SetData("GetAuditPositiveSerbia",referencenumber)
     * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -234,7 +234,7 @@ Scenario: Transaction initated for Serbia country with different currency  (curr
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:2603001SFTPMT10RSD20220867557563662121", "20:" + referencenumber ).replaceAll(":32A:200408RSD138,28", ":32A:200408USD138.28").replaceAll("70:/POP/Testing", "70:"  )
   * print finalMt103
-  * jutil.SetData("GetAuditsserbiamt103rsothercurrency",referencenumber)
+  * jutil.SetData("GetAuditCrossBorderSerbia",referencenumber)
     * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -346,3 +346,5 @@ Scenario: Transaction initated for Serbia country with different currency  (curr
 	 When method POST
 	 Then status 200
 	 * match response.error.message contains validations.EmptyPOP
+
+

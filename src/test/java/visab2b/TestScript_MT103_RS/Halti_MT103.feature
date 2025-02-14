@@ -18,7 +18,7 @@ Feature: HALTI_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103HAITI202404020001", "20:" + referencenumber )
     * print finalMt103
-    * jutil.SetData("GetAuditshaltimt103rspostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveHalti",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -83,7 +83,7 @@ Feature: HALTI_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103HAITI202404020001", "20:" + referencenumber ).replaceAll("59:/905436437658578", "59:/9858855577"  ).replaceAll("32A:200408HTG12.98", "32A:200408USD138.28")
     * print finalMt103
-    * jutil.SetData("GetAuditsHaltimt103rsmothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorderHalti",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -361,3 +361,5 @@ Feature: HALTI_MT103
     * print visarequest
     * def visaresponse = response.result.audits[0].response
     * print visaresponse
+
+

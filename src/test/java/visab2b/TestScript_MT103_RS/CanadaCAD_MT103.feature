@@ -19,7 +19,7 @@ Background:
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:MT103CANADACAD20243103001", "20:" + referencenumber ).replaceAll("57D://CC123456789", "57D:")
   * print finalMt103
-  * jutil.SetData("GetAuditsCanadaCAdmt103rspostive",referencenumber)
+  * jutil.SetData("GetAuditPositiveCanadaCAD",referencenumber)
   * def user = testData.Visa_Mk 
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -152,7 +152,7 @@ Background:
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:MT103CANADACAD20243103001", "20:" + referencenumber ).replaceAll("32A:200408CAD18.28", "32A:200408ALL138.28").replaceAll("70:/POP/Payment as agreed CANADACAD", "70:").replaceAll("57D://CC123456789", "57D:")
   * print finalMt103
-  * jutil.SetData("GetAuditsNobicpostive",referencenumber)
+  * jutil.SetData("GetAuditPositiveCanadaCAD",referencenumber)
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -220,7 +220,7 @@ Background:
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:MT103CANADACAD20243103001", "20:" + referencenumber ).replaceAll("32A:200408CAD18.28", "32A:200408ALL138.28").replaceAll("70:/POP/Payment as agreed CANADACAD", "70:")
   * print finalMt103
-  * jutil.SetData("GetAuditscanadacadothercurrency",referencenumber)
+  * jutil.SetData("GetAuditCrossBorderCanadaCAD",referencenumber)
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -564,3 +564,5 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	* print visarequest
 	* def visaresponse = response.result.audits[0].response
   * print visaresponse
+
+

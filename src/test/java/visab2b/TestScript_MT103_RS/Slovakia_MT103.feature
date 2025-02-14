@@ -18,7 +18,7 @@ Feature: SLOVAKIA_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:2603001SFTPMT10EUR2022086755756752", "20:" + referencenumber )
     * print finalMt103
-    * jutil.SetData("GetAuditsslovakiamt103rspostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveSlovakia",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -210,7 +210,7 @@ Feature: SLOVAKIA_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:2603001SFTPMT10EUR2022086755756752", "20:" + referencenumber ).replaceAll(":32A:200408EUR138,28", ":32A:200408USD138.28")
     * print finalMt103
-    * jutil.SetData("GetAuditsslovakiamt103rsothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorderSlovakia",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -302,3 +302,5 @@ Feature: SLOVAKIA_MT103
     When method POST
     Then status 200
     * match response.error.message contains validations.InvalidBic
+
+

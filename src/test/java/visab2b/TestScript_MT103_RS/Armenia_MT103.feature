@@ -18,7 +18,7 @@ Background:
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:MT103ARMENIA20243005001", "20:" + referencenumber )
   * print finalMt103
-  * jutil.SetData("GetAuditsArmeniamt103rspostive",referencenumber)
+  * jutil.SetData("GetAuditPositiveArmenia",referencenumber)
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -271,7 +271,7 @@ Scenario: Transaction initated for ARMENIA country with different currency  (cur
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:MT103ARMENIA20243005001", "20:" + referencenumber ).replaceAll(":32A:240424AMD10", ":32A:240424USD1431")
   * print finalMt103
-  * jutil.SetData("GetAuditsArmeniamt103rsothercurrency",referencenumber)
+  * jutil.SetData("GetAuditCrossBorderArmenia",referencenumber)
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -348,3 +348,5 @@ Scenario: Transaction initated for ARMENIA country with different currency  (cur
 	When method POST
 	Then status 200
 	* match response.error.message contains validations.MT103_Invalid_File
+	
+

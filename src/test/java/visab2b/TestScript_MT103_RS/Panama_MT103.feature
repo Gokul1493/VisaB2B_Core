@@ -18,7 +18,7 @@ Background:
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:2603001SFTPMT10PANAMA8357438522121", "20:" + referencenumber )
   * print finalMt103
-  * jutil.SetData("GetAuditspanamamt103rspostive",referencenumber)
+  * jutil.SetData("GetAuditPositivePanama",referencenumber)
     * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -234,7 +234,7 @@ Scenario: Transaction initated for Panama country with different currency  (curr
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:2603001SFTPMT10PANAMA8357438522121", "20:" + referencenumber ).replaceAll(":32A:200408PAB138,28", ":32A:200408USD138.28")
   * print finalMt103
-  * jutil.SetData("GetAuditsPanamamt103rsothercurrency",referencenumber)
+  * jutil.SetData("GetAuditCrossBorderPanama",referencenumber)
     * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -328,3 +328,5 @@ Scenario: Transaction initated for Panama country with different currency  (curr
 	 When method POST
 	 Then status 200
 	 * match response.error.message contains validations.InvalidBic
+
+

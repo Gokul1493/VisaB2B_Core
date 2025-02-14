@@ -18,7 +18,7 @@ Feature: swift_file_transfer_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT10KWAIT364632746355426599", "20:" + referencenumber )
     * print finalMt103
-    * jutil.SetData("GetAuditsKUWAITmt103rspostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveKuwait",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -210,7 +210,7 @@ Feature: swift_file_transfer_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT10KWAIT364632746355426599", "20:" + referencenumber ).replaceAll(":32A:200408KWD138,28", ":32A:200408USD138.28")
     * print finalMt103
-    * jutil.SetData("GetAuditsKUWAITmt103rsothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorderKuwait",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -303,3 +303,5 @@ Feature: swift_file_transfer_MT103
     When method POST
     Then status 200
     * match response.error.message contains validations.InvalidBic
+
+

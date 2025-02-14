@@ -18,7 +18,7 @@ Feature: ESTONIA_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103ESTONIA20240105001", "20:" + referencenumber )
     * print finalMt103
-    * jutil.SetData("GetAuditsEstoniamt103rspostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveEstonia",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -83,7 +83,7 @@ Feature: ESTONIA_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103ESTONIA20240105001", "20:" + referencenumber ).replaceAll("32A:200408EUR123", "32A:200408ALL138.28").replaceAll(":59:/EE471000001020145685", ":59:/6508000000192000145")
     * print finalMt103
-    * jutil.SetData("GetAuditsEstoniamt103rsothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorderEstonia",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -352,3 +352,5 @@ Feature: ESTONIA_MT103
     * print visarequest
     * def visaresponse = response.result.audits[0].response
     * print visaresponse
+
+

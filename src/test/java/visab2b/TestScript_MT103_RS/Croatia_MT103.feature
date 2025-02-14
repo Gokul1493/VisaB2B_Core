@@ -19,6 +19,7 @@ Background:
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:MT103CORATIA2024010400001", "20:" + referencenumber )
   * print finalMt103
+  * jutil.SetData("GetAuditPositiveCroatia",referencenumber)
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -84,6 +85,7 @@ Background:
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:MT103CORATIA2024010400001", "20:" + referencenumber ).replaceAll("32A:200408EUR138", "32A:200408ALL138.28").replaceAll("70:/POP/Payment as agreed BRITISHVIRGINISLANDS", "70:")
   * print finalMt103
+  * jutil.SetData("GetAuditCrossBorderCroatia",referencenumber)
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -310,43 +312,5 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	Then status 200
 	* match response.error.message contains validations.MT103_Empty_CAccNumber_IBAN
 
-	
-	
-	 
- Scenario: Audits for Success Transaction
-	 # Get Audits for same currency
-	 Given url QaUrl + 'api'
-	 * def user = testData.Visa_CK
-	 * def getReferenceNumber = jutil.GetData('getAuditsReferenceNumber')
- * def getAudits = read('classpath:visab2b/Payload/GetAudits.json')
- 	* getAudits.params.Payload.reference = getReferenceNumber
-	* getAudits.params.Api.Credential = testData.Visa_CK.Credential
-  * getAudits.params.Api.deviceId = testData.Visa_CK.keyId
-    * def audits = signsreq(getAudits,user)
-	And request audits
-	When method POST
-	Then status 200
-	* def requestName = response.result.audits[0].requestName
-	* print requestName
-	* def visarequest = response.result.audits[0].request
-	* print visarequest
-	* def visaresponse = response.result.audits[0].response
-  * print visaresponse
-  # Get Audits for different currency
-   Given url QaUrl + 'api'
-	 * def user = testData.Visa_CK
-	 * def getReferenceNumberothercurrency = jutil.GetData('getAuditsReferenceNumberothercurrency')
- * def getAudits = read('classpath:visab2b/Payload/GetAudits.json')
- 	* getAudits.params.Payload.reference = getReferenceNumberothercurrency
-	* getAudits.params.Api.Credential = testData.Visa_CK.Credential
-  * getAudits.params.Api.deviceId = testData.Visa_CK.keyId
-    * def audits = signsreq(getAudits,user)
-    And request audits
-	When method POST
-	Then status 200
-	* def requestName = response.result.audits[0].requestName
-	* print requestName
-	* def visarequest = response.result.audits[0].request
-	* print visarequest
-	* def visaresponse = response.result.audits[0].response
-  * print visaresponse
+
+

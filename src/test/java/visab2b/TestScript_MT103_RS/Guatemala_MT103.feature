@@ -18,7 +18,7 @@ Feature: GUATEMALA_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103GUTEMALA2024010001", "20:" + referencenumber )
     * print finalMt103
-    * jutil.SetData("GetAuditsgautemalamt103rspostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveGuatemala",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -148,7 +148,7 @@ Feature: GUATEMALA_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103GUTEMALA2024010001", "20:" + referencenumber ).replaceAll("59:/GT82TRAJ01020000001210029690", "59:/8666655444444"  ).replaceAll("/PHN/+1-8099087766", "/PHN/"  ).replaceAll("32A:200408GTQ12.98", "32A:200408USD138.28").replaceAll("70:/POP/Purpose of payment	GUATEMALA", "70:")
     * print finalMt103
-    * jutil.SetData("GetAuditsgautemalamt103rsothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorderGuatemala",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -544,3 +544,5 @@ Feature: GUATEMALA_MT103
     * print visarequest
     * def visaresponse = response.result.audits[0].response
     * print visaresponse
+
+

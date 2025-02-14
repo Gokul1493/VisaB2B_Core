@@ -18,7 +18,7 @@ Feature: ITALY_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103ITALY42357663435435455", "20:" + referencenumber )
     * print finalMt103
-    * jutil.SetData("GetAuditsitalymt103rspostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveItaly",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -82,7 +82,7 @@ Feature: ITALY_MT103
     * print duplref
     * def finalMt103 = content.replaceAll("20:MT103ITALY42357663435435455", "20:" + duplref )
     * print finalMt103
-    #* jutil.SetData("GetAuditsItalymt103rsothercurrency",referencenumber)
+    #* jutil.SetData("GetAuditCrossBorderItaly",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -303,3 +303,5 @@ Feature: ITALY_MT103
     When method POST
     Then status 200
     * match response.error.message contains validations.InvalidBic
+
+

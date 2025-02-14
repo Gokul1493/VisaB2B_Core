@@ -19,7 +19,7 @@ Background:
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:MT103GEORGIA20240200001", "20:" + referencenumber )
   * print finalMt103
-  * jutil.SetData("GetAuditsgeorgiamt103rspostive",referencenumber)
+  * jutil.SetData("GetAuditPositiveGeorgia",referencenumber)
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -85,7 +85,7 @@ Background:
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:MT103GEORGIA20240200001", "20:" + referencenumber ).replaceAll("59:/GE29NB0000000101904917", "59:/9858855577"  ).replaceAll("32A:200408GEL12.98", "32A:200408USD138.28").replaceAll("70:/POP/Payment as agreed GEORGIA", "70:")
   * print finalMt103
-  * jutil.SetData("GetAuditsGeorgiamt103rsothercurrency",referencenumber)
+  * jutil.SetData("GetAuditCrossBorderGeorgia",referencenumber)
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -371,3 +371,5 @@ Scenario: Purpose of payment(POP)- as Empty
 	* print visarequest
 	* def visaresponse = response.result.audits[0].response
   * print visaresponse
+
+

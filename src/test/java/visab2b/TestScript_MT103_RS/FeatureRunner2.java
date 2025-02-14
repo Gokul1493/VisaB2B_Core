@@ -9,10 +9,10 @@ class FeatureRunner2 {
 	Karate testUsers() {
 		return Karate.run(
 
-				"Albania_MT103"
-//				"Algeria_MT103",
-//				"Angola_MT103",
-//				"Antigua_MT103",
+				"Albania_MT103",
+				"Algeria_MT103",
+				"Angola_MT103",
+				"Antigua_MT103",
 //				"Argentina_MT103",
 //				"Armenia_MT103",
 //				"Australia_MT103",
@@ -130,8 +130,9 @@ class FeatureRunner2 {
 //				"Uruguay_MT103",
 //				"Vietnam_MT103",
 //				"Zambia_MT103",
-//				"GetAuditsMT103ReviewSubmit"
-		).tags("Test").relativeTo(getClass());
+				"GetAuditsMT103"
+				
+		).relativeTo(getClass());
 
 //		"Albania_MT103",
 //		"Algeria_MT103",
@@ -254,8 +255,7 @@ class FeatureRunner2 {
 //		"UnitedStates_MT103",
 //		"Uruguay_MT103",
 //		"Vietnam_MT103",
-//		"Zambia_MT103",
-//		"GetAuditsMT103ReviewSubmit"
+//		"Zambia_MT103"
 	}
 
 }

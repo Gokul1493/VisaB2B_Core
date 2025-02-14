@@ -19,7 +19,7 @@ Background:
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:2603001SFTPr000271254012", "20:" + referencenumber )
   * print finalMt103
-  * jutil.SetData("GetAuditssouthkoreamt103rspostive",referencenumber)
+  * jutil.SetData("GetAuditPositiveSouthKorea",referencenumber)
     * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -412,7 +412,7 @@ Scenario: Transaction initated for SouthKorea country with different currency  (
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:2603001SFTPr000271254012", "20:" + referencenumber ).replaceAll(":32A:240312KRW10.22", ":32A:200408USD138.28").replaceAll(":77B:/POP/purpose of payment", "70:"  )
   * print finalMt103
-  * jutil.SetData("GetAuditssouthkoreamt103rsothercurrency",referencenumber)
+  * jutil.SetData("GetAuditCrossBorderSouthKorea",referencenumber)
     * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -470,3 +470,5 @@ Scenario: Transaction initated for SouthKorea country with different currency  (
 	And request value
 	When method POST
 	Then status 200
+
+

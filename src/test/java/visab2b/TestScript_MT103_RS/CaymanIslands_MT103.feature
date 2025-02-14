@@ -18,7 +18,7 @@ Feature: CAYMANISLANDS_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103CAYMANISLAND20240321001", "20:" + referencenumber )
     * print finalMt103
-    * jutil.SetData("GetAuditsCaymanislandsmt103rspostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveCaymanIslands",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -83,7 +83,7 @@ Feature: CAYMANISLANDS_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103CAYMANISLAND20240321001", "20:" + referencenumber ).replaceAll("32A:200408KYD18.28", "32A:200408USD138.28").replaceAll("70:/POP/Payment as agreed CAYMANISLANDS", "70:")
     * print finalMt103
-    * jutil.SetData("GetAuditsCaymanmt103rsothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorderCaymanIslands",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -361,3 +361,5 @@ Feature: CAYMANISLANDS_MT103
     * print visarequest
     * def visaresponse = response.result.audits[0].response
     * print visaresponse
+
+

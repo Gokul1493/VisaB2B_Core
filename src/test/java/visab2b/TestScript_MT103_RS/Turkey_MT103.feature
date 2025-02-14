@@ -18,7 +18,7 @@ Background:
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:MT10TRY202208620240401011", "20:" + referencenumber )
   * print finalMt103
-  * jutil.SetData("GetAuditsturkeymt103rspostive",referencenumber)
+  * jutil.SetData("GetAuditPositiveTurkey",referencenumber)
     * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -216,7 +216,7 @@ Scenario: Transaction initated for Turkey country with different currency  (curr
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:MT10TRY202208620240401011", "20:" + referencenumber ).replaceAll(":32A:200408TRY138,28", ":32A:200408USD138.28").replaceAll(":70:/POP/Testing", "70:"  )
   * print finalMt103
-  * jutil.SetData("GetAuditsturkeymt103rsothercurrency",referencenumber)
+  * jutil.SetData("GetAuditCrossBorderTurkey",referencenumber)
     * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -333,3 +333,5 @@ Scenario: Transaction initated for Turkey country with different currency  (curr
 	 
 	 
 	 
+
+

@@ -18,7 +18,7 @@ Background:
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:MT103ARGENTINA3465872", "20:" + referencenumber )
   * print finalMt103
-  * jutil.SetData("GetAuditsArgentinamt103rspostive",referencenumber)
+  * jutil.SetData("GetAuditPositiveArgentina",referencenumber)
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -508,7 +508,7 @@ Scenario: Transaction initated for Argentina country with different currency  (c
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:MT103ARGENTINA3465872", "20:" + referencenumber ).replaceAll(":32A:200408ARS138.28", ":32A:200408USD138.28").replaceAll("70:/POP/Payment as agreed", "70:"  )
   * print finalMt103
-  * jutil.SetData("GetAuditsArgentinamt103rsothercurrency",referencenumber)
+  * jutil.SetData("GetAuditCrossBorderArgentina",referencenumber)
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -605,3 +605,5 @@ Scenario: Transaction initated for Argentina country with different currency  (c
 	When method POST
 	Then status 200
 	* match response.error.message contains validations.MT103_Empty_CAccNumber_IBAN
+	
+

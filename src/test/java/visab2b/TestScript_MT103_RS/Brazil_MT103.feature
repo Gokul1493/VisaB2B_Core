@@ -18,7 +18,7 @@ Feature: BRAZIL
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103BRAZIL202403300001", "20:" + referencenumber )
     * print finalMt103
-    * jutil.SetData("GetAuditsBrazilmt103rspostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveBrazil",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -83,7 +83,7 @@ Feature: BRAZIL
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103BRAZIL202403300001", "20:" + referencenumber ).replaceAll("32A:200408BAM108.28", "32A:200408USD138.28")
     * print finalMt103
-    * jutil.SetData("GetAuditsBrazilmt103rsothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorderBrazil",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -469,3 +469,5 @@ Feature: BRAZIL
     * print visarequest
     * def visaresponse = response.result.audits[0].response
     * print visaresponse
+
+

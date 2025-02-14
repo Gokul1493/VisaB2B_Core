@@ -18,7 +18,7 @@ Feature: CURACAO_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103CURACAO202401040001", "20:" + referencenumber )
     * print finalMt103
-    * jutil.SetData("GetAuditsCuracomt103rspostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveCuracao",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -83,7 +83,7 @@ Feature: CURACAO_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103CURACAO202401040001", "20:" + referencenumber ).replaceAll("32A:200408ANG108.28", "32A:200408USD138.28")
     * print finalMt103
-    * jutil.SetData("GetAuditscuracaomt103rsothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorderCuracao",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -371,3 +371,5 @@ Feature: CURACAO_MT103
     * print visarequest
     * def visaresponse = response.result.audits[0].response
     * print visaresponse
+
+

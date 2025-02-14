@@ -18,7 +18,7 @@ Feature: Bermuda_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103BERMUDA202430030001", "20:" + referencenumber )
     * print finalMt103
-    * jutil.SetData("GetAuditsBermudamt103rspostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveBermuda",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -83,7 +83,7 @@ Feature: Bermuda_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:MT103BERMUDA202430030001", "20:" + referencenumber ).replaceAll("32A:200408BMD108.28", "32A:200408USD138.28").replaceAll("70:/POP/Payment as agreed BERMUDA", "70:")
     * print finalMt103
-    * jutil.SetData("GetAuditsBermudamt103rsothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorderBermuda",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -397,3 +397,5 @@ Feature: Bermuda_MT103
     * print visarequest
     * def visaresponse = response.result.audits[0].response
     * print visaresponse
+
+

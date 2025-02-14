@@ -82,7 +82,7 @@ Feature: botswana_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:AutoBotswana0010", "20:" + referencenumber ).replaceAll("32A:200408EUR138", "32A:200408ALL138.28")
     * print finalMt103
-    * jutil.SetData("GetAuditsbotswanamt103rsothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorderBotswana",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -183,7 +183,7 @@ Feature: botswana_MT103
     * def content = read('classpath:visab2b/MT103_files/BOTSWANA.txt')
     * def finalMt103 = content.replaceAll("50K:9100910001", "50K:"  )
     * print finalMt103
-    #* jutil.SetData("GetAuditsbotswanamt103rspostive",referencenumber)
+    #* jutil.SetData("GetAuditPositiveBotswana",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -345,3 +345,5 @@ Feature: botswana_MT103
     * print visarequest
     * def visaresponse = response.result.audits[0].response
     * print visaresponse
+
+

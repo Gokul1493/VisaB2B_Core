@@ -19,7 +19,7 @@ Feature: maldives_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:Automaldives001", "20:" + referencenumber )
     * print finalMt103
-    * jutil.SetData("GetAuditsmaldivesmt103rspostive",referencenumber)
+    * jutil.SetData("GetAuditPositiveMaldives",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * jutil.SetData("getAuditsReferenceNumber",referencenumber)
     * def getReferenceNumber = jutil.GetData('getAuditsReferenceNumber')
@@ -87,7 +87,7 @@ Feature: maldives_MT103
     * print referencenumber
     * def finalMt103 = content.replaceAll("20:Automaldives001", "20:" + referencenumber ).replaceAll("32A:200408EUR138", "32A:200408ALL138.28")
     * print finalMt103
-    * jutil.SetData("GetAuditsmaldivesmt103rsothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorderMaldives",referencenumber)
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -367,3 +367,5 @@ Feature: maldives_MT103
     * print visarequest
     * def visaresponse = response.result.audits[0].response
     * print visaresponse
+
+

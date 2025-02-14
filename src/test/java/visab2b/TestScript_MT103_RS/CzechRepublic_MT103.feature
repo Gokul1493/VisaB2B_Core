@@ -19,7 +19,7 @@ Background:
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:MT103CZECHREPUBLIC202401040001", "20:" + referencenumber )
   * print finalMt103
-  * jutil.SetData("GetAuditsczechmt103rspostive",referencenumber)
+  * jutil.SetData("GetAuditPositiveCzechRepublic",referencenumber)
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -85,7 +85,7 @@ Background:
   * print referencenumber
   * def finalMt103 = content.replaceAll("20:MT103CZECHREPUBLIC202401040001", "20:" + referencenumber ).replaceAll("32A:200408CZK108.28", "32A:200408USD138.28").replaceAll("70:/POP/Payment as agreed BRITISHVIRGINISLANDS", "70:").replaceAll(":59:/CZ6508000000192000145399", ":59:/6508000000192000145")
   * print finalMt103  
-  * jutil.SetData("GetAuditsCzechmt103rsothercurrency",referencenumber) 
+  * jutil.SetData("GetAuditCrossBorderCzechRepublic",referencenumber) 
   * def user = testData.Visa_Mk
   Given url QaUrl + 'api'
   * def reqadd = read('classpath:visab2b/Payload/MT103_Review_transaction.json')
@@ -353,3 +353,5 @@ Scenario: CreditorIBAN/AccountNumber as Empty
 	* print visarequest
 	* def visaresponse = response.result.audits[0].response
   * print visaresponse
+
+
