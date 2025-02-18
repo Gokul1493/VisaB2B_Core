@@ -1,0 +1,15 @@
+{
+"localSourcePath":"/home/gokulakannanm/Documents/Visa B2B/Aut New/VisaB2B/target/GeneratedSFTP/",
+"localDestinationPath":"/home/gokulakannanm/Documents/Visa B2B/Aut New/MT103/",
+"pgpScript":"gpg --encrypt --armor -r jsmith@gmail.com",
+"Encryptefile":"/home/gokulakannanm/Documents/Visa B2B/Aut New/enfilepath/",
+"sftpUserName":"netxd",
+"sftpPassword":"NetX@4321!",
+"sftpIp":"18.218.61.136",
+"sftpHost":22,
+"remotePath":"/sftp/GokulM1493/",
+"workingDirectory":"/home/gokulakannanm/Documents/Visa B2B/Aut New/MT103/",
+"remoteIntermittenPath":"/visab2b/convert/",
+"remoteDestinationPath":"/data/bank/XYZBANK/incoming/"
+ 
+}
