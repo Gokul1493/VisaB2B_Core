@@ -43,7 +43,7 @@ Background:
  And request value
  When method POST
  Then status 200
- * jutil.SetData("GetAuditsSaudiArabiaformpostive",referencenumber)
+ * jutil.SetData("GetAuditPositive_Saudi Arabia",referencenumber)
  * jutil.SetData("Duplicaterefnumber",referencenumber)
 	* print jutil.SetData('Duplicaterefnumber',referencenumber)
 	
@@ -243,7 +243,7 @@ Scenario: PaymentPurpose as empty
  And request value
  When method POST
  Then status 200
- * jutil.SetData("GetAuditsSaudiArabiaformothercurrency",referencenumber)
+ * jutil.SetData("GetAuditCrossBorder_Saudi Arabia",referencenumber)
  * jutil.SetData("Duplicaterefnumber",referencenumber)
 	* print jutil.SetData('Duplicaterefnumber',referencenumber)
 	

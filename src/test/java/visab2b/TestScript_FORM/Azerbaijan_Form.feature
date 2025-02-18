@@ -49,7 +49,7 @@ Feature: swift_file_transfer_Form_Azerbaijan
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsAzerbaijanformpostive",referencenumber)
+    * jutil.SetData("GetAuditPositive_Azerbaijan",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     ### Checker user approve transaction
@@ -333,7 +333,7 @@ Feature: swift_file_transfer_Form_Azerbaijan
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsAzerbaijanFormothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorder_Azerbaijan",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     ### Checker user approve transaction

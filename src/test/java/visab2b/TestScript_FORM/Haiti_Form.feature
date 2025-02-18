@@ -42,7 +42,7 @@ Feature: swift_file_transfer_Form_albania
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsHaitiformpostive",referencenumber)
+    * jutil.SetData("GetAuditPositive_Haiti",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     
@@ -239,7 +239,7 @@ Feature: swift_file_transfer_Form_albania
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsHaitiformothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorder_Haiti",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     

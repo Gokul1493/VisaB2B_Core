@@ -1,8 +1,8 @@
 Feature: swift_file_transfer_Form_Cote Divoire
 
   Background: 
-* def validation_Messages = read('classpath:visab2b/TestData/Validation.json')
-* def validations = validation_Messages.Validations
+    * def validation_Messages = read('classpath:visab2b/TestData/Validation.json')
+    * def validations = validation_Messages.Validations
     * def testData = read('classpath:visab2b/TestData/Config.json')
     * def jutil = Java.type('visab2b.Drivers.Addons')
     * def arg = jutil.PLtoken()
@@ -42,11 +42,9 @@ Feature: swift_file_transfer_Form_Cote Divoire
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsCoteDivoireformpostive",referencenumber)
+    * jutil.SetData("GetAuditPositive_Cote Divoire",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
-    
-    
     ### Checker user approve transaction
     ## Step1 == get the transaction id
     * def user = testData.Visa_CK
@@ -62,7 +60,7 @@ Feature: swift_file_transfer_Form_Cote Divoire
     * def transactionID = response.result.transactions[0].id
     * print transactionID
     ## Step2 == approve the payment
-* def sleep = function(millis){ return java.lang.Thread.sleep(millis) }
+    * def sleep = function(millis){ return java.lang.Thread.sleep(millis) }
     * eval sleep(25000)
     * def user = testData.Visa_CK
     Given url QaUrl + 'api'
@@ -205,11 +203,9 @@ Feature: swift_file_transfer_Form_Cote Divoire
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsCoteDivoireformothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorder_Cote Divoire",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
-    
-    
     ### Checker user approve transaction
     ## Step1 == get the transaction id
     * def user = testData.Visa_CK
@@ -225,7 +221,7 @@ Feature: swift_file_transfer_Form_Cote Divoire
     * def transactionID = response.result.transactions[0].id
     * print transactionID
     ## Step2 == approve the payment
-* def sleep = function(millis){ return java.lang.Thread.sleep(millis) }
+    * def sleep = function(millis){ return java.lang.Thread.sleep(millis) }
     * eval sleep(25000)
     * def user = testData.Visa_CK
     Given url QaUrl + 'api'

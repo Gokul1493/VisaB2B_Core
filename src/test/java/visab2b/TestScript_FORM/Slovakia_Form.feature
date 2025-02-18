@@ -42,7 +42,7 @@ Background:
  And request value
  When method POST
  Then status 200
-  * jutil.SetData("GetAuditsSlovakiaformpostive",referencenumber)
+  * jutil.SetData("GetAuditPositive_Slovakia",referencenumber)
  * jutil.SetData("Duplicaterefnumber",referencenumber)
 	* print jutil.SetData('Duplicaterefnumber',referencenumber)
 	
@@ -218,7 +218,7 @@ Scenario: Iban as empty
  And request value
  When method POST
  Then status 200
-  * jutil.SetData("GetAuditsSlovakiaformothercurrency",referencenumber)
+  * jutil.SetData("GetAuditCrossBorder_Slovakia",referencenumber)
  * jutil.SetData("Duplicaterefnumber",referencenumber)
 	* print jutil.SetData('Duplicaterefnumber',referencenumber)
 	

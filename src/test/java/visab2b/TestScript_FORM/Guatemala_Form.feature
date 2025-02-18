@@ -44,7 +44,7 @@ Feature: swift_file_transfer_Form_albania
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsGuatemalaformpostive",referencenumber)
+    * jutil.SetData("GetAuditPositive_Guatemala",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     
@@ -331,7 +331,7 @@ Feature: swift_file_transfer_Form_albania
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsGuatemalaformpostive",referencenumber)
+    * jutil.SetData("GetAuditPositive_Guatemala",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     

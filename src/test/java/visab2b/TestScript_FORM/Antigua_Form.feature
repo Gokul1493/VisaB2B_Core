@@ -43,7 +43,7 @@ Feature: swift_file_transfer_Form_Antigua
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsAnuguaformpostive",referencenumber)
+    * jutil.SetData("GetAuditPositive_Antigua",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     
@@ -231,7 +231,7 @@ Feature: swift_file_transfer_Form_Antigua
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsAlbaniaformothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorder_Antigua",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     

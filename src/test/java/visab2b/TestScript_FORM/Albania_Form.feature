@@ -44,7 +44,7 @@ Feature: swift_file_transfer_Form_albania
     When method POST
     Then status 200
     * jutil.SetData("Duplicaterefnumber",referencenumber)
-    * jutil.SetData("GetAuditsAlbaniaformpostive",referencenumber)
+    * jutil.SetData("GetAuditPositive_Albania",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     ### Checker user approve transaction
     ## Step1 == get the transaction id
@@ -105,7 +105,7 @@ Feature: swift_file_transfer_Form_albania
     When method POST
     Then status 200
     * jutil.SetData("Duplicaterefnumber",referencenumber)
-    * jutil.SetData("GetAuditsAlbaniaFormothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorder_Albania",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     ### Checker user approve transaction
     ## Step1 == get the transaction id

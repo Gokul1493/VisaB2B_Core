@@ -7,10 +7,10 @@ class FeatureRunner {
     @Karate.Test
     Karate testUsers() {
         return Karate.run(
-//        		"Albania_Form",
-//        		"Algeria_Form",
-//        		"Angola_Form",
-//        		"Antigua_Form",
+        		"Albania_Form",
+        		"Algeria_Form",
+        		"Angola_Form",
+        		"Antigua_Form",
 //        		"Argentina_Form",
 //        		"Armenia_Form",
 //        		"Australia_Form",
@@ -92,7 +92,7 @@ class FeatureRunner {
 //        		"Norway_Form",
 //        		"Oman_Form",
 //        		"Pakistan_Form",
-        		"Panama_Form"
+//        		"Panama_Form",
 //        		"Paraguay_Form",
 //        		"Peru_Form",
 //        		"Philippines_Form",
@@ -129,7 +129,7 @@ class FeatureRunner {
 //        		"Vietnam_Form",
 //        		"Zambia_Form",
 //        		"Audit",
-//        		"GetAuditsform"
+        		"GetAuditsFORM"
         		).relativeTo(getClass());
         
         

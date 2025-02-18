@@ -46,7 +46,7 @@ Background:
  And request value
  When method POST
  Then status 200
- * jutil.SetData("GetAuditsCostaRicaformpostive",referencenumber)
+ * jutil.SetData("GetAuditPositive_Costa Rica",referencenumber)
  * jutil.SetData("Duplicaterefnumber",referencenumber)
 	* print jutil.SetData('Duplicaterefnumber',referencenumber)
 	
@@ -290,7 +290,7 @@ Scenario: using 16 digit of Tax ID
  And request value
  When method POST
  Then status 200
- * jutil.SetData("GetAuditsCostaRicaformothercurrency",referencenumber)
+ * jutil.SetData("GetAuditCrossBorder_Costa Rica",referencenumber)
  * jutil.SetData("Duplicaterefnumber",referencenumber)
 	* print jutil.SetData('Duplicaterefnumber',referencenumber)
 	

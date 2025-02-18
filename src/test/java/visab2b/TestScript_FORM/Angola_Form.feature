@@ -44,7 +44,7 @@ Feature: swift_file_transfer_Form_Angola
     When method POST
     Then status 200
     * jutil.SetData("Duplicaterefnumber",referencenumber)
-    * jutil.SetData("getAuditssamecurrencyAngola",referencenumber)
+    * jutil.SetData("GetAuditPositive_Angola",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     ### Checker user approve transaction
     ## Step1 == get the transaction id
@@ -105,7 +105,7 @@ Feature: swift_file_transfer_Form_Angola
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("getAuditsothercurrencyAngola",referencenumber)
+    * jutil.SetData("GetAuditCrossBorder_Angola",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     ### Checker user approve transaction

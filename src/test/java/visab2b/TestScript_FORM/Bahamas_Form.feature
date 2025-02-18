@@ -42,7 +42,7 @@ Feature: swift_file_transfer_Form_Angola
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsBahamasformpostive",referencenumber)
+    * jutil.SetData("GetAuditPositive_Bahamas",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     
@@ -106,7 +106,7 @@ Feature: swift_file_transfer_Form_Angola
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsBahamasFormothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorder_Bahamas",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     

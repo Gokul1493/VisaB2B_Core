@@ -42,7 +42,7 @@ Feature: swift_file_transfer_Form_Australia
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsAustraliaformpostive",referencenumber)
+    * jutil.SetData("GetAuditPositive_Australia",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     ### Checker user approve transaction
@@ -103,7 +103,7 @@ Feature: swift_file_transfer_Form_Australia
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsAustraliaFormothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorder_Australia",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     ### Checker user approve transaction
@@ -259,7 +259,7 @@ Feature: swift_file_transfer_Form_Australia
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsAustraliaFormothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorder_Australia",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     ### Checker user approve transaction

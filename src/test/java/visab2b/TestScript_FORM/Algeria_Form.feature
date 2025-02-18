@@ -34,7 +34,7 @@ Feature: swift_file_transfer_Form_Algeria
     * print requestMessage
     * def referencenumber = reqadd.params.Payload.EndToEndIdentification
     * print referencenumber
-    * jutil.SetData("GetauditsAlgeriaformsamecurrency",referencenumber)
+    * jutil.SetData("GetAuditPositive_Algeria",referencenumber)
     ## submit the transaction
     Given url QaUrl + 'api'
     * def approve = read('classpath:visab2b/Payload/form_swift_file.json')
@@ -96,7 +96,7 @@ Feature: swift_file_transfer_Form_Algeria
     * print requestMessage
     * def referencenumber = reqadd.params.Payload.EndToEndIdentification
     * print referencenumber
-    * jutil.SetData("GetauditsAlgeriaformothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorder_Algeria",referencenumber)
     # submit the transaction
     Given url QaUrl + 'api'
     * def approve = read('classpath:visab2b/Payload/form_swift_file.json')

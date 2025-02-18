@@ -43,7 +43,7 @@ Feature: swift_file_transfer_Form_belarus
     Then status 200
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
-    
+    * jutil.SetData("GetAuditPositive_Belarus",referencenumber)
     
     ### Checker user approve transaction
     ## Step1 == get the transaction id
@@ -125,7 +125,7 @@ Feature: swift_file_transfer_Form_belarus
     Then status 200
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
-    
+    * jutil.SetData("GetAuditCrossBorder_Belarus",referencenumber)
     
     ### Checker user approve transaction
     ## Step1 == get the transaction id

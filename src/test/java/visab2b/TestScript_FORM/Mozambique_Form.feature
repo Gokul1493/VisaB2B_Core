@@ -45,7 +45,7 @@ Feature: swift_file_transfer_Form_Antigua
     Then status 200
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
-    
+    * jutil.SetData("GetAuditPositive_Mozambique",referencenumber)
     
     ### Checker user approve transaction
     ## Step1 == get the transaction id
@@ -98,7 +98,7 @@ Feature: swift_file_transfer_Form_Antigua
     * match response.error.message contains validations.EndtoEndID
 
   ## Maker user intiate the transaction
-  Scenario: Transaction initiated for Antigua country with different currency
+  Scenario: Transaction initiated for Namibia country with different currency
     * def user = testData.Visa_Mk
     Given url QaUrl + 'api'
     * def reqadd = read('classpath:visab2b/Payload/form_Review_transaction.json')
@@ -129,7 +129,7 @@ Feature: swift_file_transfer_Form_Antigua
     Then status 200
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
-    
+    * jutil.SetData("GetAuditCrossBorder_Mozambique",referencenumber)
     
     ### Checker user approve transaction
     ## Step1 == get the transaction id

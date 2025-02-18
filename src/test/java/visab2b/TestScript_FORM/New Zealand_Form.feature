@@ -43,7 +43,7 @@ Feature: swift_file_transfer_Form_albania
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsZealandformpostive",referencenumber)
+    * jutil.SetData("GetAuditPositive_New Zealand",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     
@@ -276,7 +276,7 @@ Feature: swift_file_transfer_Form_albania
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsZealandformpostiveinclearingmemberid",referencenumber)
+    * jutil.SetData("GetAuditPositive_New Zealandinclearingmemberid",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     
@@ -340,7 +340,7 @@ Feature: swift_file_transfer_Form_albania
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsZealandformothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorder_New Zealand",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     
@@ -405,7 +405,7 @@ Feature: swift_file_transfer_Form_albania
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsZealandformpostiveinclearingmemberid",referencenumber)
+    * jutil.SetData("GetAuditPositive_New Zealandinclearingmemberid",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     

@@ -45,7 +45,7 @@ Background:
   And request value
   When method POST
   Then status 200
-  * jutil.SetData("GetAuditsArgentinaformpostive",referencenumber)
+  * jutil.SetData("GetAuditPositive_Argentina",referencenumber)
   * jutil.SetData("Duplicaterefnumber",referencenumber)
 	* print jutil.SetData('Duplicaterefnumber',referencenumber)
 	
@@ -359,7 +359,7 @@ Scenario: Tax ID above 11 digits
  And request value
  When method POST
  Then status 200
- * jutil.SetData("GetAuditsArgentinaFormothercurrency",referencenumber)
+ * jutil.SetData("GetAuditCrossBorder_Argentina",referencenumber)
  * jutil.SetData("Duplicaterefnumber",referencenumber)
 	* print jutil.SetData('Duplicaterefnumber',referencenumber)
 	

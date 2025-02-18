@@ -43,7 +43,7 @@ Background:
  And request value
  When method POST
  Then status 200
- * jutil.SetData("GetAuditsSingaporeformpostive",referencenumber)
+ * jutil.SetData("GetAuditPositive_Singapore",referencenumber)
  * jutil.SetData("Duplicaterefnumber",referencenumber)
 	* print jutil.SetData('Duplicaterefnumber',referencenumber)
 	
@@ -223,7 +223,7 @@ Scenario: Using Invalid Currency
  And request value
  When method POST
  Then status 200
- * jutil.SetData("GetAuditsSingaporeformothercurrency",referencenumber)
+ * jutil.SetData("GetAuditCrossBorder_Singapore",referencenumber)
  * jutil.SetData("Duplicaterefnumber",referencenumber)
 	* print jutil.SetData('Duplicaterefnumber',referencenumber)
 	

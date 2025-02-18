@@ -44,7 +44,7 @@ Feature: swift_file_transfer_Form_China
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsChinaformpostive",referencenumber)
+    * jutil.SetData("GetAuditPositive_China",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     
@@ -257,7 +257,7 @@ Feature: swift_file_transfer_Form_China
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsChinaformothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorder_China",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     

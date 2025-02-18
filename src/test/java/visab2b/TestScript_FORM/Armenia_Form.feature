@@ -45,7 +45,7 @@
     Then status 200
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
-    
+    * jutil.SetData("GetAuditPositive_Armenia",referencenumber)
     
     ### Checker user approve transaction
     ## Step1 == get the transaction id
@@ -127,7 +127,7 @@
     Then status 200
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
-    
+    * jutil.SetData("GetAuditCrossBorder_Armenia",referencenumber)
     
     ### Checker user approve transaction
     ## Step1 == get the transaction id

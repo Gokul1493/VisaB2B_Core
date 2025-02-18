@@ -43,7 +43,7 @@ Background:
  And request value
  When method POST
  Then status 200
-    * jutil.SetData("GetAuditsSriLankaformpostive",referencenumber)
+    * jutil.SetData("GetAuditPositive_Sri Lanka",referencenumber)
  * jutil.SetData("Duplicaterefnumber",referencenumber)
 	* print jutil.SetData('Duplicaterefnumber',referencenumber)
 	
@@ -223,7 +223,7 @@ Scenario: Positive flow with USD currency
  And request value
  When method POST
  Then status 200
-    * jutil.SetData("GetAuditsSriLankaformothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorder_Sri Lanka",referencenumber)
  * jutil.SetData("Duplicaterefnumber",referencenumber)
 	* print jutil.SetData('Duplicaterefnumber',referencenumber)
 	

@@ -45,7 +45,7 @@ Feature: swift_file_transfer_Form_Maldives
     Then status 200
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
-    
+    * jutil.SetData("GetAuditPositive_Maldives",referencenumber)
     
     ### Checker user approve transaction
     ## Step1 == get the transaction id
@@ -129,7 +129,7 @@ Feature: swift_file_transfer_Form_Maldives
     Then status 200
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
-    
+    * jutil.SetData("GetAuditCrossBorder_Maldives",referencenumber)
     
     ### Checker user approve transaction
     ## Step1 == get the transaction id

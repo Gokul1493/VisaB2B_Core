@@ -43,7 +43,7 @@ Background:
  And request value
  When method POST
  Then status 200
- * jutil.SetData("GetAuditsAustriaformpostive",referencenumber)
+ * jutil.SetData("GetAuditPositive_Austria",referencenumber)
  * jutil.SetData("Duplicaterefnumber",referencenumber)
 	* print jutil.SetData('Duplicaterefnumber',referencenumber)
 	
@@ -109,7 +109,7 @@ Background:
   And request value
   When method POST
   Then status 200
-  * jutil.SetData("GetAuditsAustriaFormothercurrency",referencenumber)
+  * jutil.SetData("GetAuditCrossBorder_Austria",referencenumber)
   * jutil.SetData("Duplicaterefnumber",referencenumber)
 	* print jutil.SetData('Duplicaterefnumber',referencenumber)
 	

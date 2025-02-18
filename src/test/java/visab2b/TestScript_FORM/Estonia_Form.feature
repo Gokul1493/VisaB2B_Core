@@ -42,7 +42,7 @@ Feature: swift_file_transfer_Form_albania
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsEstoniaformpostive",referencenumber)
+    * jutil.SetData("GetAuditPositive_Estonia",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     
@@ -216,7 +216,7 @@ Feature: swift_file_transfer_Form_albania
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsEstoniaformothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorder_Estonia",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     

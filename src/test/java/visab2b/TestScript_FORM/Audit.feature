@@ -17,7 +17,7 @@ Scenario: Audits for Albania form Transaction
 	 # Get Audits for same currency
 	 Given url QaUrl + 'api'
 	 * def user = testData.Visa_CK
-	 * def getReferenceNumber = jutil.GetData('GetAuditsAlbaniaformpostive')
+	 * def getReferenceNumber = jutil.GetData('GetAuditPositive_Audit.feature')
  * def getAudits = read('classpath:visab2b/Payload/GetAudits.json')
  	* getAudits.params.Payload.reference = getReferenceNumber
 	* getAudits.params.Api.Credential = testData.Visa_CK.Credential
@@ -40,7 +40,7 @@ Scenario: Audits for Albania form Transaction
   # Get Audits for different currency
    Given url QaUrl + 'api'
 	 * def user = testData.Visa_CK
-	 * def getReferenceNumberothercurrency = jutil.GetData('GetAuditsAlbaniaFormothercurrency')
+	 * def getReferenceNumberothercurrency = jutil.GetData('GetAuditCrossBorder')
  * def getAudits = read('classpath:visab2b/Payload/GetAudits.json')
  	* getAudits.params.Payload.reference = getReferenceNumberothercurrency
 	* getAudits.params.Api.Credential = testData.Visa_CK.Credential
@@ -155,7 +155,7 @@ Scenario: Audits for Algeria form Transaction
 	 # Get Audits for same currency
 	 Given url QaUrl + 'api'
 	 * def user = testData.Visa_CK
-	 * def getReferenceNumber = jutil.GetData('GetAuditsAntiguaformpostive')
+	 * def getReferenceNumber = jutil.GetData('GetAuditPositive_Audit.feature')
  * def getAudits = read('classpath:visab2b/Payload/GetAudits.json')
  	* getAudits.params.Payload.reference = getReferenceNumber
 	* getAudits.params.Api.Credential = testData.Visa_CK.Credential
@@ -175,7 +175,7 @@ Scenario: Audits for Algeria form Transaction
   # Get Audits for different currency
    Given url QaUrl + 'api'
 	 * def user = testData.Visa_CK
-	 * def getReferenceNumberothercurrency = jutil.GetData('GetAuditsAntiguaFormothercurrency')
+	 * def getReferenceNumberothercurrency = jutil.GetData('GetAuditCrossBorder')
  * def getAudits = read('classpath:visab2b/Payload/GetAudits.json')
  	* getAudits.params.Payload.reference = getReferenceNumberothercurrency
 	* getAudits.params.Api.Credential = testData.Visa_CK.Credential
@@ -198,7 +198,7 @@ Scenario: Audits for Algeria form Transaction
 	 # Get Audits for same currency
 	 Given url QaUrl + 'api'
 	 * def user = testData.Visa_CK
-	 * def getReferenceNumber = jutil.GetData('GetAuditsArgentinaformpostive')
+	 * def getReferenceNumber = jutil.GetData('GetAuditPositive_Audit.feature')
  * def getAudits = read('classpath:visab2b/Payload/GetAudits.json')
  	* getAudits.params.Payload.reference = getReferenceNumber
 	* getAudits.params.Api.Credential = testData.Visa_CK.Credential
@@ -220,7 +220,7 @@ Scenario: Audits for Algeria form Transaction
   # Get Audits for different currency
    Given url QaUrl + 'api'
 	 * def user = testData.Visa_CK
-	 * def getReferenceNumberothercurrency = jutil.GetData('GetAuditsArgentinaFormothercurrency')
+	 * def getReferenceNumberothercurrency = jutil.GetData('GetAuditCrossBorder')
  * def getAudits = read('classpath:visab2b/Payload/GetAudits.json')
  	* getAudits.params.Payload.reference = getReferenceNumberothercurrency
 	* getAudits.params.Api.Credential = testData.Visa_CK.Credential
@@ -243,7 +243,7 @@ Scenario: Audits for Algeria form Transaction
 	 # Get Audits for same currency
 	 Given url QaUrl + 'api'
 	 * def user = testData.Visa_CK
-	 * def getReferenceNumber = jutil.GetData('GetAuditsAustraliaformpostive')
+	 * def getReferenceNumber = jutil.GetData('GetAuditPositive_Audit.feature')
  * def getAudits = read('classpath:visab2b/Payload/GetAudits.json')
  	* getAudits.params.Payload.reference = getReferenceNumber
 	* getAudits.params.Api.Credential = testData.Visa_CK.Credential
@@ -265,7 +265,7 @@ Scenario: Audits for Algeria form Transaction
   # Get Audits for different currency
    Given url QaUrl + 'api'
 	 * def user = testData.Visa_CK
-	 * def getReferenceNumberothercurrency = jutil.GetData('GetAuditsAustraliaFormothercurrency')
+	 * def getReferenceNumberothercurrency = jutil.GetData('GetAuditCrossBorder')
  * def getAudits = read('classpath:visab2b/Payload/GetAudits.json')
  	* getAudits.params.Payload.reference = getReferenceNumberothercurrency
 	* getAudits.params.Api.Credential = testData.Visa_CK.Credential

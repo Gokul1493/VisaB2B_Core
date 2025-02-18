@@ -44,7 +44,7 @@ Feature: swift_file_transfer_Form_albania
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsEgyptformpostive",referencenumber)
+    * jutil.SetData("GetAuditPositive_Egypt",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     
@@ -294,7 +294,7 @@ Feature: swift_file_transfer_Form_albania
     And request value
     When method POST
     Then status 200
-    * jutil.SetData("GetAuditsEgyptformothercurrency",referencenumber)
+    * jutil.SetData("GetAuditCrossBorder_Egypt",referencenumber)
     * jutil.SetData("Duplicaterefnumber",referencenumber)
     * print jutil.SetData('Duplicaterefnumber',referencenumber)
     
